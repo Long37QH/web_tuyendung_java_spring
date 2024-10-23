@@ -5,8 +5,10 @@ import java.util.List;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 
-
+import jakarta.validation.Valid;
 import vn.com.jobviet.domain.User;
 import vn.com.jobviet.service.UploadService;
 import vn.com.jobviet.service.UserService;
@@ -16,12 +18,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-
-
-
-
-
-
 
 
 @Controller
@@ -52,18 +48,27 @@ public class UserController {
     @PostMapping("/admin/user/creat")
     public String getValueInform(Model model,
             @ModelAttribute("usernew") @Valid User userNew,
+            BindingResult newUserBindingResult,
             @RequestParam("fileImage") MultipartFile file
             ) {
 
-         // lay thonhg tin file anh
-         String avatar = this.uploadService.handeSaveUploadFile(file, "avatar");
-         // ma hoa pass
-         String hashPassword = this.passwordEncoder.encode(userNew.getPassword());
- 
-         // cap nhat lai thong tin vao doi tuong usernew
-         userNew.setAvatar(avatar);
-         userNew.setPassword(hashPassword);
-         userNew.setRole(this.userService.getRoleByName(userNew.getRole().getName()));
+        List<FieldError> errors = newUserBindingResult.getFieldErrors();
+        for (FieldError error : errors) {
+            System.out.println(">>>>>" + error.getField() + " - " + error.getDefaultMessage());
+        }
+        // validate
+        if (newUserBindingResult.hasErrors()) {
+            return "/admin/user/creat";
+        }
+        // lay thonhg tin file anh
+        String avatar = this.uploadService.handeSaveUploadFile(file, "avatar");
+        // ma hoa pass
+        String hashPassword = this.passwordEncoder.encode(userNew.getPassword());
+
+        // cap nhat lai thong tin vao doi tuong usernew
+        userNew.setAvatar(avatar);
+        userNew.setPassword(hashPassword);
+        userNew.setRole(this.userService.getRoleByName(userNew.getRole().getName()));
         userNew.setPlan(this.userService.getPlanById(userNew.getPlan().getId()));        
         System.out.println("run hear : " + userNew);
         this.userService.handlSaveUser(userNew);
@@ -90,10 +95,15 @@ public class UserController {
     @PostMapping("/admin/user/update")
     public String postUpdateProduct(Model model,
             @ModelAttribute("user") @Valid User userUp,
+            BindingResult newUserBindingResult,
             @RequestParam("fileImage") MultipartFile file
             ) {
-
         
+        // validate
+        if (newUserBindingResult.hasErrors()) {
+            return "/admin/user/update_user";
+        }
+
         User currenUser = this.userService.getUserById(userUp.getId());
         if (currenUser != null) {
             if(!file.isEmpty()){
