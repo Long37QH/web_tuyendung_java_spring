@@ -1,8 +1,8 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
         <%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
-            <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-            <!DOCTYPE html>
+        <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -14,7 +14,7 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="/admin/assets/img/logo.png" rel="icon">
+  <link href="assets/img/logo.png" rel="icon">
 
   <!-- Google Fonts -->
   <link href="https://fonts.gstatic.com" rel="preconnect">
@@ -29,8 +29,7 @@
   <link href="/admin/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
   <link href="/admin/assets/vendor/simple-datatables/style.css" rel="stylesheet">
 
-  <!-- Template Main CSS File -->
-  <link href="/admin/assets/css/style.css" rel="stylesheet">
+
   <!-- jequery image Preview -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
@@ -40,16 +39,9 @@
   <!-- cdn icon -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 
-  <script>
-    $(document).ready(() => {
-        const avatarFile = $("#avatarFile");
-        avatarFile.change(function (e) {
-            const imgURL = URL.createObjectURL(e.target.files[0]);
-            $("#avatarPreview").attr("src", imgURL);
-            $("#avatarPreview").css({ "display": "block" });
-        });
-    }); 
-</script>
+  <!-- Template Main CSS File -->
+  <link href="/admin/assets/css/style.css" rel="stylesheet">
+
   <!-- =======================================================
   * Template Name: NiceAdmin - v2.4.0
   * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
@@ -75,45 +67,51 @@
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="/admin">Home</a></li>
-          <li class="breadcrumb-item"><a href="/admin/user">Quản lý User</a></li>
-          <li class="breadcrumb-item active">Quản lý User</li>
+          <li class="breadcrumb-item active">Quản lý dịch vụ</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
-    <hr>
-    <section class="section dashboard ">
+
+    <section class="section dashboard">
       <div class="row">
 
         <!-- Left side columns -->
         <div class="col-lg-12">
           <div class="row">
-
+            <!-- Băt dâp phân main-->
             <div class="col-lg-12" >
-                <div class="d-flex justify-content-between mb-2">
-                    <h3 class="">Thông tin người dùng </h3>
+                <div class="d-flex justify-content-between mb-2 mt-2">
+                    <h5 class="mb-3">Danh gói dịch vụ</h5>
+                    <a class="btn btn-primary" href="/admin/plan/creat">Thêm mới</a> 
                 </div>
-                <hr class="">
-                <div class="card mb-2 mx-auto" style="width: 70%;">
-                    <img  class="mx-auto mt-4 rounded-circle" src="/images/avatar/${user.avatar}" style="height: 150px; width: 150px;" alt="anh dai dien">
-                    <div class="card-header text-center">
-                      <h6 class="fw-bold" >${user.fullName}</h6>
-                      ${user.role.position}
-                    </div>
-                    <div class="card-header ">
-                        Thông tin chi tiết
-                    </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">ID : ${user.id}</li>
-                        <li class="list-group-item">Email : ${user.email}</li>
-                        <li class="list-group-item">Full Name : ${user.fullName}</li>
-                        <li class="list-group-item">Phone : ${user.phone}</li>
-                        <li class="list-group-item">AddRess : ${user.addRess}</li>
-                    </ul>
-                    <hr>
-                    <div class="text-center mt-3 mb-4">
-                      <a href="/admin/user" class="btn btn-success">Quay lại</a>
-                  </div>
-                </div>
+                <hr>
+                <table id="example" class="table table-striped table-bordered table-hover mt-4">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Tên gói dịch vụ</th>
+                            <th>Mô tả</th>
+                            <th>Gía gói</th>
+                            <th>Tác vụ</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <c:forEach var="plan" items="${listPlan}">
+                            <tr>
+                                <th>${plan.id}</th>
+                                <td>${plan.name}</td>
+                                <td>${plan.description}</td>
+                                <td><fmt:formatNumber type="number" value="${plan.price}"/> đ</td>
+                                <td>
+                                    <a class="btn btn-success mx-2 "
+                                        href="/admin/plan/update/${plan.id}"><i class="fa-solid fa-pen-nib"></i> Cập nhập</a>
+                                    <a class="btn btn-danger"
+                                        href="/admin/plan/delete/${plan.id}"><i class="fa-regular fa-trash-can"></i> Xóa</a>
+                                </td>
+                            </tr>
+                        </c:forEach>     
+                    </tbody>
+                </table>
             </div>
 
           </div>
@@ -136,10 +134,12 @@
   <script src="/admin/assets/vendor/echarts/echarts.min.js"></script>
   <script src="/admin/assets/vendor/quill/quill.min.js"></script>
   <script src="/admin/assets/vendor/simple-datatables/simple-datatables.js"></script>
+  
   <script src="/admin/assets/vendor/php-email-form/validate.js"></script>
 
   <!-- Template Main JS File -->
   <script src="/admin/assets/js/main.js"></script>
+
   <!-- DataTables JS -->
   <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
   <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js"></script>

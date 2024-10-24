@@ -2,12 +2,16 @@ package vn.com.jobviet.domain;
 
 import java.util.List;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name = "tblPlan")
@@ -16,11 +20,19 @@ public class Plan {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+    @NotNull
+    @Size(min = 2, message = "Tên gói phải có ít nhất 2 ký tự")
     private String name;
 
     private double price;
 
+    @NotEmpty(message = "Bạn phải nhập phần mô tả cho gói!")
     private String description;
+
+    @NotNull
+    @NotEmpty(message = "Không được để trống phần chi tiết gói dịch vụ!")
+    @Column(columnDefinition = "MEDIUMTEXT") 
+    private String detail;
 
     //lien ket bang user
     @OneToMany(mappedBy = "plan")
@@ -58,10 +70,10 @@ public class Plan {
         this.price = price;
     }
 
-
     @Override
     public String toString() {
-        return "Plan [id=" + id + ", name=" + name + ", price=" + price + ", description=" + description + "]";
+        return "Plan [id=" + id + ", name=" + name + ", price=" + price + ", description=" + description + ", detail="
+                + detail + "]";
     }
 
     public List<User> getUsers() {
@@ -72,5 +84,14 @@ public class Plan {
         this.users = users;
     }
 
+    public String getDetail() {
+        return detail;
+    }
+
+    public void setDetail(String detail) {
+        this.detail = detail;
+    }
+
+    
     
 }

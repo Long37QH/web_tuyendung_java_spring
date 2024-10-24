@@ -22,10 +22,12 @@ bean.setPrefix("/WEB-INF/view");
 bean.setSuffix(".jsp"); 
 return bean; 
 } 
+@SuppressWarnings("null")
 @Override 
 public void configureViewResolvers(ViewResolverRegistry registry) { 
 registry.viewResolver(viewResolver()); 
 } 
+@SuppressWarnings("null")
 @Override 
 public void addResourceHandlers(ResourceHandlerRegistry registry) { 
 registry.addResourceHandler("/css/**").addResourceLocations("/resources/css/"); 

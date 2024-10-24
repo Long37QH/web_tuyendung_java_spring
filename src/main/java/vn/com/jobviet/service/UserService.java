@@ -39,14 +39,29 @@ public class UserService {
         return this.planRepository.findById(id);
     }
 
+    public List<Plan> getAllPlan(){
+        return this.planRepository.findAll();
+    }
+
+
     public User handlSaveUser(User user){
         User usernew = this.userRepository.save(user);
         System.out.println(usernew);
         return usernew ;
     }
 
+    public Plan handSavePlan(Plan plan){
+        Plan plannew = this.planRepository.save(plan);
+        System.out.println(plannew);
+        return plannew;
+    }
+
     public void deleteUser(long id){
         this.userRepository.deleteById(id);
+    }
+
+    public void deletePlan(Long id){
+        this.planRepository.deleteById(id);
     }
     
 }

@@ -20,6 +20,8 @@ public class Role {
 
     private String description;
 
+    private String position;
+
     //lien ket bang user
     @OneToMany(mappedBy = "role")
     private List<User> users;
@@ -50,7 +52,7 @@ public class Role {
 
     @Override
     public String toString() {
-        return "Role [id=" + id + ", name=" + name + ", description=" + description + "]";
+        return "Role [id=" + id + ", name=" + name + ", description=" + description + ", position=" + position + "]";
     }
 
     public List<User> getUsers() {
@@ -59,6 +61,14 @@ public class Role {
 
     public void setUsers(List<User> users) {
         this.users = users;
+    }
+
+    public String getPosition() {
+        return position;
+    }
+
+    public void setPosition(String position) {
+        this.position = position;
     }
     
     
