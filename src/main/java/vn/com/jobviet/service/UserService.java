@@ -60,7 +60,7 @@ public class UserService {
         this.userRepository.deleteById(id);
     }
 
-    public void deletePlan(Long id){
+    public void deletePlan(long id){
         this.planRepository.deleteById(id);
     }
     

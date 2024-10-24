@@ -59,7 +59,7 @@
                 </a>
                 <ul id="post" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                   <li>
-                    <a href="#">
+                    <a href="/admin/categorypost">
                       <i class="bi bi-circle"></i><span>Danh muc bài viết</span>
                     </a>
                   </li>

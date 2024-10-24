@@ -67,7 +67,7 @@
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="/admin">Home</a></li>
-          <li class="breadcrumb-item active">Quản lý dịch vụ</li>
+          <li class="breadcrumb-item active">Quản lý danh mục</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
@@ -81,32 +81,30 @@
             <!-- Băt dâp phân main-->
             <div class="col-lg-12" >
                 <div class="d-flex justify-content-between mb-2 mt-2">
-                    <h5 class="mb-3">Danh sách gói dịch vụ</h5>
-                    <a class="btn btn-primary" href="/admin/plan/creat">Thêm mới</a> 
+                    <h5 class="mb-3">Danh sánh danh mục bài viết</h5>
+                    <a class="btn btn-primary" href="/admin/categorypost/creat">Thêm mới</a> 
                 </div>
                 <hr>
                 <table id="example" class="table table-striped table-bordered table-hover mt-4">
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Tên gói dịch vụ</th>
-                            <th>Mô tả</th>
-                            <th>Gía gói</th>
+                            <th>Tên danh mục</th>
+                            <th>Mô tả nội dung</th>
                             <th>Tác vụ</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <c:forEach var="plan" items="${listPlan}">
+                        <c:forEach var="cate" items="${listCate}">
                             <tr>
-                                <th>${plan.id}</th>
-                                <td>${plan.name}</td>
-                                <td>${plan.description}</td>
-                                <td><fmt:formatNumber type="number" value="${plan.price}"/> đ</td>
+                                <th>${cate.id}</th>
+                                <td style="width: 250px;" >${cate.name}</td>
+                                <td style="width: 500px;" >${cate.description}</td>
                                 <td>
                                     <a class="btn btn-success mx-2 "
-                                        href="/admin/plan/update/${plan.id}"><i class="fa-solid fa-pen-nib"></i> Cập nhập</a>
+                                        href="/admin/categorypost/update/${cate.id}"><i class="fa-solid fa-pen-nib"></i> Cập nhập</a>
                                     <a class="btn btn-danger"
-                                        href="/admin/plan/delete/${plan.id}"><i class="fa-regular fa-trash-can"></i> Xóa</a>
+                                        href="/admin/categorypost/delete/${cate.id}"><i class="fa-regular fa-trash-can"></i> Xóa</a>
                                 </td>
                             </tr>
                         </c:forEach>     
