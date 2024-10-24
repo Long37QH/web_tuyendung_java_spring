@@ -64,7 +64,7 @@
                     </a>
                   </li>
                   <li>
-                    <a href="#">
+                    <a href="/admin/post">
                       <i class="bi bi-circle"></i><span>Dah sách bài viết</span>
                     </a>
                   </li>

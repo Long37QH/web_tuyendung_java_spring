@@ -66,7 +66,7 @@
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="/admin">Home</a></li>
-          <li class="breadcrumb-item active">Quản lý User</li>
+          <li class="breadcrumb-item active">Quản lý bài viết</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
@@ -80,34 +80,40 @@
             <!-- Băt dâp phân main-->
             <div class="col-lg-12" >
                 <div class="d-flex justify-content-between mb-2 mt-2">
-                    <h5 class="mb-3">Danh sách User</h5>
-                    <a class="btn btn-primary" href="/admin/user/creat">Thêm mới</a> 
+                    <h5 class="mb-3">Danh sách bài viết</h5>
+                    <a class="btn btn-primary" href="/admin/post/creat">Thêm mới</a> 
                 </div>
                 <hr>
                 <table id="example" class="table table-striped table-bordered table-hover mt-4">
                     <thead>
                         <tr>
                             <th>id</th>
-                            <th>Full name</th>
-                            <th>Email</th>
-                            <th>Quyền</th>
+                            <th>Tiêu đề</th>
+                            <th>Hình ảnh</th>
+                            <th>Danh muc</th>
+                            <th>Tác giả</th>
+                            <th>Trạng thái</th>
                             <th>Tác vụ</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <c:forEach var="user" items="${listUser1}">
+                        <c:forEach var="post" items="${listposts}">
                             <tr>
-                                <th>${user.id}</th>
-                                <td>${user.fullName}</td>
-                                <td>${user.email}</td>
-                                <td>${user.role.name}</td>
+                                <th>${post.id}</th>
+                                <td style="width: 150px;" >${post.title}</td>
                                 <td>
-                                    <a class="btn btn-success"
-                                        href="/admin/user/${user.id}"><i class="fa-regular fa-eye"></i> Xem</a>
-                                    <a class="btn btn-warning mx-2 "
-                                        href="/admin/user/update/${user.id}"><i class="fa-solid fa-pen-nib"></i> Sửa</a>
+                                    <img src="/images/post/${post.image}" alt="" style="width: 150px;">
+                                </td>
+                                <td>${post.category.name}</td>
+                                <td>${post.author}</td>
+                                <td>${post.status}</td>
+                                <td>
+                                    <!-- <a class="btn btn-success"
+                                        href="/admin/post/${post.id}"><i class="fa-regular fa-eye"></i> Xem</a> -->
+                                    <a class="btn btn-success mx-2 "
+                                        href="/admin/post/update/${post.id}"><i class="fa-solid fa-pen-nib"></i> Sửa bài</a>
                                     <a class="btn btn-danger"
-                                        href="/admin/user/delete/${user.id}"><i class="fa-regular fa-trash-can"></i> Xóa</a>
+                                        href="/admin/post/delete/${post.id}"><i class="fa-regular fa-trash-can"></i> Xóa bài</a>
                                 </td>
                             </tr>
                         </c:forEach>     

@@ -8,6 +8,9 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name = "tblPost")
@@ -15,13 +18,21 @@ public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
+    @NotEmpty(message = "Không được để trống tiêu đề bài viết!")
     private String title;
     
+    @NotNull
+    @Size(min = 2, message = "Phần mô tả phải nhiều hơn 2 ký tự!")
     private String shortdesc;
 
+    @NotEmpty(message = "Không được để trống nội dung bài viết!")
     @Column(columnDefinition = "MEDIUMTEXT") 
     private String content;
+
     private String image;
+
+    @NotEmpty(message = "Không được để trống tên tác giả!")
     private String author;
     private String timeposting;
     private long view;

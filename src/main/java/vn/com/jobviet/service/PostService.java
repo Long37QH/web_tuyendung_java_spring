@@ -33,8 +33,18 @@ public class PostService {
         return categoryNew;
     }
 
+    public Post handSavePost(Post post){
+        Post postNew = this.postRepository.save(post);
+        System.out.println(postNew);
+        return postNew;
+    }
+
     public Category getCateById(long id){
         return this.categoryRepository.findById(id);
+    }
+
+    public Category getCategoryByName(String name){
+        return this.categoryRepository.findByName(name);
     }
 
     public Post getPostById(long id){
