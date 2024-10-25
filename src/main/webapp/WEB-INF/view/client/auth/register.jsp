@@ -59,36 +59,36 @@
           <div class="user-content">
             <div class="top">
               <h2>Đăng ký tài khoản</h2>
-              <form>
+              <form:form method="post" action="/register" modelAttribute="registerUser">
                 <div class="form-group">
-                  <input type="text" class="form-control" placeholder="Firt Name">
+                    <form:input type="text" class="form-control" placeholder="First Name" path="firstName" />
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Last Name">
-                  </div>
-                <div class="form-group">
-                  <input type="email" class="form-control" placeholder="Email">
+                    <form:input type="text" class="form-control" placeholder="Last Name" path="lastName" />
                 </div>
                 <div class="form-group">
-                  <input type="text" class="form-control" placeholder="Số điện thoại">
+                    <form:input type="email" class="form-control" placeholder="Email" path="email" />
                 </div>
                 <div class="form-group">
-                  <input type="text" class="form-control" placeholder="Địa chỉ">
+                    <form:input type="text" class="form-control" placeholder="Số điện thoại" path="phone" />
                 </div>
                 <div class="form-group">
-                    <select class="form-control mb-3">
-                        <option value="USER2">Tài khoản ứng viên</option>
-                        <option value="USER1">Tài khoản nhà tuyển dụng</option>
-                      </select>
+                    <form:input type="text" class="form-control" placeholder="Địa chỉ" path="addRess" />
                 </div>
                 <div class="form-group">
-                  <input type="password" class="form-control" placeholder="Password">
+                    <form:select class="form-control mb-3" path="roleName" >
+                        <form:option value="USER2">Tài khoản ứng viên</form:option>
+                        <form:option value="USER1">Tài khoản nhà tuyển dụng</form:option>
+                      </form:select>
                 </div>
                 <div class="form-group">
-                  <input type="password" class="form-control" placeholder="Confirm Password">
+                    <form:input type="password" class="form-control" placeholder="Password" path="password" />
+                </div>
+                <div class="form-group">
+                  <form:input type="password" class="form-control" placeholder="Confirm Password" path="confirmPassword" />
                 </div>
                 <button type="submit" class="btn">Đăng ký</button>
-              </form>
+              </form:form>
               <div class="mt-3" >
                 <a href="/login">Bạn đã có tài khoản? Đăng nhập ngay</a>
               </div>

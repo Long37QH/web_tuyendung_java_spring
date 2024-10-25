@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import vn.com.jobviet.domain.Plan;
 import vn.com.jobviet.domain.Role;
 import vn.com.jobviet.domain.User;
+import vn.com.jobviet.domain.dto.RegisterDTO;
 import vn.com.jobviet.repository.PlanRepository;
 import vn.com.jobviet.repository.RoleRepository;
 import vn.com.jobviet.repository.UserRepository;
@@ -63,5 +64,15 @@ public class UserService {
     public void deletePlan(long id){
         this.planRepository.deleteById(id);
     }
-    
+
+    // convert registerDTO -> user
+    public User registerDTOtoUser(RegisterDTO registerDTO){
+        User user = new User();
+        user.setFullName(registerDTO.getFirstName() + " " + registerDTO.getLastName());
+        user.setEmail(registerDTO.getEmail());
+        user.setPassword(registerDTO.getPassword());
+        user.setPhone(registerDTO.getPhone());
+        user.setAddRess(registerDTO.getAddRess());
+        return user;
+    }
 }
