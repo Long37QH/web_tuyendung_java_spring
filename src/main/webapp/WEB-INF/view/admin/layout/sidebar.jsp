@@ -97,8 +97,11 @@
               <li class="nav-heading">Pages</li>
         
               <li class="nav-item">
-                <a class="nav-link collapsed" href="#">
-                  <i class="bi bi-box-arrow-in-right"></i>
+                <form class="d-none" id="myForm" action="/logout" method="post" >
+                  <input type="hidden" name="${_csrf.parameterName}"value="${_csrf.token}" />
+                </form>
+                <a onclick="document.getElementById('myForm').submit(); return false;" class="nav-link collapsed" >
+                  <i class="bi bi-box-arrow-right"></i>
                   <span>Đăng xuất</span>
                 </a>
               </li><!-- End Login Page Nav -->

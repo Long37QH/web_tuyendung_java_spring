@@ -35,61 +35,63 @@
                                     </div>
                                     <div class="col-xl-4 col-lg-3 d-none d-lg-block">
                                         <div class="Appointment">
-                                            <!-- chưa đăng nhập đăng nhập -->
-                                            <!-- <div class="phone_num d-none d-xl-block">
-                                                <a href="#" class="nav-link fs-2 "><i class="fas fa-user"></i> Đăng nhập</a>
-                                            </div> 
-                                            <div class="d-none d-lg-block">
-                                                <a class="boxed-btn3" href="#">Ứng tuyển</a>
-                                            </div> -->
-                                           
+                                            
         
                                             <!-- phân khi đang nhap tk ứng viên -->
-                                            <!-- <div class="navbar-brand"  id="navbarNav">
-                                                <ul class="navbar-nav">
-                                                    <li class="nav-item dropdown">
-                                                        <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button"
-                                                            data-bs-toggle="dropdown" aria-expanded="false">
-                                                            <i class="fas fa-user"></i> Đinh Viết Long
-                                                        </a>
-                                                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                                            <li class="d-flex align-items-center flex-column" style="min-width: 265px;">
-                                                                <img style="width: 80px; height: 80px; border-radius: 50%; overflow: hidden;"
-                                                                    src="client/img/elements/d.jpg" />
-                                                                <div class="text-center my-3">
-                                                                    Đinh viết long
-                                                                    <p class="fs-6">demo@gmail.com</p>
-                                                                </div>
-                                                            </li>
-                                                            <li><hr class="dropdown-divider"></li>
-                                                            <li><a class="dropdown-item" href="#">Thông tin cá nhân</a></li>
-                                                            <li><a class="dropdown-item" href="#">Lịch sử úng tuyển</a></li>
-                                                            <li><a class="dropdown-item" href="#">Thay đổi mật khẩu</a></li>
-                                                            <li><hr class="dropdown-divider"></li>
-                                                            <li><a class="dropdown-item" href="#">Đăng xuất</a></li>
-                                                        </ul>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <div class="d-none d-lg-block">
-                                                <a class="boxed-btn3" href="#">Đăng tin</a>
-                                            </div> -->
-        
-                                            <!-- phần hiển thi dang nhap tk tuyen dụng -->
+                                            <c:if test="${sessionScope.roleUser == 'USER2'}">
+                                                <div class="navbar-brand"  id="navbarNav">
+                                                    <ul class="navbar-nav">
+                                                        <li class="nav-item dropdown">
+                                                            <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button"
+                                                                data-bs-toggle="dropdown" aria-expanded="false">
+                                                                <i class="fas fa-user"></i> <c:out value="${sessionScope.fullname}" />
+                                                            </a>
+                                                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                                                <li class="d-flex align-items-center flex-column" style="min-width: 265px;">
+                                                                    <img style="width: 80px; height: 80px; border-radius: 50%; overflow: hidden;"
+                                                                        src="/images/avatar/${sessionScope.avatar}" />
+                                                                    <div class="text-center my-3">
+                                                                        <c:out value="${sessionScope.fullname}" />
+                                                                        <p class="fs-6"><c:out value="${sessionScope.email}" /></p>
+                                                                    </div>
+                                                                </li>
+                                                                <li><hr class="dropdown-divider"></li>
+                                                                <li><a class="dropdown-item" href="#">hông tin tài khoản</a></li>
+                                                                <li><a class="dropdown-item" href="#">Lịch sử ứng tuyển</a></li>
+                                                                <li><a class="dropdown-item" href="#">Thay đổi mật khẩu</a></li>
+                                                                <li><hr class="dropdown-divider"></li>
+                                                                <li>
+                                                                    <form action="/logout" method="post" >
+                                                                        <input type="hidden" name="${_csrf.parameterName}"
+                                                                                value="${_csrf.token}" />
+                                                                        <button class="dropdown-item" >Đăng xuất</button>
+                                                                    </form>
+                                                                </li>
+                                                            </ul>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <div class="d-none d-lg-block">
+                                                    <a class="boxed-btn3" href="/login">Đăng tin</a>
+                                                </div>
+                                            </c:if>
+                                            
+                                             <!-- phần hiển thi dang nhap tk tuyen dụng -->
+                                            <c:if test="${sessionScope.roleUser == 'USER1'}">
                                             <div class="navbar-brand"  id="navbarNav">
                                                 <ul class="navbar-nav">
                                                     <li class="nav-item dropdown">
                                                         <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button"
                                                             data-bs-toggle="dropdown" aria-expanded="false">
-                                                            <i class="fas fa-user"></i> Công ty FGC
+                                                            <i class="fas fa-user"></i> <c:out value="${sessionScope.fullname}" />
                                                         </a>
                                                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                                             <li class="d-flex align-items-center flex-column" style="min-width: 265px;">
                                                                 <img style="width: 80px; height: 80px; border-radius: 50%; overflow: hidden;"
-                                                                    src="client/img/elements/d.jpg" />
+                                                                    src="/images/avatar/${sessionScope.avatar}" />
                                                                 <div class="text-center my-3">
-                                                                    Công ty FGC
-                                                                    <p class="fs-6">FGCdemo@gmail.com</p>
+                                                                    <c:out value="${sessionScope.fullname}" />
+                                                                    <p class="fs-6"><c:out value="${sessionScope.email}" /></p>
                                                                 </div>
                                                             </li>
                                                             <li><hr class="dropdown-divider"></li>
@@ -98,14 +100,31 @@
                                                             <li><a class="dropdown-item" href="ds_tuyendung.html">Quản lý tuyển dụng dụng</a></li>
                                                             <li><a class="dropdown-item" href="plan.html">Đăng ký dịch vụ</a></li>
                                                             <li><hr class="dropdown-divider"></li>
-                                                            <li><a class="dropdown-item" href="#">Đăng xuất</a></li>
+                                                            <li>
+                                                                <form action="/logout" method="post" >
+                                                                    <input type="hidden" name="${_csrf.parameterName}"
+                                                                            value="${_csrf.token}" />
+                                                                    <button class="dropdown-item" >Đăng xuất</button>
+                                                                </form>
+                                                            </li>
                                                         </ul>
                                                     </li>
                                                 </ul>
                                             </div>
                                             <div class="d-none d-lg-block">
-                                                <a class="boxed-btn3" href="#">Ứng tuyển</a>
+                                                <a class="boxed-btn3" href="/login">Ứng tuyển</a>
                                             </div>
+                                            
+                                            <!-- chư đăng nhập -->
+                                            </c:if>
+                                            <c:if test="${empty pageContext.request.userPrincipal}">
+                                                <div class="phone_num d-none d-xl-block">
+                                                    <a href="/login" class="nav-link fs-2 "><i class="fas fa-user"></i> Đăng nhập</a>
+                                                </div> 
+                                                <div class="d-none d-lg-block">
+                                                    <a class="boxed-btn3" href="/login">Ứng tuyển</a>
+                                                </div>
+                                            </c:if>
                                         </div>
                                     </div>
                                     <div class="col-12">
