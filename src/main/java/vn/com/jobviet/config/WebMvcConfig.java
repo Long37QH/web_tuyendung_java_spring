@@ -36,5 +36,6 @@ registry.addResourceHandler("/images/**").addResourceLocations("/resources/image
 registry.addResourceHandler("/client/**").addResourceLocations("/resources/client/"); 
 registry.addResourceHandler("/admin/**").addResourceLocations("/resources/admin/"); 
 registry.addResourceHandler("/filecv/**").addResourceLocations("/resources/filecv/"); 
+registry.addResourceHandler("/auth/**").addResourceLocations("/resources/auth/"); 
 }
 } 
