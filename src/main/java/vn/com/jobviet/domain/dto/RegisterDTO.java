@@ -1,13 +1,28 @@
 package vn.com.jobviet.domain.dto;
 
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
+import vn.com.jobviet.service.validator.RegisterChecked;
+
+@RegisterChecked
 public class RegisterDTO {
+    @Size(min = 3, message = "firstName phải có ít nhất 3 ký tự")
     private String firstName;
     private String lastName;
+
+    @Email(message = "Email không hợp lệ!", regexp = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$")
     private String email;
+
+    @NotEmpty(message = "Không được để trống thông tin số điện thoại!")  
     private String phone;
+
+    @NotEmpty(message = "Không được để trống thông tin địa chỉ!") 
     private String addRess;
     private String roleName;
+    private String dateOfBirth;
     private String password;
+    @Size(min = 3, message = "password phải có ít nhất 3 ký tự")
     private String confirmPassword;
     
     public String getFirstName() {
@@ -57,6 +72,12 @@ public class RegisterDTO {
     }
     public void setConfirmPassword(String confirmPassword) {
         this.confirmPassword = confirmPassword;
+    }
+    public String getDateOfBirth() {
+        return dateOfBirth;
+    }
+    public void setDateOfBirth(String dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
     }
 
     

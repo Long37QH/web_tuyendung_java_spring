@@ -73,6 +73,11 @@ public class UserService {
         user.setPassword(registerDTO.getPassword());
         user.setPhone(registerDTO.getPhone());
         user.setAddRess(registerDTO.getAddRess());
+        user.setDateOfBirth(registerDTO.getDateOfBirth());
         return user;
+    }
+
+    public boolean checkEmailExist(String email){
+        return this.userRepository.existsByEmail(email);
     }
 }

@@ -58,34 +58,62 @@
         <div class="col-lg-6 p-0">
           <div class="user-content">
             <div class="top">
-              <h2>Đăng ký tài khoản</h2>
+              <h3 style="color: #21a212;">Đăng ký tài khoản</h3>
               <form:form method="post" action="/register" modelAttribute="registerUser">
+                <c:set var="errorEmail">
+                    <form:errors path="email" cssClass="invalid-feedback" />
+                </c:set>
+                <c:set var="errorPass">
+                    <form:errors path="confirmPassword" cssClass="invalid-feedback" />
+                </c:set>
+                <c:set var="errorName">
+                    <form:errors path="firstName" cssClass="invalid-feedback" />
+                </c:set>
+                <c:set var="errorPhone">
+                    <form:errors path="phone" cssClass="invalid-feedback" />
+                </c:set>
+                <c:set var="errorAddress">
+                    <form:errors path="addRess" cssClass="invalid-feedback" />
+                </c:set>
+
                 <div class="form-group">
-                    <form:input type="text" class="form-control" placeholder="First Name" path="firstName" />
+                    <form:input type="text" class="form-control ${not empty errorName ? 'is-invalid' : '' }" placeholder="First Name" path="firstName" />
+                    ${errorName}
                 </div>
                 <div class="form-group">
                     <form:input type="text" class="form-control" placeholder="Last Name" path="lastName" />
                 </div>
                 <div class="form-group">
-                    <form:input type="email" class="form-control" placeholder="Email" path="email" />
+                    <form:input type="email" class="form-control ${not empty errorEmail ? 'is-invalid' : '' }" placeholder="Email" path="email" />
+                    ${errorEmail}
                 </div>
                 <div class="form-group">
-                    <form:input type="text" class="form-control" placeholder="Số điện thoại" path="phone" />
+                    <form:input type="text" class="form-control ${not empty errorPhone ? 'is-invalid' : '' }" placeholder="Số điện thoại" path="phone" />
+                    ${errorPhone}
                 </div>
                 <div class="form-group">
-                    <form:input type="text" class="form-control" placeholder="Địa chỉ" path="addRess" />
+                    <form:input type="text" class="form-control ${not empty errorAddress ? 'is-invalid' : '' }" placeholder="Địa chỉ" path="addRess" />
+                    ${errorAddress}
                 </div>
-                <div class="form-group">
-                    <form:select class="form-control mb-3" path="roleName" >
-                        <form:option value="USER2">Tài khoản ứng viên</form:option>
-                        <form:option value="USER1">Tài khoản nhà tuyển dụng</form:option>
-                      </form:select>
+                <div class="row">
+                    <div class="form-group col-8">
+                        <form:input type="text" class="form-control" placeholder="Ngày sinh" path="dateOfBirth" />
+                    </div>
+                    <div class="form-group col-4">
+                        <form:select class="form-control mb-3" path="roleName" >
+                            <form:option value="USER2">Tài khoản ứng viên</form:option>
+                            <form:option value="USER1">Tài khoản nhà tuyển dụng</form:option>
+                          </form:select>
+                    </div>
                 </div>
+                
+                
                 <div class="form-group">
                     <form:input type="password" class="form-control" placeholder="Password" path="password" />
                 </div>
                 <div class="form-group">
-                  <form:input type="password" class="form-control" placeholder="Confirm Password" path="confirmPassword" />
+                  <form:input type="password" class="form-control  ${not empty errorPass ? 'is-invalid' : '' }" placeholder="Confirm Password" path="confirmPassword" />
+                  ${errorPass}
                 </div>
                 <button type="submit" class="btn">Đăng ký</button>
               </form:form>

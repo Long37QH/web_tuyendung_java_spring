@@ -1,8 +1,10 @@
 package vn.com.jobviet.controller.client;
 
+
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
@@ -11,6 +13,8 @@ import vn.com.jobviet.domain.dto.RegisterDTO;
 import vn.com.jobviet.service.UserService;
 
 import org.springframework.web.bind.annotation.PostMapping;
+
+import jakarta.validation.Valid;
 
 
 
@@ -37,14 +41,21 @@ public class HomeController {
     }
 
     @PostMapping("/register")
-    public String postRegister(Model model,@ModelAttribute("registerUser") RegisterDTO registerDTO) {
-        User user = this.userService.registerDTOtoUser(registerDTO);
+    public String postRegister(Model model,@ModelAttribute("registerUser") @Valid RegisterDTO registerDTO,
+    BindingResult bindingResult) {
 
+        //validate
+        if(bindingResult.hasErrors()){
+            return "/client/auth/register";
+        }
+
+        User user = this.userService.registerDTOtoUser(registerDTO);
         // ma hoa pass
         String hashPassword = this.passwordEncoder.encode(user.getPassword());
+        // cap nhat lai thong tin vao doi tuong user
+        String avatarNew = "creatAvatar.jpg";
 
-        // cap nhat lai thong tin vao doi tuong usernew
-        
+        user.setAvatar(avatarNew);
         user.setPassword(hashPassword);
         user.setRole(this.userService.getRoleByName(registerDTO.getRoleName()));
         user.setPlan(this.userService.getPlanById(1));        
