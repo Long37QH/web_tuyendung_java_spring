@@ -2,6 +2,8 @@ package vn.com.jobviet.service;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import vn.com.jobviet.domain.Category;
@@ -25,6 +27,10 @@ public class PostService {
 
     public List<Post> getAllPost(){
         return this.postRepository.findAll();
+    }
+
+    public Page<Post>getAllPosts(Pageable pageable){
+        return this.postRepository.findAll(pageable); 
     }
 
     public Category handSaveCategory(Category category){
@@ -57,5 +63,18 @@ public class PostService {
 
     public void deletePost(long id){
         this.postRepository.deleteById(id);
+    }
+
+    public List<Post> getAllPostByCategory(Category category){
+        return this.postRepository.findByCategory(category);
+    }
+
+    public Page<Post>getAllPostByCategorys(Category category,Pageable pageable,String status){
+        return this.postRepository.findByCategoryAndStatus(category,pageable,status); 
+    }
+
+    // đếm số bài theo danh muc
+    public List<Object[]> PostCountByCategory(){
+        return this.postRepository.countPostsByCategory();
     }
 }

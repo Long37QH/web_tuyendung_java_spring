@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class JobPageController {
     @GetMapping("/job")
-    public String getMethodName() {
+    public String getPageJob() {
         return "/client/job/show";
     }
 } 

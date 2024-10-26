@@ -11,7 +11,7 @@
                                     <div class="col-xl-2 col-lg-2">
                                         <div class="logo">
                                             <a href="/">
-                                                <img src="client/img/logo.png" alt="">
+                                                <img src="../client/img/logo.png" alt="">
                                             </a>
                                         </div>
                                     </div>
@@ -21,8 +21,7 @@
                                                 <ul id="navigation">
                                                     <li><a href="/">Trang Chủ</a></li>
                                                     <li><a href="/job">Việc làm</a></li>
-                                                    <li><a href="congty.html">Công ty</a></li>
-                                                    <li><a href="plan.html">Dịch vụ</a></li>
+                                                    <li><a href="#">Công ty</a></li>
                                                     <li><a href="#">Cẩm nang nghề nghiệp <i class="ti-angle-down"></i></a>
                                                         <ul class="submenu">
                                                             <li><a href="/post?category=Định-hướng-nghề-nghiệp">Định hướng nghề nghiệp</a></li>

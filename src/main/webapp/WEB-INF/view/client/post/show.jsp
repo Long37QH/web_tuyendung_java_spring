@@ -49,9 +49,8 @@
             <div class="row">
                 <div class="col-xl-12">
                     <div class="bradcam_text">
-                        <h3>Định hướng nghề nghiệp</h3>
-                        <p>Chia sẻ thông tin và kiến thức cần thiết giúp bạn sớm định hướng được nghề nghiệp, tìm được công việc phù hợp với sở
-                        thích và năng lực của bản thân.</p>
+                        <h3>${category.name}</h3>
+                        <p>${category.description}</p>
                     </div>
                 </div>
             </div>
@@ -66,122 +65,50 @@
             <div class="row">
                 <div class="col-lg-8 mb-5 mb-lg-0">
                     <div class="blog_left_sidebar">
-                        <article class="blog_item">
-                            <div class="blog_item_img">
-                                <img class="card-img rounded-0" src="https://cdn-new.topcv.vn/unsafe/600x/https://static.topcv.vn/cms/nganh-co-khi.jpg61cea206aef77.jpg" alt="">
-                                <a href="#" class="blog_item_date">
-                                    <p>25/10/2024</p>
-                                </a>
-                            </div>
+                        <c:forEach var="post" items="${listPost}">
+                            <article class="blog_item">
+                                <div class="blog_item_img">
+                                    <img class="card-img rounded-0" src="/images/post/${post.image}" alt="">
+                                    <a href="#" class="blog_item_date">
+                                        <p>${post.timeposting}</p>
+                                    </a>
+                                </div>
 
-                            <div class="blog_details">
-                                <a class="d-inline-block" href="single-blog.html">
-                                    <h2>Ngành cơ khí là gì? Học ngành cơ khí ra làm gì?</h2>
-                                </a>
-                                <p>Ngành Cơ khí là lựa chọn của rất nhiều bạn trẻ quan tâm đến khối ngành kỹ thuật, đặc biệt là những bạn nam. Những thiết
-                                bị, máy móc vận hành sản xuất muốn hoạt động trơn tru với hiệu suất cao thì cần sự đóng góp không nhỏ của ngành cơ khí.</p>
-                                <ul class="blog-info-link">
-                                    <li><a href="#"><i class="fa fa-user"></i> Admin</a></li>
-                                    <li><a href="#"><i class="fa fa-comments"></i> <strong>10</strong> Lượt xem</a></li>
-                                </ul>
-                            </div>
-                        </article>
-
-                        <article class="blog_item">
-                            <div class="blog_item_img">
-                                <img class="card-img rounded-0"
-                                    src="https://cdn-new.topcv.vn/unsafe/600x/https://static.topcv.vn/cms/nganh-co-khi.jpg61cea206aef77.jpg"
-                                    alt="">
-                                <a href="#" class="blog_item_date">
-                                    <p>25/10/2024</p>
-                                </a>
-                            </div>
-                        
-                            <div class="blog_details">
-                                <a class="d-inline-block" href="single-blog.html">
-                                    <h2>Ngành cơ khí là gì? Học ngành cơ khí ra làm gì?</h2>
-                                </a>
-                                <p>Ngành Cơ khí là lựa chọn của rất nhiều bạn trẻ quan tâm đến khối ngành kỹ thuật, đặc biệt là những bạn nam.
-                                    Những thiết
-                                    bị, máy móc vận hành sản xuất muốn hoạt động trơn tru với hiệu suất cao thì cần sự đóng góp không nhỏ của
-                                    ngành cơ khí.</p>
-                                <ul class="blog-info-link">
-                                    <li><a href="#"><i class="fa fa-user"></i> Admin</a></li>
-                                    <li><a href="#"><i class="fa fa-comments"></i> <strong>10</strong> Lượt xem</a></li>
-                                </ul>
-                            </div>
-                        </article>
-
-                        <article class="blog_item">
-                            <div class="blog_item_img">
-                                <img class="card-img rounded-0"
-                                    src="https://cdn-new.topcv.vn/unsafe/600x/https://static.topcv.vn/cms/nganh-co-khi.jpg61cea206aef77.jpg"
-                                    alt="">
-                                <a href="#" class="blog_item_date">
-                                    <p>25/10/2024</p>
-                                </a>
-                            </div>
-                        
-                            <div class="blog_details">
-                                <a class="d-inline-block" href="single-blog.html">
-                                    <h2>Ngành cơ khí là gì? Học ngành cơ khí ra làm gì?</h2>
-                                </a>
-                                <p>Ngành Cơ khí là lựa chọn của rất nhiều bạn trẻ quan tâm đến khối ngành kỹ thuật, đặc biệt là những bạn nam.
-                                    Những thiết
-                                    bị, máy móc vận hành sản xuất muốn hoạt động trơn tru với hiệu suất cao thì cần sự đóng góp không nhỏ của
-                                    ngành cơ khí.</p>
-                                <ul class="blog-info-link">
-                                    <li><a href="#"><i class="fa fa-user"></i> Admin</a></li>
-                                    <li><a href="#"><i class="fa fa-comments"></i> <strong>10</strong> Lượt xem</a></li>
-                                </ul>
-                            </div>
-                        </article>
-
-                        <article class="blog_item">
-                            <div class="blog_item_img">
-                                <img class="card-img rounded-0"
-                                    src="https://cdn-new.topcv.vn/unsafe/600x/https://static.topcv.vn/cms/nganh-co-khi.jpg61cea206aef77.jpg"
-                                    alt="">
-                                <a href="#" class="blog_item_date">
-                                    <p>25/10/2024</p>
-                                </a>
-                            </div>
-                        
-                            <div class="blog_details">
-                                <a class="d-inline-block" href="single-blog.html">
-                                    <h2>Ngành cơ khí là gì? Học ngành cơ khí ra làm gì?</h2>
-                                </a>
-                                <p>Ngành Cơ khí là lựa chọn của rất nhiều bạn trẻ quan tâm đến khối ngành kỹ thuật, đặc biệt là những bạn nam.
-                                    Những thiết
-                                    bị, máy móc vận hành sản xuất muốn hoạt động trơn tru với hiệu suất cao thì cần sự đóng góp không nhỏ của
-                                    ngành cơ khí.</p>
-                                <ul class="blog-info-link">
-                                    <li><a href="#"><i class="fa fa-user"></i> Admin</a></li>
-                                    <li><a href="#"><i class="fa fa-comments"></i> <strong>10</strong> Lượt xem</a></li>
-                                </ul>
-                            </div>
-                        </article>
-
+                                <div class="blog_details">
+                                    <a class="d-inline-block" href="/post/${post.id}">
+                                        <h2>${post.title}</h2>
+                                    </a>
+                                    <p>${post.shortdesc}</p>
+                                    <ul class="blog-info-link">
+                                        <li><a href="#"><i class="fa fa-user"></i> ${post.author}</a></li>
+                                        <li><a href="#"><i class="fa fa-comments"></i> <strong>${post.view}</strong> Lượt xem</a></li>
+                                    </ul>
+                                </div>
+                            </article>
+                        </c:forEach>
                         
                     <!-- phân trang -->
                         <nav class="blog-pagination justify-content-center d-flex">
                             <ul class="pagination">
-                                <li class="page-item">
-                                    <a href="#" class="page-link" aria-label="Previous">
-                                        <i class="ti-angle-left"></i>
-                                    </a>
-                                </li>
-                                <li class="page-item">
-                                    <a href="#" class="page-link">1</a>
-                                </li>
-                                <li class="page-item active">
-                                    <a href="#" class="page-link">2</a>
-                                </li>
-                                <li class="page-item">
-                                    <a href="#" class="page-link" aria-label="Next">
-                                        <i class="ti-angle-right"></i>
-                                    </a>
-                                </li>
+                                <c:if test="${curentPage != 1}">
+                                    <li class="page-item">
+                                        <a href="/post?category=${linkcate}&page=${curentPage -1}" class="page-link" aria-label="Previous">
+                                            <i class="ti-angle-left"></i>
+                                        </a>
+                                    </li>
+                                </c:if>
+                                <c:forEach begin="0" end="${totalPages - 1}" varStatus="loop">
+                                    <li class="page-item">
+                                        <a href="/post?category=${linkcate}&page=${loop.index + 1}" class="page-link ${(loop.index + 1) eq curentPage ? 'active':''}">${loop.index + 1}</a>
+                                    </li>
+                                </c:forEach>
+                                <c:if test="${curentPage != totalPages}">
+                                    <li class="page-item">
+                                        <a href="/post?category=${linkcate}&page=${curentPage +1}" class="page-link" aria-label="Next">
+                                            <i class="ti-angle-right"></i>
+                                        </a>
+                                    </li>
+                                </c:if>
                             </ul>
                         </nav>
                     </div>
@@ -208,31 +135,14 @@
                         <aside class="single_sidebar_widget post_category_widget">
                             <h4 class="widget_title">Danh mục quan tâm</h4>
                             <ul class="list cat-list">
-                                <li>
-                                    <a href="#" class="d-flex">
-                                        <p>Định hướng nghề nghiệp</p>
-                                        <p>(37)</p>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="d-flex">
-                                        <p>Kiến thức chuyên ngành</p>
-                                        <p>(10)</p>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="d-flex">
-                                        <p>Hành trang nghề nghiệp</p>
-                                        <p>(03)</p>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="d-flex">
-                                        <p>Thị trường và xu  hướng tuyển dụng</p>
-                                        <p>(11)</p>
-                                    </a>
-                                </li>
-                            
+                                <c:forEach var="sumpost" items="${result}">
+                                    <li>
+                                        <a href="/post?category=${sumpost[0].replace(' ', '-')}" class="d-flex">
+                                            <p class="mr-2" >${sumpost[0]}</p>
+                                            <p>(${sumpost[1]} bài)</p>
+                                        </a>
+                                    </li>
+                                </c:forEach> 
                             </ul>
                         </aside>
 
