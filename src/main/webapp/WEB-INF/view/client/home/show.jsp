@@ -103,7 +103,7 @@
                 </div>
                 <div class="col-lg-3 col-md-12">
                     <div class="job_btn">
-                        <a href="#" class="boxed-btn3">Lìm Kiếm</a>
+                        <a href="#" class="boxed-btn3">Tìm Kiếm</a>
                     </div>
                 </div>
             </div>

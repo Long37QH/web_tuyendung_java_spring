@@ -25,8 +25,11 @@
                                                     <li><a href="plan.html">Dịch vụ</a></li>
                                                     <li><a href="#">Cẩm nang nghề nghiệp <i class="ti-angle-down"></i></a>
                                                         <ul class="submenu">
-                                                            <li><a href="/post">Định hướng nghề nghiệp</a></li>
-                                                            <li><a href="/post">Top công việc</a></li>
+                                                            <li><a href="/post?category=Định-hướng-nghề-nghiệp">Định hướng nghề nghiệp</a></li>
+                                                            <li><a href="/post?category=Kiến-thức-chuyên-ngành">Kiến thức chuyên ngành</a></li>
+                                                            <li><a href="/post?category=Bí-kíp-tìm-việc">Bí kíp tìm việc</a></li>
+                                                            <li><a href="/post?category=Hành-trang-nghề-nghiệp">Hành trang nghề nghiệp</a></li>
+                                                            <li><a href="/post?category=Thị-trường-và-xu-hướng-tuyển-dụng">Thị trường và xu hướng tuyển dụng</a></li>
                                                         </ul>
                                                     </li> 
                                                 </ul>
@@ -51,20 +54,21 @@
                                                                     <img style="width: 80px; height: 80px; border-radius: 50%; overflow: hidden;"
                                                                         src="/images/avatar/${sessionScope.avatar}" />
                                                                     <div class="text-center my-3">
-                                                                        <c:out value="${sessionScope.fullname}" />
+                                                                        <h5 style="color: #21a212;" ><c:out value="${sessionScope.fullname}" /></h5>
                                                                         <p class="fs-6"><c:out value="${sessionScope.email}" /></p>
                                                                     </div>
                                                                 </li>
                                                                 <li><hr class="dropdown-divider"></li>
-                                                                <li><a class="dropdown-item" href="#">hông tin tài khoản</a></li>
-                                                                <li><a class="dropdown-item" href="#">Lịch sử ứng tuyển</a></li>
-                                                                <li><a class="dropdown-item" href="#">Thay đổi mật khẩu</a></li>
+                                                                <li><a class="dropdown-item" href="#"> <i style="color: #21a212;"  class="fa-solid fa-user-tie mr-2"></i> Thông tin tài khoản</a></li>
+                                                                <li><a class="dropdown-item" href="#"> <i style="color: #21a212;" class="fa-solid fa-briefcase mr-2"></i> Lịch sử việc làm ứng tuyển</a></li>
+                                                                <li><a class="dropdown-item" href="#"> <i style="color: #21a212;"  class="fa-solid fa-calendar-check mr-2"></i> Nhà tuyển dụng phản hồi</a></li>
+                                                                <li><a class="dropdown-item" href="#"> <i style="color: #21a212;"  class="fa-solid fa-lock mr-2"></i> Đổi mật khẩu</a></li>
                                                                 <li><hr class="dropdown-divider"></li>
                                                                 <li>
                                                                     <form action="/logout" method="post" >
                                                                         <input type="hidden" name="${_csrf.parameterName}"
                                                                                 value="${_csrf.token}" />
-                                                                        <button class="dropdown-item" >Đăng xuất</button>
+                                                                        <button class="dropdown-item" ><i style="color: #21a212;"  class="fa-solid fa-right-from-bracket mr-2"></i> Đăng xuất</button>
                                                                     </form>
                                                                 </li>
                                                             </ul>
@@ -90,21 +94,23 @@
                                                                 <img style="width: 80px; height: 80px; border-radius: 50%; overflow: hidden;"
                                                                     src="/images/avatar/${sessionScope.avatar}" />
                                                                 <div class="text-center my-3">
-                                                                    <c:out value="${sessionScope.fullname}" />
+                                                                    <h5 style="color: #21a212;" ><c:out value="${sessionScope.fullname}" /></h5>
                                                                     <p class="fs-6"><c:out value="${sessionScope.email}" /></p>
                                                                 </div>
                                                             </li>
                                                             <li><hr class="dropdown-divider"></li>
-                                                            <li><a class="dropdown-item" href="profile.html">Thông tin tài khoản</a></li>
-                                                            <li><a class="dropdown-item" href="form_job.html">Đăng bài tuyển dụng</a></li>
-                                                            <li><a class="dropdown-item" href="ds_tuyendung.html">Quản lý tuyển dụng dụng</a></li>
-                                                            <li><a class="dropdown-item" href="plan.html">Đăng ký dịch vụ</a></li>
+                                                            <li><a class="dropdown-item" href="#"><i style="color: #21a212;"  class="fa-solid fa-user-tie mr-2"></i> Thông tin tài khoản</a></li>
+                                                            <li><a class="dropdown-item" href="#"><i style="color: #21a212;" class="fa-solid fa-pen-to-square mr-2"></i> Đăng bài tuyển dụng</a></li>
+                                                            <li><a class="dropdown-item" href="#"><i style="color: #21a212;" class="fa-solid fa-clipboard-list mr-2"></i>  Bài đăng chờ duyệt</a></li>
+                                                            <li><a class="dropdown-item" href="#"><i style="color: #21a212;" class="fa-solid fa-list-check mr-2"></i> Bài đăng tuyển dụng dụng</a></li>
+                                                            <li><a class="dropdown-item" href="#"><i style="color: #21a212;" class="fa-solid fa-eye mr-2"></i> Xem danh sách ứng viên</a></li>
+                                                            <li><a class="dropdown-item" href="#"><i style="color: #21a212;"  class="fa-regular fa-hourglass-half mr-2"></i> Đăng ký dịch vụ</a></li>
                                                             <li><hr class="dropdown-divider"></li>
                                                             <li>
                                                                 <form action="/logout" method="post" >
                                                                     <input type="hidden" name="${_csrf.parameterName}"
                                                                             value="${_csrf.token}" />
-                                                                    <button class="dropdown-item" >Đăng xuất</button>
+                                                                    <button class="dropdown-item" ><i style="color: #21a212;"  class="fa-solid fa-right-from-bracket mr-2"></i> Đăng xuất</button>
                                                                 </form>
                                                             </li>
                                                         </ul>
