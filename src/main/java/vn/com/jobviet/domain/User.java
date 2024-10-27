@@ -38,6 +38,7 @@ public class User {
     private String phone;
     private String avatar;
     private String dateOfBirth;
+    private long numPost;
 
     // khai bao khoa ngoai
     @ManyToOne
@@ -104,12 +105,11 @@ public class User {
         this.dateOfBirth = dateOfBirth;
     }
     
-    
     @Override
     public String toString() {
         return "User [id=" + id + ", email=" + email + ", password=" + password + ", fullName=" + fullName
                 + ", addRess=" + addRess + ", phone=" + phone + ", avatar=" + avatar + ", dateOfBirth=" + dateOfBirth
-                + "]";
+                + ", numPost=" + numPost + "]";
     }
     public Role getRole() {
         return role;
@@ -135,7 +135,12 @@ public class User {
     public void setApplys(List<Apply> applys) {
         this.applys = applys;
     }
+    public long getNumPost() {
+        return numPost;
+    }
+    public void setNumPost(long numPost) {
+        this.numPost = numPost;
+    }
 
-    
 
 }

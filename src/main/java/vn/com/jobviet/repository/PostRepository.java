@@ -30,4 +30,6 @@ public interface PostRepository extends JpaRepository<Post, Long> {
     @Query("SELECT p.category.name, COUNT(p) FROM Post p GROUP BY p.category.name")
     List<Object[]> countPostsByCategory();
     
+    // lấy ra 6 bài noi bật
+    List<Post> findTop6ByOrderByViewDesc();
 }

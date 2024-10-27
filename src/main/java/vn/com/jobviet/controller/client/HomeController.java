@@ -58,7 +58,8 @@ public class HomeController {
         user.setAvatar(avatarNew);
         user.setPassword(hashPassword);
         user.setRole(this.userService.getRoleByName(registerDTO.getRoleName()));
-        user.setPlan(this.userService.getPlanById(1));        
+        user.setPlan(this.userService.getPlanById(4));
+        user.setNumPost(1);        
         System.out.println("run hear : " + user);
         this.userService.handlSaveUser(user);
         return "redirect:/login";

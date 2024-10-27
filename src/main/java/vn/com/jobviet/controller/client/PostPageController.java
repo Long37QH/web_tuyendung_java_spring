@@ -57,6 +57,9 @@ public class PostPageController {
         List<Object[]> result = this.postService.PostCountByCategory();
         model.addAttribute("result", result);
 
+        List<Post> postHots = this.postService.getPostHot();
+        model.addAttribute("postHots", postHots);
+
         //lây so trong hiện tại truyên sang view
         model.addAttribute("curentPage", page);
         // lấy tông số trang
@@ -70,8 +73,13 @@ public class PostPageController {
         long viewup = post.getView() + 1;
         post.setView(viewup);
         this.postService.handSavePost(post);
+        
         List<Object[]> result = this.postService.PostCountByCategory();
         model.addAttribute("result", result);
+
+        List<Post> postHots = this.postService.getPostHot();
+        model.addAttribute("postHots", postHots);
+
         model.addAttribute("post", post);
         return "/client/post/post_detail";
     }

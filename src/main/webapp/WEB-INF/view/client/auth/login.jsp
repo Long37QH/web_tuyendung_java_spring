@@ -31,7 +31,7 @@
           <link rel="stylesheet" href="auth/assets/css/style.css">
 
           <link rel="stylesheet" href="auth/assets/css/responsive.css">
-          <title>Jecto - Job Board and Portal HTML Template</title>
+          <title>Trang Đăng Nhập</title>
           <link rel="icon" type="image/png" href="admin/assets/img/logo.png">
         </head>
 

@@ -77,4 +77,8 @@ public class PostService {
     public List<Object[]> PostCountByCategory(){
         return this.postRepository.countPostsByCategory();
     }
+
+    public List<Post>getPostHot(){
+        return this.postRepository.findTop6ByOrderByViewDesc();
+    }
 }

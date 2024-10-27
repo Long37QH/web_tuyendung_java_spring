@@ -159,7 +159,7 @@
                             </div>
                             <div class="col-md-12 d-none">
                               <label for="plan" class="form-label">gói: </label>
-                              <form:input type="number" class="form-control" id="plan" value="4" path="plan.id" />
+                              <form:input type="number" class="form-control" id="plan" value="5" path="plan.id" />
                             </div>
 
                             <div class="text-center">

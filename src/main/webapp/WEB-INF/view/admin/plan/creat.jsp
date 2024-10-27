@@ -118,7 +118,7 @@
                               <form:input type="text" class="form-control ${not empty errorname ? 'is-invalid' : ''}" id="name" path="name" />
                               ${errorname}
                             </div>
-                            <div class="col-6">
+                            <div class="col-12">
                                 <label for="description" class="form-label">Mô tả ngắn: </label>
                                 <form:input type="text" class="form-control ${not empty errorDesc ? 'is-invalid' : ''}" id="description" path="description" />
                               ${errorDesc}
@@ -127,6 +127,10 @@
                                 <label for="price" class="form-label">Gía gói: </label>
                                 <form:input type="number" min="0" class="form-control" id="price" path="price" />
                             </div>
+                            <div class="col-6">
+                              <label for="level" class="form-label">Câp độ: </label>
+                              <form:input type="number" min="0" class="form-control" id="level" path="level" />
+                          </div>
                             <div class="col-12">
                                 <label for="detail" class="form-label">Nội dung gói:</label>
                                 <form:textarea type="text"

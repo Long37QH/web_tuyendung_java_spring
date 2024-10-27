@@ -29,6 +29,8 @@ public class Plan {
     @NotEmpty(message = "Bạn phải nhập phần mô tả cho gói!")
     private String description;
 
+    private long level;
+
     @NotNull
     @NotEmpty(message = "Không được để trống phần chi tiết gói dịch vụ!")
     @Column(columnDefinition = "MEDIUMTEXT") 
@@ -72,8 +74,8 @@ public class Plan {
 
     @Override
     public String toString() {
-        return "Plan [id=" + id + ", name=" + name + ", price=" + price + ", description=" + description + ", detail="
-                + detail + "]";
+        return "Plan [id=" + id + ", name=" + name + ", price=" + price + ", description=" + description + ", level="
+                + level + ", detail=" + detail + "]";
     }
 
     public List<User> getUsers() {
@@ -92,6 +94,15 @@ public class Plan {
         this.detail = detail;
     }
 
+    public long getLevel() {
+        return level;
+    }
+
+    public void setLevel(long level) {
+        this.level = level;
+    }
+
+    
     
     
 }

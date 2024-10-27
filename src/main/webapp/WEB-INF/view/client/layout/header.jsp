@@ -103,7 +103,7 @@
                                                             <li><a class="dropdown-item" href="#"><i style="color: #21a212;" class="fa-solid fa-clipboard-list mr-2"></i>  Bài đăng chờ duyệt</a></li>
                                                             <li><a class="dropdown-item" href="#"><i style="color: #21a212;" class="fa-solid fa-list-check mr-2"></i> Bài đăng tuyển dụng dụng</a></li>
                                                             <li><a class="dropdown-item" href="#"><i style="color: #21a212;" class="fa-solid fa-eye mr-2"></i> Xem danh sách ứng viên</a></li>
-                                                            <li><a class="dropdown-item" href="#"><i style="color: #21a212;"  class="fa-regular fa-hourglass-half mr-2"></i> Đăng ký dịch vụ</a></li>
+                                                            <li><a class="dropdown-item" href="/plan"><i style="color: #21a212;"  class="fa-regular fa-hourglass-half mr-2"></i> Đăng ký dịch vụ</a></li>
                                                             <li><hr class="dropdown-divider"></li>
                                                             <li>
                                                                 <form action="/logout" method="post" >

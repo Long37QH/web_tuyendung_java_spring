@@ -72,6 +72,7 @@ public class PlanController {
         Plan curenPlan = this.userService.getPlanById(planUp.getId());
         curenPlan.setName(planUp.getName());
         curenPlan.setPrice(planUp.getPrice());
+        curenPlan.setLevel(planUp.getLevel());
         curenPlan.setDescription(planUp.getDescription());
         curenPlan.setDetail(planUp.getDetail());
 
