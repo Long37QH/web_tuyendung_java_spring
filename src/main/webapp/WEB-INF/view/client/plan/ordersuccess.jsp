@@ -74,66 +74,34 @@
     <!-- Pricing Cards -->
     <div class="container py-5">
         <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
-
-            <!-- Basic Plan -->
-            <c:forEach var="plan" items="${listplans}">
-                <div class="col mb-4">
-                    <div class="card">
-                        <div class="card-header ${plan.name == 'Standard' ? 'bg-success' : 'bg-primary' }  text-white">
-                            <h4 class="my-0 fw-normal">Gói ${plan.name}</h4>
-                        </div>
-                        <div class="card-body">
-                            <h3 class="">
-                                <fmt:formatNumber type="number" value="${plan.price}" /> đ
-                                <small class="text-muted fw-light">/Tháng</small>
-                            </h3>
-                            <ul class="list-unstyled mt-3 mb-4">
-                                ${plan.detail}
-                            </ul>
-                            <form action="/submitOrder" method="post">
-                                <input type="hidden" type="text" value="${plan.id}" name="id">
-                                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-                                <button class="btn btn-custom">Đăng ký gói</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </c:forEach>
-            <!-- Standard Plan -->
-            <!-- <div class="col mb-4">
-                <div class="card">
-                    <div class="card-header bg-success text-white">
-                        <h4 class="my-0 fw-normal">Standard</h4>
-                    </div>
-                    <div class="card-body">
-                        <h1 class="price">$49<small class="text-muted fw-light">/mo</small></h1>
-                        <ul class="list-unstyled mt-3 mb-4">
-                            <li>5 job posts</li>
-                            <li>Priority email support</li>
-                            <li>Advanced analytics</li>
-                        </ul>
-                        <button type="button" class="btn btn-custom">Sign up</button>
-                    </div>
-                </div>
-            </div> -->
-
-            <!-- Premium Plan -->
-            <!-- <div class="col mb-4">
-                <div class="card">
-                    <div class="card-header bg-warning text-white">
-                        <h4 class="my-0 fw-normal">Premium</h4>
-                    </div>
-                    <div class="card-body">
-                        <h1 class="price">$99<small class="text-muted fw-light">/mo</small></h1>
-                        <ul class="list-unstyled mt-3 mb-4">
-                            <li>Unlimited job posts</li>
-                            <li>24/7 support</li>
-                            <li>Detailed analytics</li>
-                        </ul>
-                        <button type="button" class="btn btn-custom">Sign up</button>
-                    </div>
-                </div>
-            </div> -->
+            <div class="w-50 m-auto">
+                
+                <h1 class="my-3 text-success text-center">Thanh toán thành công</h1>
+                
+                <h2 class="my-2">Chi tiết gói dịch vụ</h2>
+                
+                <table class="table table-bordered">
+                    <tbody>
+                        <tr>
+                            <td>Thông tin gói dịch vụ:</td>
+                            <td><span>Gói ${orderId}</span></td>
+                        </tr>
+                        <tr>
+                            <td>Tổng tiền:</td>
+                            <td><span><fmt:formatNumber type="number" value="${totalPrice / 100}" /> vnđ</span></td>
+                        </tr>
+                        <tr>
+                            <td>Thời gian thanh toán:</td>
+                            <td><span>${paymentTime}</span></td>
+                        </tr>
+                        <tr>
+                            <td>Mã giao dịch:</td>
+                            <td><span>${transactionId}</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <a href="/" class="btn btn-primary">Về trang chủ</a>
+            </div>
         </div>
     </div>
 

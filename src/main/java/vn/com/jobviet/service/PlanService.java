@@ -18,5 +18,9 @@ public class PlanService {
     public List<Plan> getPlanAllTop(){
         return this.planRepository.findTop3(PageRequest.of(0, 3));
     }
+
+    public Plan getPlanByName(String name){
+        return this.planRepository.findByName(name);
+    }
     
 }

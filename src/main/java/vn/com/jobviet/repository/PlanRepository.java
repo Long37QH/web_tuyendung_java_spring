@@ -18,4 +18,6 @@ public interface PlanRepository extends JpaRepository<Plan, Long> {
 
     @Query("SELECT p FROM Plan p ORDER BY p.level ASC")
     List<Plan> findTop3(Pageable pageable);
+
+    Plan findByName(String name);
 }
