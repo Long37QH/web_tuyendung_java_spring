@@ -41,10 +41,6 @@ public class Job {
     @JoinColumn(name = "user_id")
     private User user;
 
-    @ManyToOne
-    @JoinColumn(name = "company_id")
-    private Company company;
-
     @OneToMany(mappedBy = "job")
     private List<Apply> applys;
 
@@ -158,12 +154,6 @@ public class Job {
     }
     public void setUser(User user) {
         this.user = user;
-    }
-    public Company getCompany() {
-        return company;
-    }
-    public void setCompany(Company company) {
-        this.company = company;
     }
     public List<Apply> getApplys() {
         return applys;

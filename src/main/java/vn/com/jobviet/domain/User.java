@@ -39,6 +39,9 @@ public class User {
     private String avatar;
     private String dateOfBirth;
     private long numPost;
+    private String company;
+    private String descCompany;
+    private String logoCompany;
 
     // khai bao khoa ngoai
     @ManyToOne
@@ -55,6 +58,7 @@ public class User {
     @OneToMany(mappedBy = "user")
     private List<Apply> applys;
 
+    
 
     public long getId() {
         return id;
@@ -105,12 +109,14 @@ public class User {
         this.dateOfBirth = dateOfBirth;
     }
     
+   
     @Override
     public String toString() {
         return "User [id=" + id + ", email=" + email + ", password=" + password + ", fullName=" + fullName
                 + ", addRess=" + addRess + ", phone=" + phone + ", avatar=" + avatar + ", dateOfBirth=" + dateOfBirth
                 + ", numPost=" + numPost + "]";
     }
+
     public Role getRole() {
         return role;
     }
@@ -142,5 +148,25 @@ public class User {
         this.numPost = numPost;
     }
 
+    public String getCompany() {
+        return company;
+    }
+    public void setCompany(String company) {
+        this.company = company;
+    }
+    public String getDescCompany() {
+        return descCompany;
+    }
+    public void setDescCompany(String descCompany) {
+        this.descCompany = descCompany;
+    }
+    public String getLogoCompany() {
+        return logoCompany;
+    }
+    public void setLogoCompany(String logoCompany) {
+        this.logoCompany = logoCompany;
+    }
+
+    
 
 }

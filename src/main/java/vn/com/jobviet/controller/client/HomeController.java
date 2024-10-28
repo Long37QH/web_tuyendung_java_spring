@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 
 import vn.com.jobviet.domain.User;
 import vn.com.jobviet.domain.dto.RegisterDTO;
+
 import vn.com.jobviet.service.UserService;
 
 import org.springframework.web.bind.annotation.PostMapping;
@@ -27,6 +28,7 @@ public class HomeController {
     public HomeController(UserService userService,PasswordEncoder passwordEncoder) {
         this.userService = userService;
         this.passwordEncoder = passwordEncoder;
+        
     }
 
     @GetMapping("/")
@@ -75,4 +77,5 @@ public class HomeController {
     public String getErrorPage(Model model) {
         return "/client/auth/error_page";
     }
+
 }

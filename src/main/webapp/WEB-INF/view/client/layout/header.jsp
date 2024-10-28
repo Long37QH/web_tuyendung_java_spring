@@ -58,7 +58,7 @@
                                                                     </div>
                                                                 </li>
                                                                 <li><hr class="dropdown-divider"></li>
-                                                                <li><a class="dropdown-item" href="#"> <i style="color: #21a212;"  class="fa-solid fa-user-tie mr-2"></i> Thông tin tài khoản</a></li>
+                                                                <li><a class="dropdown-item" href="/profileuv"> <i style="color: #21a212;"  class="fa-solid fa-user-tie mr-2"></i> Thông tin tài khoản</a></li>
                                                                 <li><a class="dropdown-item" href="#"> <i style="color: #21a212;" class="fa-solid fa-briefcase mr-2"></i> Lịch sử việc làm ứng tuyển</a></li>
                                                                 <li><a class="dropdown-item" href="#"> <i style="color: #21a212;"  class="fa-solid fa-calendar-check mr-2"></i> Nhà tuyển dụng phản hồi</a></li>
                                                                 <li><a class="dropdown-item" href="#"> <i style="color: #21a212;"  class="fa-solid fa-lock mr-2"></i> Đổi mật khẩu</a></li>
@@ -98,7 +98,7 @@
                                                                 </div>
                                                             </li>
                                                             <li><hr class="dropdown-divider"></li>
-                                                            <li><a class="dropdown-item" href="#"><i style="color: #21a212;"  class="fa-solid fa-user-tie mr-2"></i> Thông tin tài khoản</a></li>
+                                                            <li><a class="dropdown-item" href="/profile"><i style="color: #21a212;"  class="fa-solid fa-user-tie mr-2"></i> Thông tin tài khoản</a></li>
                                                             <li><a class="dropdown-item" href="#"><i style="color: #21a212;" class="fa-solid fa-pen-to-square mr-2"></i> Đăng bài tuyển dụng</a></li>
                                                             <li><a class="dropdown-item" href="#"><i style="color: #21a212;" class="fa-solid fa-clipboard-list mr-2"></i>  Bài đăng chờ duyệt</a></li>
                                                             <li><a class="dropdown-item" href="#"><i style="color: #21a212;" class="fa-solid fa-list-check mr-2"></i> Bài đăng tuyển dụng dụng</a></li>
