@@ -25,7 +25,7 @@ public class CandidateController {
         this.userService = userService;
         this.uploadService = uploadService;
     }
-    @GetMapping("/profileuv")
+    @GetMapping("/ungvien/profile")
     public String getPrfileUvPage(Model model, HttpServletRequest request) {
         HttpSession session = request.getSession(false);
         long idUser = (long) session.getAttribute("id");
@@ -61,6 +61,6 @@ public class CandidateController {
             this.userService.handlSaveUser(currenUser);
             redirectAttributes.addFlashAttribute("message", "Cập nhật thành công!");
         }
-        return "redirect:/profileuv";
+        return "redirect:/ungvien/profile";
     }
 }

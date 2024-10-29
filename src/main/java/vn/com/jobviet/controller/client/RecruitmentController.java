@@ -27,7 +27,7 @@ public class RecruitmentController {
         this.uploadService = uploadService;
     }
 
-    @GetMapping("/profile")
+    @GetMapping("/tuyendung/profile")
     public String getPrfiletvPage(Model model, HttpServletRequest request) {
         HttpSession session = request.getSession(false);
         long idUser = (long) session.getAttribute("id");
@@ -49,7 +49,7 @@ public class RecruitmentController {
         
         //validate
         if (UserBindingResult.hasErrors()) {
-            return "/client/home/profile";
+            return "/client/tuyendung/profile";
         }
 
         User currenUser = this.userService.getUserById(userUp.getId());
@@ -72,6 +72,9 @@ public class RecruitmentController {
             this.userService.handlSaveUser(currenUser);
             redirectAttributes.addFlashAttribute("message", "Cập nhật thành công!");
         }
-        return "redirect:/profile";
+        return "redirect:/tuyendung/profile";
     }
+
+    
+    
 }

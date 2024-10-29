@@ -17,19 +17,19 @@
     <!-- Place favicon.ico in the root directory -->
 
     <!-- CSS here -->
-    <link rel="stylesheet" href="client/css/bootstrap.min.css">
-    <link rel="stylesheet" href="client/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="client/css/magnific-popup.css">
-    <link rel="stylesheet" href="client/css/font-awesome.min.css">
-    <link rel="stylesheet" href="client/css/themify-icons.css">
-    <link rel="stylesheet" href="client/css/nice-select.css">
-    <link rel="stylesheet" href="client/css/flaticon.css">
-    <link rel="stylesheet" href="client/css/jquery-ui.css">
-    <link rel="stylesheet" href="client/css/gijgo.css">
-    <link rel="stylesheet" href="client/css/animate.min.css">
-    <link rel="stylesheet" href="client/css/slicknav.css">
+    <link rel="stylesheet" href="/client/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/client/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="/client/css/magnific-popup.css">
+    <link rel="stylesheet" href="/client/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/client/css/themify-icons.css">
+    <link rel="stylesheet" href="/client/css/nice-select.css">
+    <link rel="stylesheet" href="/client/css/flaticon.css">
+    <link rel="stylesheet" href="/client/css/jquery-ui.css">
+    <link rel="stylesheet" href="/client/css/gijgo.css">
+    <link rel="stylesheet" href="/client/css/animate.min.css">
+    <link rel="stylesheet" href="/client/css/slicknav.css">
 
-    <link rel="stylesheet" href="client/css/style.css">
+    <link rel="stylesheet" href="/client/css/style.css">
     <!-- <link rel="stylesheet" href="css/responsive.css"> -->
 
      <!-- CKEditor CDN -->
@@ -121,7 +121,7 @@
                             <hr>
 
                             <div class=" col-12 mt-5">
-                                <img class="mx-auto rounded-circle"
+                                <img class="mx-auto rounded-circle border border-dark "
                                     style="width: 150px; height: 150px; display: none;" alt="avatar Preview" id="avatarPreview">
                                 <div class="text-center my-3">
                                     ${userTD.fullName}
@@ -186,13 +186,13 @@
                                 <div class="col-md-6">
                                     <label for="avatarFile" class="form-label">Avatar:</label>
                                     <input class="form-control" type="file" id="avatarFile"
-                                        accept=".png, .jpg, .jpeg" name="fileImage">
+                                        accept=".png, .jpg, .jpeg, .svg, .webp" name="fileImage">
                                 </div>
 
                                 <div class="col-md-12 mt-4">
                                     <h4 class="mb-3">Thông tin công ty</h4>
                                     <hr>
-                                    <img class="mx-auto rounded-circle"
+                                    <img class="mx-auto rounded border border-dark"
                                     style="width: 150px; height: 150px; display: none;" alt="avatar Preview" id="avatarPreviewlogo">
                                     <div class="text-center my-3">
                                         ${userTD.company}
@@ -207,7 +207,7 @@
                                 <div class="col-md-6">
                                     <label for="avatarFilelogo" class="form-label">Logo công ty:</label>
                                     <input class="form-control" type="file" id="avatarFilelogo"
-                                        accept=".png, .jpg, .jpeg" name="fileImagelogo">
+                                        accept=".png, .jpg, .jpeg, .svg, .webp" name="fileImagelogo">
                                 </div>
                                 <div class="col-md-12 mb-3">
                                     <label for="descCompany" class="form-label">Hoạt động của công ty: </label>
@@ -251,37 +251,37 @@
 
     <!-- link that opens popup -->
     <!-- JS here -->
-    <script src="client/js/vendor/modernizr-3.5.0.min.js"></script>
-    <script src="client/js/vendor/jquery-1.12.4.min.js"></script>
-    <script src="client/js/popper.min.js"></script>
-    <script src="client/js/bootstrap.min.js"></script>
-    <script src="client/js/owl.carousel.min.js"></script>
-    <script src="client/js/isotope.pkgd.min.js"></script>
-    <script src="client/js/ajax-form.js"></script>
-    <script src="client/js/waypoints.min.js"></script>
-    <script src="client/js/jquery.counterup.min.js"></script>
-    <script src="client/js/imagesloaded.pkgd.min.js"></script>
-    <script src="client/js/scrollIt.js"></script>
-    <script src="client/js/jquery.scrollUp.min.js"></script>
-    <script src="client/js/wow.min.js"></script>
-    <script src="client/js/nice-select.min.js"></script>
-    <script src="client/js/jquery.slicknav.min.js"></script>
-    <script src="client/js/jquery.magnific-popup.min.js"></script>
-    <script src="client/js/plugins.js"></script>
+    <script src="/client/js/vendor/modernizr-3.5.0.min.js"></script>
+    <script src="/client/js/vendor/jquery-1.12.4.min.js"></script>
+    <script src="/client/js/popper.min.js"></script>
+    <script src="/client/js/bootstrap.min.js"></script>
+    <script src="/client/js/owl.carousel.min.js"></script>
+    <script src="/client/js/isotope.pkgd.min.js"></script>
+    <script src="/client/js/ajax-form.js"></script>
+    <script src="/client/js/waypoints.min.js"></script>
+    <script src="/client/js/jquery.counterup.min.js"></script>
+    <script src="/client/js/imagesloaded.pkgd.min.js"></script>
+    <script src="/client/js/scrollIt.js"></script>
+    <script src="/client/js/jquery.scrollUp.min.js"></script>
+    <script src="/client/js/wow.min.js"></script>
+    <script src="/client/js/nice-select.min.js"></script>
+    <script src="/client/js/jquery.slicknav.min.js"></script>
+    <script src="/client/js/jquery.magnific-popup.min.js"></script>
+    <script src="/client/js/plugins.js"></script>
     <!-- <script src="js/gijgo.min.js"></script> -->
-    <script src="client/js/range.js"></script>
+    <script src="/client/js/range.js"></script>
 
 
 
     <!--contact js-->
-    <script src="client/js/contact.js"></script>
-    <script src="client/js/jquery.ajaxchimp.min.js"></script>
-    <script src="client/js/jquery.form.js"></script>
-    <script src="client/js/jquery.validate.min.js"></script>
-    <script src="client/js/mail-script.js"></script>
+    <script src="/client/js/contact.js"></script>
+    <script src="/client/js/jquery.ajaxchimp.min.js"></script>
+    <script src="/client/js/jquery.form.js"></script>
+    <script src="/client/js/jquery.validate.min.js"></script>
+    <script src="/client/js/mail-script.js"></script>
 
 
-    <script src="client/js/main.js"></script>
+    <script src="/client/js/main.js"></script>
 
 
 	<script>
