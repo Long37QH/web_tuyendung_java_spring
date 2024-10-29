@@ -11,6 +11,8 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotEmpty;
 
 @Entity
 @Table(name = "tblJob")
@@ -18,23 +20,39 @@ public class Job {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private String title;
-    private String inductry;
-    private String jobPosition;
-    private String workingForm;
-    private String salary;
-    private String area;
-    private String address;
-    private String degree;
-    private String yearOld;
-    private long quantity;
-    private long view;
+
+    @NotEmpty(message = "Trường thông tin không được để trống!")
+    private String title; //tieu đề 1
+
+    private String inductry; // ngành 3
+
+    @NotEmpty(message = "Trường thông tin không được để trống!")
+    private String jobPosition; //vị trí tuyển dụng 2
+    private String workingForm; //hinh thưc 5
+    private String salary; // lương 6
+    private String experience; //kinh nghiệm 7
+    private String area; // khu vực 10
+
+    @NotEmpty(message = "Trường thông tin không được để trống!")
+    private String address; // địa chỉ 11
+    private String degree; // bằng cấp 8
+
+    @NotEmpty(message = "Trường thông tin không được để trống!")
+    private String yearOld; // tuôi 9
+
+    @Min(value = 1 , message = "Số lương tuyển dụng phải lớn hơn 0!")
+    private long quantity; // số lượng 4
+    
+    private long view; // so luong truy cap 
 
     @Column(columnDefinition = "MEDIUMTEXT") 
-    private String contentjob;
-    private String status;
-    private String postingtime;
-    private String dateline;
+    @NotEmpty(message = "Trường thông tin không được để trống!")
+    private String contentjob; // moi dung mô tả 13
+    private String status; // trang thái bài
+    private String postingtime; // thời gian đăng
+
+    @NotEmpty(message = "Trường thông tin không được để trống!")
+    private String dateline; // han tuyen dụng 12
 
     //khoa ngoai
     @ManyToOne
@@ -160,6 +178,12 @@ public class Job {
     }
     public void setApplys(List<Apply> applys) {
         this.applys = applys;
+    }
+    public String getExperience() {
+        return experience;
+    }
+    public void setExperience(String experience) {
+        this.experience = experience;
     }
 
     

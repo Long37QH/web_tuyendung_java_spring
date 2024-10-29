@@ -205,9 +205,10 @@
                 "hideMethod": "fadeOut"
             };
             // Check if there's a flash attribute 'message'
-            <c:if test="${not empty message}">
-                toastr.success("${message}");
+            <c:if test="${not empty errorMessage}">
+                toastr.error("${errorMessage}");
             </c:if>
+           
         });
     </script>
     </body>
