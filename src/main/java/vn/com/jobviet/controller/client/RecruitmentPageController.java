@@ -3,12 +3,14 @@ package vn.com.jobviet.controller.client;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
@@ -23,13 +25,15 @@ import vn.com.jobviet.service.JobService;
 import vn.com.jobviet.service.UploadService;
 import vn.com.jobviet.service.UserService;
 
+
+
 @Controller
-public class RecruitmentController {
+public class RecruitmentPageController {
     private final UserService userService;
     private final UploadService uploadService;
     private final JobService jobService;
 
-    public RecruitmentController(UserService userService, UploadService uploadService, JobService jobService) {
+    public RecruitmentPageController(UserService userService, UploadService uploadService, JobService jobService) {
         this.userService = userService;
         this.uploadService = uploadService;
         this.jobService = jobService;
@@ -132,4 +136,60 @@ public class RecruitmentController {
         return "redirect:/tuyendung/taobaidang";
     }
 
+    @GetMapping("/tuyendung/baidangchoduyet")
+    public String getMethodName(Model model,HttpServletRequest request) {
+        HttpSession session = request.getSession(false);
+        long idUser = (long) session.getAttribute("id");
+        User user = this.userService.getUserById(idUser);
+
+        List<Job> listjob = this.jobService.getlistJobByUserAndStatus(user, "Chờ duyệt");
+        model.addAttribute("listjob", listjob);
+        return "/client/tuyendung/ds_baichoduyet";
+    }
+
+    @GetMapping("/tuyendung/suabai/{id}")
+    public String getupdateJobtam(Model model,@PathVariable long id) {
+        Job job = this.jobService.getJobById(id);
+        model.addAttribute("jobup", job);
+        return "/client/tuyendung/updatejob";
+    }
+    
+    @PostMapping("tuyendung/suabai")
+    public String postupdateJobtam(Model model,
+    @ModelAttribute("jobup") @Valid Job jobup,
+    BindingResult jobupBindingResult,
+    HttpServletRequest request,
+    RedirectAttributes redirectAttributes) {
+        if(jobupBindingResult.hasErrors()){
+            return "/client/tuyendung/updatejob";
+        }
+        Job currenJob = this.jobService.getJobById(jobup.getId());
+        if(currenJob != null){
+            currenJob.setTitle(jobup.getTitle());
+            currenJob.setJobPosition(jobup.getJobPosition());
+            currenJob.setInductry(jobup.getInductry());
+            currenJob.setQuantity(jobup.getQuantity());
+            currenJob.setWorkingForm(jobup.getWorkingForm());
+            currenJob.setSalary(jobup.getSalary());
+            currenJob.setExperience(jobup.getExperience());
+            currenJob.setDegree(jobup.getDegree());
+            currenJob.setYearOld(jobup.getYearOld());
+            currenJob.setArea(jobup.getArea());
+            currenJob.setAddress(jobup.getAddress());
+            currenJob.setDateline(jobup.getDateline());
+            currenJob.setContentjob(jobup.getContentjob());
+            this.jobService.handSaveJob(currenJob);
+            redirectAttributes.addFlashAttribute("message", "Cập nhật thành công!");
+        }
+        return "redirect:/tuyendung/baidangchoduyet";
+    }
+    
+    // xoa job
+    @GetMapping("/tuyendung/xoabai/{id}")
+    public String deleteJob(Model model,@PathVariable long id,RedirectAttributes redirectAttributes) {
+        this.jobService.deleteJobById(id);
+        redirectAttributes.addFlashAttribute("message", "Xóa bài thành công!");
+        return "redirect:/tuyendung/baidangchoduyet";
+    }
+    
 }

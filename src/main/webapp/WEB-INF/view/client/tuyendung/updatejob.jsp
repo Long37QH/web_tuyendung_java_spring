@@ -70,7 +70,7 @@
             <div class="row">
                 <div class="col-xl-12">
                     <div class="bradcam_text text-white">
-                        <h2 class="text-white">Tạo mới bài đăng tuyển dụng</h2>
+                        <h2 class="text-white">Cập nhật thông tin bài đăng tuyển dụng</h2>
                     </div>
                 </div>
             </div>
@@ -85,7 +85,7 @@
                 <nav aria-label="breadcrumb ">
                     <ol class="breadcrumb border bx-border-radius">
                         <li class="breadcrumb-item"><a href="/">Trang chủ</a></li>
-                        <li class="breadcrumb-item" aria-current="page">Thêm bài tuyển dụng
+                        <li class="breadcrumb-item" aria-current="page">Cập nhật bài đăng
                         </li>
                     </ol>
                 </nav>
@@ -97,7 +97,7 @@
                             <h4 class="mb-30">Nhập thông tin bài đăng tuyển dụng</h4>
                             <hr>
                             <form:form class="row g-3 p-4" method="post" enctype="multipart/form-data"
-                            action="/tuyendung/taobaidang" modelAttribute="jobnew">
+                            action="/tuyendung/suabai" modelAttribute="jobup">
                                 <!-- validate -->
                                 <c:set var="errorTitle">
                                     <form:errors path="title" cssClass="invalid-feedback" />
@@ -121,6 +121,10 @@
                                     <form:errors path="dateline" cssClass="invalid-feedback" />
                                 </c:set>
                                 <!-- end validate -->
+                                <div class="col-md-12 d-none">
+                                    <label for="id" class="form-label">ID: </label>
+                                    <form:input type="text" class="form-control" id="id" path="id" />
+                                </div>
                                 <div class="col-md-12 mb-3">
                                     <label class="form-label">Tiêu đề bài đăng:</label>
                                     <form:input type="text" class="form-control ${not empty errorTitle ? 'is-invalid' : ''} " placeholder="Tiêu đề" path="title" />
@@ -197,7 +201,7 @@
                                 </div> 
                                 <div class="col-md-6 mb-3">
                                     <label class="form-label">Hạn tuyển dụng:</label>
-                                    <form:input type="date" class="form-control ${not empty errorDateline ? 'is-invalid' : ''} " path="dateline" />
+                                    <form:input type="text" class="form-control ${not empty errorDateline ? 'is-invalid' : ''} " path="dateline" />
                                     ${errorDateline}
                                 </div>
                                 <div class="col-md-6 mb-3">
@@ -220,20 +224,6 @@
                                     <form:input type="text" class="form-control ${not empty errorAddress ? 'is-invalid' : ''}" path="address" />
                                     ${errorAddress}
                                 </div>
-
-                                <!-- <div class="col-md-6 mb-3">
-                                    <label for="image" class="form-label">Hình ảnh:</label>
-                                    <input class="form-control" type="file" id="image" accept=".png, .jpg, .jpeg" name="imageJob">
-                                </div>
-                                <div class=" col-md-12 mb-3">
-                                    <img style="max-height: 250px; display: none;" alt="avatar Preview"
-                                        id="avatarPreview">
-                                </div> 
-                                 <div class="col-md-12 mb-3">
-                                    <label for="" class="form-label">Mô tả nhanh</label>
-                                    <textarea class="form-control" id="" rows="3"></textarea>
-                                </div> -->
-
                                 <div class="col-md-12 mb-3">
                                     <label class="form-label">Mô tả công việc:</label>
                                     <form:textarea class="form-control ${not empty errorContentjob ? 'is-invalid' : ''}" name="content" id="editor" path="contentjob" ></form:textarea>
@@ -241,7 +231,8 @@
                                 </div>
                                 
                                 <div class="col-md-12 mt-3 text-center ">
-                                    <button type="submit" class="btn btn-primary">Gửi đăng bài</button>
+                                    <a href="/tuyendung/baidangchoduyet" class="btn btn-success mr-3">Quay lại</a>
+                                    <button type="submit" class="btn btn-primary">Cập nhật</button>
                                 </div>
                             </form:form>
                             <!-- CKEditor 5 Script -->
