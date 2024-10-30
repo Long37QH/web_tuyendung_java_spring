@@ -18,17 +18,17 @@
                 </a>
                 <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                   <li>
-                    <a href="#">
+                    <a href="/admin/tuyendung">
                       <i class="bi bi-circle"></i><span>Danh sach nhà tuyển dụng</span>
                     </a>
                   </li>
                   <li>
-                    <a href="#">
+                    <a href="/admin/tuyendung/ds_chodang">
                       <i class="bi bi-circle"></i><span>Bài tuyển dụng chờ duyệt</span>
                     </a>
                   </li>
                   <li>
-                    <a href="#">
+                    <a href="/admin/tuyendung/ds_baidang">
                       <i class="bi bi-circle"></i><span>Danh sách bài tuyên dụng</span>
                     </a>
                   </li>

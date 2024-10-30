@@ -25,8 +25,6 @@ import vn.com.jobviet.service.JobService;
 import vn.com.jobviet.service.UploadService;
 import vn.com.jobviet.service.UserService;
 
-
-
 @Controller
 public class RecruitmentPageController {
     private final UserService userService;
@@ -98,19 +96,20 @@ public class RecruitmentPageController {
             BindingResult jobBindingResult,
             HttpServletRequest request,
             RedirectAttributes redirectAttributes) {
-        if(jobBindingResult.hasErrors()){
+        if (jobBindingResult.hasErrors()) {
             return "/client/tuyendung/createjob";
         }
         HttpSession session = request.getSession(false);
         long idUser = (long) session.getAttribute("id");
         User user = this.userService.getUserById(idUser);
-        
+
         long numPost = user.getNumPost();
-        if(numPost < 1){
-            redirectAttributes.addFlashAttribute("errorMessage", "Bạn hết số lượt đăng phải nâng cấp gói dịch vụ để tiếp tục dịch vụ.");
-            return "redirect:/plan"; 
+        if (numPost < 1) {
+            redirectAttributes.addFlashAttribute("errorMessage",
+                    "Bạn hết số lượt đăng phải nâng cấp gói dịch vụ để tiếp tục dịch vụ.");
+            return "redirect:/plan";
         }
-        if(numPost >= 1){
+        if (numPost >= 1) {
             numPost = numPost - 1;
         }
         user.setNumPost(numPost);
@@ -137,7 +136,7 @@ public class RecruitmentPageController {
     }
 
     @GetMapping("/tuyendung/baidangchoduyet")
-    public String getMethodName(Model model,HttpServletRequest request) {
+    public String getMethodName(Model model, HttpServletRequest request) {
         HttpSession session = request.getSession(false);
         long idUser = (long) session.getAttribute("id");
         User user = this.userService.getUserById(idUser);
@@ -148,23 +147,23 @@ public class RecruitmentPageController {
     }
 
     @GetMapping("/tuyendung/suabai/{id}")
-    public String getupdateJobtam(Model model,@PathVariable long id) {
+    public String getupdateJobtam(Model model, @PathVariable long id) {
         Job job = this.jobService.getJobById(id);
         model.addAttribute("jobup", job);
         return "/client/tuyendung/updatejob";
     }
-    
+
     @PostMapping("tuyendung/suabai")
     public String postupdateJobtam(Model model,
-    @ModelAttribute("jobup") @Valid Job jobup,
-    BindingResult jobupBindingResult,
-    HttpServletRequest request,
-    RedirectAttributes redirectAttributes) {
-        if(jobupBindingResult.hasErrors()){
+            @ModelAttribute("jobup") @Valid Job jobup,
+            BindingResult jobupBindingResult,
+            HttpServletRequest request,
+            RedirectAttributes redirectAttributes) {
+        if (jobupBindingResult.hasErrors()) {
             return "/client/tuyendung/updatejob";
         }
         Job currenJob = this.jobService.getJobById(jobup.getId());
-        if(currenJob != null){
+        if (currenJob != null) {
             currenJob.setTitle(jobup.getTitle());
             currenJob.setJobPosition(jobup.getJobPosition());
             currenJob.setInductry(jobup.getInductry());
@@ -183,13 +182,13 @@ public class RecruitmentPageController {
         }
         return "redirect:/tuyendung/baidangchoduyet";
     }
-    
+
     // xoa job
     @GetMapping("/tuyendung/xoabai/{id}")
-    public String deleteJob(Model model,@PathVariable long id,RedirectAttributes redirectAttributes) {
+    public String deleteJob(Model model, @PathVariable long id, RedirectAttributes redirectAttributes) {
         this.jobService.deleteJobById(id);
         redirectAttributes.addFlashAttribute("message", "Xóa bài thành công!");
         return "redirect:/tuyendung/baidangchoduyet";
     }
-    
+
 }

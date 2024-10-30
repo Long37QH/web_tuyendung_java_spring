@@ -31,4 +31,8 @@ public class JobService {
     public void deleteJobById(long id){
         this.jobRepository.deleteById(id);
     }
+
+    public List<Job> getListJobByStatus(String status){
+        return this.jobRepository.findByStatus(status);
+    }
 }
