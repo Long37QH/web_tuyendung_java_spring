@@ -26,12 +26,12 @@ import vn.com.jobviet.service.UploadService;
 import vn.com.jobviet.service.UserService;
 
 @Controller
-public class RecruitmentPageController {
+public class EmployePageController {
     private final UserService userService;
     private final UploadService uploadService;
     private final JobService jobService;
 
-    public RecruitmentPageController(UserService userService, UploadService uploadService, JobService jobService) {
+    public EmployePageController(UserService userService, UploadService uploadService, JobService jobService) {
         this.userService = userService;
         this.uploadService = uploadService;
         this.jobService = jobService;

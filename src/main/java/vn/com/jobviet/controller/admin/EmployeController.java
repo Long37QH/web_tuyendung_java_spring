@@ -29,10 +29,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 
 @Controller
-public class RecruitmentController {
+public class EmployeController {
     private final UserService userService;
     private final JobService jobService;
-    public RecruitmentController(UserService userService, JobService jobService) {
+    public EmployeController(UserService userService, JobService jobService) {
         this.userService = userService;
         this.jobService = jobService;
     }
