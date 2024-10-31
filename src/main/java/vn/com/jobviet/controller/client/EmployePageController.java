@@ -191,4 +191,15 @@ public class EmployePageController {
         return "redirect:/tuyendung/baidangchoduyet";
     }
 
+    @GetMapping("/tuyendung/baidangtuyendung")
+    public String getPageDsBaiDang(Model model, HttpServletRequest request) {
+        HttpSession session = request.getSession(false);
+        long idUser = (long) session.getAttribute("id");
+        User user = this.userService.getUserById(idUser);
+
+        List<Job> listjob = this.jobService.getlistJobByUserAndStatus(user, "Đăng bài");
+        model.addAttribute("listjob", listjob);
+        return "/client/tuyendung/ds_baidangtuyendung";
+    }
+
 }

@@ -22,12 +22,6 @@ import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.PostMapping;
 
 
-
-
-
-
-
-
 @Controller
 public class EmployeController {
     private final UserService userService;
@@ -65,7 +59,7 @@ public class EmployeController {
         currenJob.setStatus("Đăng bài");
         this.jobService.handSaveJob(currenJob);
         redirectAttributes.addFlashAttribute("message", "Đăng bài thành công!");
-        return "redirect:/admin/tuyendung/ds_baidang";
+        return "redirect:/admin/tuyendung/ds_chodang";
     }
 
     @GetMapping("/admin/tuyendung/ds_baidang")

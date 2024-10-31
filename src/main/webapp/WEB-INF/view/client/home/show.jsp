@@ -291,256 +291,67 @@
                 </div>
                 <div class="col-lg-6">
                     <div class="brouse_job text-right">
-                        <a href="jobs.html" class="boxed-btn4">Tìm kiếm thêm việc làm</a>
+                        <a href="/job" class="boxed-btn4">Tìm kiếm thêm việc làm</a>
                     </div>
                 </div>
             </div>
             <div class="job_lists">
                 <div class="row">
-                    <div class="col-lg-12 col-md-12">
-                        <div class="single_jobs white-bg d-flex justify-content-between">
-                            <div class="jobs_left d-flex align-items-center">
-                                <div class="thumb">
-                                    <img src="client/img/svg_icon/1.svg" alt="">
-                                </div>
-                                <div class="jobs_conetent">
-                                    <a href="job_details.html">
-                                        <h4>Software Engineer</h4>
-                                    </a>
-                                    <div class="links_locat d-flex align-items-center">
-
-                                        <div class="location">
-                                            <p> <i class="fa fa-map-marker"></i> Thành phố Vinh, Nghệ an</p>
-                                        </div>
-                                        <div class="location">
-                                            <p> <i class="fa fa-clock-o"></i> Part-time</p>
-                                        </div>
-                                        <div class="location">
-                                            <p> <i class="fa-solid fa-money-bill-1"></i> 10 - 15 triệu</p>
-                                        </div>
-
+                    <c:forEach var="job" items="${listjob}">
+                        <div class="col-lg-12 col-md-12">
+                            <div class="single_jobs white-bg d-flex justify-content-between">
+                                <div class="jobs_left d-flex align-items-center">
+                                    <div class="mr-3">
+                                        <img class="rounded border border-dark" style="width: 75px;" src="/images/company/${job.user.logoCompany}" alt="">
                                     </div>
-                                    <div class="links_locat d-flex align-items-center">
-                                        <p> <i class="fa-solid fa-business-time"></i> CÔNG TY TNHH BẢO HIỂM NHÂN THỌ AIA
-                                            (VIỆT NAM)</p>
+                                    <div class="jobs_conetent">
+                                        <a href="/job/detail/${job.id}">
+                                            <h4>${job.title}</h4>
+                                        </a>
+                                        <div class="links_locat d-flex align-items-center">
+
+                                            <div class="location">
+                                                <p> <i class="fa fa-map-marker"></i>Khu vực ${job.area}</p>
+                                            </div>
+                                            <div class="location">
+                                                <p> <i class="fa fa-clock-o"></i> ${job.workingForm}</p>
+                                            </div>
+                                            <div class="location">
+                                                <p> <i class="fa-solid fa-money-bill-1"></i> ${job.salary}</p>
+                                            </div>
+
+                                        </div>
+                                        <div class="links_locat d-flex align-items-center">
+                                            <p> <i class="fa-solid fa-business-time"></i> ${job.user.company}</p>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="jobs_right">
-                                <div class="apply_now">
-                                    <a class="heart_mark" href="#"> <i class="ti-heart"></i> </a>
-                                    <a href="job_details.html" class="boxed-btn3">Ứng Tuyển</a>
-                                </div>
-                                <div class="date">
-                                    <p>Date line: <strong>31/10/2024</strong></p>
+                                <div class="jobs_right">
+                                    <div class="apply_now">
+                                        <a class="heart_mark" href="#"> <i class="ti-heart"></i> </a>
+                                        <a href="/job/detail/${job.id}" class="boxed-btn3">Ứng Tuyển</a>
+                                    </div>
+                                    <div class="date">
+                                        <p>Date line: <strong>${job.dateline}</strong></p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-lg-12 col-md-12">
-                        <div class="single_jobs white-bg d-flex justify-content-between">
-                            <div class="jobs_left d-flex align-items-center">
-                                <div class="thumb">
-                                    <img src="client/img/svg_icon/2.svg" alt="">
-                                </div>
-                                <div class="jobs_conetent">
-                                    <a href="job_details.html">
-                                        <h4>Software Engineer</h4>
-                                    </a>
-                                    <div class="links_locat d-flex align-items-center">
-
-                                        <div class="location">
-                                            <p> <i class="fa fa-map-marker"></i> Thành phố Vinh, Nghệ an</p>
-                                        </div>
-                                        <div class="location">
-                                            <p> <i class="fa fa-clock-o"></i> Part-time</p>
-                                        </div>
-                                        <div class="location">
-                                            <p> <i class="fa-solid fa-money-bill-1"></i> 10 - 15 triệu</p>
-                                        </div>
-                                    </div>
-                                    <div class="links_locat d-flex align-items-center">
-                                        <p> <i class="fa-solid fa-business-time"></i> CÔNG TY TNHH BẢO HIỂM NHÂN THỌ AIA
-                                            (VIỆT NAM)</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="jobs_right">
-                                <div class="apply_now">
-                                    <a class="heart_mark" href="#"> <i class="ti-heart"></i> </a>
-                                    <a href="job_details.html" class="boxed-btn3">Ứng Tuyển</a>
-                                </div>
-                                <div class="date">
-                                    <p>Date line: <strong>31/10/2024</strong></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-12 col-md-12">
-                        <div class="single_jobs white-bg d-flex justify-content-between">
-                            <div class="jobs_left d-flex align-items-center">
-                                <div class="thumb">
-                                    <img src="client/img/svg_icon/3.svg" alt="">
-                                </div>
-                                <div class="jobs_conetent">
-                                    <a href="job_details.html">
-                                        <h4>Software Engineer</h4>
-                                    </a>
-                                    <div class="links_locat d-flex align-items-center">
-
-                                        <div class="location">
-                                            <p> <i class="fa fa-map-marker"></i> Thành phố Vinh, Nghệ an</p>
-                                        </div>
-                                        <div class="location">
-                                            <p> <i class="fa fa-clock-o"></i> Part-time</p>
-                                        </div>
-                                        <div class="location">
-                                            <p> <i class="fa-solid fa-money-bill-1"></i> 10 - 15 triệu</p>
-                                        </div>
-                                    </div>
-                                    <div class="links_locat d-flex align-items-center">
-                                        <p> <i class="fa-solid fa-business-time"></i> CÔNG TY TNHH BẢO HIỂM NHÂN THỌ AIA
-                                            (VIỆT NAM)</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="jobs_right">
-                                <div class="apply_now">
-                                    <a class="heart_mark" href="#"> <i class="ti-heart"></i> </a>
-                                    <a href="job_details.html" class="boxed-btn3">Ứng Tuyển</a>
-                                </div>
-                                <div class="date">
-                                    <p>Date line: <strong>31/10/2024</strong></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-12 col-md-12">
-                        <div class="single_jobs white-bg d-flex justify-content-between">
-                            <div class="jobs_left d-flex align-items-center">
-                                <div class="thumb">
-                                    <img src="client/img/svg_icon/4.svg" alt="">
-                                </div>
-                                <div class="jobs_conetent">
-                                    <a href="job_details.html">
-                                        <h4>Software Engineer</h4>
-                                    </a>
-                                    <div class="links_locat d-flex align-items-center">
-
-                                        <div class="location">
-                                            <p> <i class="fa fa-map-marker"></i> Thành phố Vinh, Nghệ an</p>
-                                        </div>
-                                        <div class="location">
-                                            <p> <i class="fa fa-clock-o"></i> Part-time</p>
-                                        </div>
-                                        <div class="location">
-                                            <p> <i class="fa-solid fa-money-bill-1"></i> 10 - 15 triệu</p>
-                                        </div>
-                                    </div>
-                                    <div class="links_locat d-flex align-items-center">
-                                        <p> <i class="fa-solid fa-business-time"></i> CÔNG TY TNHH BẢO HIỂM NHÂN THỌ AIA
-                                            (VIỆT NAM)</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="jobs_right">
-                                <div class="apply_now">
-                                    <a class="heart_mark" href="#"> <i class="ti-heart"></i> </a>
-                                    <a href="job_details.html" class="boxed-btn3">Ứng Tuyển</a>
-                                </div>
-                                <div class="date">
-                                    <p>Date line: <strong>31/10/2024</strong></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-12 col-md-12">
-                        <div class="single_jobs white-bg d-flex justify-content-between">
-                            <div class="jobs_left d-flex align-items-center">
-                                <div class="thumb">
-                                    <img src="client/img/svg_icon/5.svg" alt="">
-                                </div>
-                                <div class="jobs_conetent">
-                                    <a href="job_details.html">
-                                        <h4>Software Engineer</h4>
-                                    </a>
-                                    <div class="links_locat d-flex align-items-center">
-
-                                        <div class="location">
-                                            <p> <i class="fa fa-map-marker"></i> Thành phố Vinh, Nghệ an</p>
-                                        </div>
-                                        <div class="location">
-                                            <p> <i class="fa fa-clock-o"></i> Part-time</p>
-                                        </div>
-                                        <div class="location">
-                                            <p> <i class="fa-solid fa-money-bill-1"></i> 10 - 15 triệu</p>
-                                        </div>
-                                    </div>
-                                    <div class="links_locat d-flex align-items-center">
-                                        <p> <i class="fa-solid fa-business-time"></i> CÔNG TY TNHH BẢO HIỂM NHÂN THỌ AIA
-                                            (VIỆT NAM)</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="jobs_right">
-                                <div class="apply_now">
-                                    <a class="heart_mark" href="#"> <i class="ti-heart"></i> </a>
-                                    <a href="job_details.html" class="boxed-btn3">Ứng Tuyển</a>
-                                </div>
-                                <div class="date">
-                                    <p>Date line: <strong>31/10/2024</strong></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-12 col-md-12">
-                        <div class="single_jobs white-bg d-flex justify-content-between">
-                            <div class="jobs_left d-flex align-items-center">
-                                <div class="thumb">
-                                    <img src="client/img/svg_icon/6.svg" alt="">
-                                </div>
-                                <div class="jobs_conetent">
-                                    <a href="job_details.html">
-                                        <h4>Software Engineer</h4>
-                                    </a>
-                                    <div class="links_locat d-flex align-items-center">
-
-                                        <div class="location">
-                                            <p> <i class="fa fa-map-marker"></i> Thành phố Vinh, Nghệ an</p>
-                                        </div>
-                                        <div class="location">
-                                            <p> <i class="fa fa-clock-o"></i> Part-time</p>
-                                        </div>
-                                        <div class="location">
-                                            <p> <i class="fa-solid fa-money-bill-1"></i> 10 - 15 triệu</p>
-                                        </div>
-                                    </div>
-                                    <div class="links_locat d-flex align-items-center">
-                                        <p> <i class="fa-solid fa-business-time"></i> CÔNG TY TNHH BẢO HIỂM NHÂN THỌ AIA
-                                            (VIỆT NAM)</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="jobs_right">
-                                <div class="apply_now">
-                                    <a class="heart_mark" href="#"> <i class="ti-heart"></i> </a>
-                                    <a href="job_details.html" class="boxed-btn3">Ứng Tuyển</a>
-                                </div>
-                                <div class="date">
-                                    <p>Date line: <strong>31/10/2024</strong></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    </c:forEach>
                 </div>
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="pagination_wrap">
                             <ul>
-                                <li><a href="#"> <i class="ti-angle-left"></i> </a></li>
-                                <li><a class="active" href="#"><span>01</span></a></li>
-                                <li><a href="#"><span>02</span></a></li>
-                                <li><a href="#"> <i class="ti-angle-right"></i> </a></li>
+                                <c:if test="${curentPage != 1}">
+                                    <li><a href="/?page=${curentPage -1}"> <i class="ti-angle-left"></i> </a></li>
+                                </c:if>
+                                <c:forEach begin="0" end="${totalPages - 1}" varStatus="loop">
+                                    <li><a class="${(loop.index + 1) eq curentPage ? 'active':''}" href="/?page=${loop.index + 1}"><span>${loop.index + 1}</span></a></li>
+                                </c:forEach>
+                                <c:if test="${curentPage != totalPages}">
+                                    <li><a href="/?page=${curentPage + 1}"> <i class="ti-angle-right"></i> </a></li>
+                                </c:if>
                             </ul>
                         </div>
                     </div>

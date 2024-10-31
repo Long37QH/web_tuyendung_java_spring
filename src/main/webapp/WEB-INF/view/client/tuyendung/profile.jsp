@@ -125,7 +125,7 @@
                                     style="width: 150px; height: 150px; display: none;" alt="avatar Preview" id="avatarPreview">
                                 <div class="text-center my-3">
                                     ${userTD.fullName}
-                                    <p class="fs-6">${userTD.email}</p>
+                                    <p>Tài khoản sử dụng gói <strong class="text-success" >${userTD.plan.name}</strong></p>
                                 </div>
                             </div>
 

@@ -140,7 +140,7 @@
                                     <label class="form-label">Ngành :</label>
                                     <form:select class="form-select" path="inductry">
                                         <!-- <option selected></option> -->
-                                        <form:option value="IT Phần mềm">CNTT / IT Phần mềm</form:option>
+                                        <form:option value="CNTT / IT Phần mềm">CNTT / IT Phần mềm</form:option>
                                         <form:option value="Kinh doanh / Bán hàng">Kinh doanh / Bán hàng</form:option>
                                         <form:option value="Hành chính / Văn phòng">Hành chính / Văn phòng</form:option>
                                         <form:option value="Giáo dục / Đào tạo">Giáo dục / Đào tạo</form:option>
@@ -170,6 +170,9 @@
                                         <form:option value="10-15 triệu">10-15 triệu</form:option>
                                         <form:option value="15-20 triệu">15-20 triệu</form:option>
                                         <form:option value="20-25 triệu">20-25 triệu</form:option>
+                                        <form:option value="20-25 triệu">25-30 triệu</form:option>
+                                        <form:option value="20-25 triệu">30-40 triệu</form:option>
+                                        <form:option value="20-25 triệu">Trên 40 triệu</form:option>
                                         <form:option value="Thỏa thuận">Thỏa thuận</form:option>
                                     </form:select>
                                 </div> 
@@ -229,7 +232,7 @@
                                     <form:textarea class="form-control ${not empty errorContentjob ? 'is-invalid' : ''}" name="content" id="editor" path="contentjob" ></form:textarea>
                                     ${errorContentjob}
                                 </div>
-                                
+                                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
                                 <div class="col-md-12 mt-3 text-center ">
                                     <a href="/tuyendung/baidangchoduyet" class="btn btn-success mr-3">Quay lại</a>
                                     <button type="submit" class="btn btn-primary">Cập nhật</button>

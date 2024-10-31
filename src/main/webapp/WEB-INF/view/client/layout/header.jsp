@@ -101,7 +101,7 @@
                                                             <li><a class="dropdown-item" href="/tuyendung/profile"><i style="color: #21a212;"  class="fa-solid fa-user-tie mr-2"></i> Thông tin tài khoản</a></li>
                                                             <li><a class="dropdown-item" href="/tuyendung/taobaidang"><i style="color: #21a212;" class="fa-solid fa-pen-to-square mr-2"></i> Tạo bài đăng tuyển dụng</a></li>
                                                             <li><a class="dropdown-item" href="/tuyendung/baidangchoduyet"><i style="color: #21a212;" class="fa-solid fa-clipboard-list mr-2"></i>  Bài đăng chờ duyệt</a></li>
-                                                            <li><a class="dropdown-item" href="#"><i style="color: #21a212;" class="fa-solid fa-list-check mr-2"></i> Bài đăng tuyển dụng dụng</a></li>
+                                                            <li><a class="dropdown-item" href="/tuyendung/baidangtuyendung"><i style="color: #21a212;" class="fa-solid fa-list-check mr-2"></i> Bài đăng tuyển dụng dụng</a></li>
                                                             <li><a class="dropdown-item" href="#"><i style="color: #21a212;" class="fa-solid fa-eye mr-2"></i> Xem danh sách ứng viên</a></li>
                                                             <li><a class="dropdown-item" href="/plan"><i style="color: #21a212;"  class="fa-regular fa-hourglass-half mr-2"></i> Đăng ký dịch vụ</a></li>
                                                             <li><hr class="dropdown-divider"></li>

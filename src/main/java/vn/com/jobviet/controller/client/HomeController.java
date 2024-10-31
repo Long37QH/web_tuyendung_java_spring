@@ -1,6 +1,11 @@
 package vn.com.jobviet.controller.client;
 
 
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -8,12 +13,14 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
+import vn.com.jobviet.domain.Job;
 import vn.com.jobviet.domain.User;
 import vn.com.jobviet.domain.dto.RegisterDTO;
-
+import vn.com.jobviet.service.JobService;
 import vn.com.jobviet.service.UserService;
 
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import jakarta.validation.Valid;
 
@@ -24,15 +31,39 @@ public class HomeController {
 
     private final UserService userService;
     private final PasswordEncoder passwordEncoder;
+    private final JobService jobService;
     
-    public HomeController(UserService userService,PasswordEncoder passwordEncoder) {
+    public HomeController(UserService userService,PasswordEncoder passwordEncoder,JobService jobService) {
         this.userService = userService;
         this.passwordEncoder = passwordEncoder;
+        this.jobService = jobService;
         
     }
 
     @GetMapping("/")
-    public String getMethodName() {
+    public String getHomePage(Model model,@RequestParam("page") Optional<String> pageOptional) {
+        int page = 1;
+        try {
+            if (pageOptional.isPresent()) {
+                page = Integer.parseInt(pageOptional.get());
+            }else{
+                // page = 1
+            }
+        } catch (Exception e) {
+            // page = 1
+        }
+        PageRequest pageable = PageRequest.of(page - 1, 5);
+        String status = "Đăng bài";
+
+        Page<Job> prs = this.jobService.GetAllJobByStatusOderbyView(status,pageable);
+        List<Job> listjob = prs.getContent();
+
+        model.addAttribute("listjob", listjob);
+        //lây so trong hiện tại truyên sang view
+        model.addAttribute("curentPage", page);
+        // lấy tông số trang
+        model.addAttribute("totalPages", prs.getTotalPages());
+
         return "/client/home/show";
     }
     
