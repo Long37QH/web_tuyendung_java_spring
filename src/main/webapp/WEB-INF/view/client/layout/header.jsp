@@ -59,9 +59,10 @@
                                                                 </li>
                                                                 <li><hr class="dropdown-divider"></li>
                                                                 <li><a class="dropdown-item" href="/ungvien/profile"> <i style="color: #21a212;"  class="fa-solid fa-user-tie mr-2"></i> Thông tin tài khoản</a></li>
+                                                                <li><a class="dropdown-item" href="/list-job-like"> <i style="color: #21a212;" class="fa-solid fa-heart mr-2"></i> Việc làm yêu thích</a></li>
                                                                 <li><a class="dropdown-item" href="#"> <i style="color: #21a212;" class="fa-solid fa-briefcase mr-2"></i> Lịch sử việc làm ứng tuyển</a></li>
-                                                                <li><a class="dropdown-item" href="#"> <i style="color: #21a212;"  class="fa-solid fa-calendar-check mr-2"></i> Nhà tuyển dụng phản hồi</a></li>
-                                                                <li><a class="dropdown-item" href="#"> <i style="color: #21a212;"  class="fa-solid fa-lock mr-2"></i> Đổi mật khẩu</a></li>
+                                                                <li><a class="dropdown-item" href="#"> <i style="color: #21a212;" class="fa-solid fa-calendar-check mr-2"></i> Nhà tuyển dụng phản hồi</a></li>
+                                                                <li><a class="dropdown-item" href="#"> <i style="color: #21a212;" class="fa-solid fa-lock mr-2"></i> Đổi mật khẩu</a></li>
                                                                 <li><hr class="dropdown-divider"></li>
                                                                 <li>
                                                                     <form action="/logout" method="post" >
@@ -103,6 +104,7 @@
                                                             <li><a class="dropdown-item" href="/tuyendung/baidangchoduyet"><i style="color: #21a212;" class="fa-solid fa-clipboard-list mr-2"></i>  Bài đăng chờ duyệt</a></li>
                                                             <li><a class="dropdown-item" href="/tuyendung/baidangtuyendung"><i style="color: #21a212;" class="fa-solid fa-list-check mr-2"></i> Bài đăng tuyển dụng dụng</a></li>
                                                             <li><a class="dropdown-item" href="#"><i style="color: #21a212;" class="fa-solid fa-eye mr-2"></i> Xem danh sách ứng viên</a></li>
+                                                            <li><a class="dropdown-item" href="/list-job-like"> <i style="color: #21a212;" class="fa-solid fa-heart mr-2"></i> Việc làm yêu thích</a></li>
                                                             <li><a class="dropdown-item" href="/plan"><i style="color: #21a212;"  class="fa-regular fa-hourglass-half mr-2"></i> Đăng ký dịch vụ</a></li>
                                                             <li><hr class="dropdown-divider"></li>
                                                             <li>

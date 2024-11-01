@@ -34,6 +34,22 @@
 
     <!-- cdn icon -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <!-- jequery toastr -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <!-- Toastr CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet" />
+    <!-- Toastr JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <style>
+        .toast-custom-top-right {
+            top: 100px !important; /* Cách top 300px */
+            right: 12px !important; /* Khoảng cách bên phải */
+            position: fixed;
+            z-index: 9999;
+        }
+    </style>
 </head>
 
 <body>
@@ -174,8 +190,11 @@
                                             </div>
                                         </div>
                                         <div class="jobs_right">
-                                            <div class="apply_now">
-                                                <a class="heart_mark" href="#"> <i class="fa fa-heart"></i> </a>
+                                            <div class="apply_now row d-flex align-items-center justify-content-center">
+                                                <form action="/add-to-joblike/job/${job.id}" method="post">
+                                                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+                                                    <button style="height: 40px;" class="boxed-btnlike mr-2" ><i class="fa-regular fa-heart"></i></button>
+                                                </form>
                                                 <a href="/job/detail/${job.id}" class="boxed-btn3">Ứng Tuyển</a>
                                             </div>
                                             <div class="date">
@@ -264,6 +283,30 @@
             $( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) +
                 " - $" + $( "#slider-range" ).slider( "values", 1 ) + "/ Year");
         } );
+        </script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                toastr.options = {
+                    "closeButton": true,
+                    "debug": false,
+                    "newestOnTop": true,
+                    "progressBar": true,
+                    "positionClass": "toast-custom-top-right", // Thay đổi vị trí hiển thị
+                    "preventDuplicates": true,
+                    "showDuration": "300",
+                    "hideDuration": "1000",
+                    "timeOut": "3000", // Thời gian tồn tại của thông báo
+                    "extendedTimeOut": "1000",
+                    "showEasing": "swing",
+                    "hideEasing": "linear",
+                    "showMethod": "fadeIn",
+                    "hideMethod": "fadeOut"
+                };
+                // Check if there's a flash attribute 'message'
+                <c:if test="${not empty message}">
+                    toastr.success("${message}");
+                </c:if>
+            });
         </script>
 </body>
 

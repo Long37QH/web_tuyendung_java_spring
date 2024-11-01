@@ -58,7 +58,8 @@ public class User {
     @OneToMany(mappedBy = "user")
     private List<Apply> applys;
 
-    
+    @OneToMany(mappedBy = "user")
+    private List<JobLike> jobLikes;
 
     public long getId() {
         return id;
@@ -166,7 +167,12 @@ public class User {
     public void setLogoCompany(String logoCompany) {
         this.logoCompany = logoCompany;
     }
+    public List<JobLike> getJobLikes() {
+        return jobLikes;
+    }
+    public void setJobLikes(List<JobLike> jobLikes) {
+        this.jobLikes = jobLikes;
+    }
 
-    
 
 }

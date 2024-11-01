@@ -62,6 +62,9 @@ public class Job {
     @OneToMany(mappedBy = "job")
     private List<Apply> applys;
 
+    @OneToMany(mappedBy = "job")
+    private List<JobLike> jobLikes;
+
     public long getId() {
         return id;
     }
@@ -185,7 +188,11 @@ public class Job {
     public void setExperience(String experience) {
         this.experience = experience;
     }
-
-    
+    public List<JobLike> getJobLikes() {
+        return jobLikes;
+    }
+    public void setJobLikes(List<JobLike> jobLikes) {
+        this.jobLikes = jobLikes;
+    }
 
 }

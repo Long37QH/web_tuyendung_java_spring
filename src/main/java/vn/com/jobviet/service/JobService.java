@@ -6,15 +6,19 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import vn.com.jobviet.domain.Job;
+import vn.com.jobviet.domain.JobLike;
 import vn.com.jobviet.domain.User;
+import vn.com.jobviet.repository.JobLikeRepository;
 import vn.com.jobviet.repository.JobRepository;
 
 @Service
 public class JobService {
     private final JobRepository jobRepository;
+    private final JobLikeRepository jobLikeRepository;
 
-    public JobService(JobRepository jobRepository) {
+    public JobService(JobRepository jobRepository,JobLikeRepository jobLikeRepository) {
         this.jobRepository = jobRepository;
+        this.jobLikeRepository = jobLikeRepository;
     }
     
     public Job handSaveJob(Job job){
@@ -42,5 +46,23 @@ public class JobService {
     //lay listjob trang home
     public Page<Job>GetAllJobByStatusOderbyView(String status,Pageable pageable){
         return this.jobRepository.findByStatusOrderByViewDesc(status, pageable);
+    }
+
+    public Page<JobLike> getJobLikeByUser(User user,Pageable pageable){
+        return this.jobLikeRepository.findByUser(user, pageable);
+    }
+
+    public JobLike getJobLikeByUserAndJob(User user, Job job){
+        return this.jobLikeRepository.findByUserAndJob(user, job);
+    }
+
+    public JobLike handSaveJobLike(JobLike joblikenew){
+        JobLike jobLike = this.jobLikeRepository.save(joblikenew);
+        System.out.println(jobLike);
+        return jobLike;
+    }
+
+    public void deleteJoblikeById(long id){
+        this.jobLikeRepository.deleteById(id);
     }
 }
