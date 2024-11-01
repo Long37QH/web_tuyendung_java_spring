@@ -2,6 +2,7 @@ package vn.com.jobviet.controller.client;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -146,14 +147,20 @@ public class JobPageController {
         User user = this.userService.getUserById(idUser);
 
         Page<JobLike> prs = this.jobService.getJobLikeByUser(user, pageable);
-        List<JobLike> listjob = prs.getContent();
+        if (prs != null && !prs.isEmpty()) {
+            List<JobLike> listjob = prs.getContent();
 
-        model.addAttribute("listjob", listjob);
-        // lây so trong hiện tại truyên sang view
-        model.addAttribute("curentPage", page);
-        // lấy tông số trang
-        model.addAttribute("totalPages", prs.getTotalPages());
-
+            model.addAttribute("listjob", listjob);
+            // lây so trong hiện tại truyên sang view
+            model.addAttribute("curentPage", page);
+            // lấy tông số trang
+            model.addAttribute("totalPages", prs.getTotalPages());
+        }else{
+            model.addAttribute("listjob", Collections.emptyList());
+            model.addAttribute("curentPage", 1 );
+            model.addAttribute("totalPages", 1);
+        }
+        
         return "/client/job/joblike";
     }
 

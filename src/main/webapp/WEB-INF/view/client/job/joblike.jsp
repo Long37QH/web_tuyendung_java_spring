@@ -101,6 +101,11 @@
                                     <div class="brouse_job text-right">
                                         <a href="/job" class="boxed-btn4">Tìm kiếm thêm việc làm</a>
                                     </div>
+                                    <c:if test="${empty listjob }">
+                                        <div class="text-center  border  border-info pt-3 pb-2 mt-3">
+                                            <h4>Chưa có việc làm yêu thích</h4>
+                                        </div>
+                                    </c:if>
                                 </div>
                             </div>
                             <div class="job_lists">
@@ -151,23 +156,25 @@
                                         </div>
                                     </c:forEach>
                                 </div>
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <div class="pagination_wrap">
-                                            <ul>
-                                                <c:if test="${curentPage != 1}">
-                                                    <li><a href="/list-job-like?page=${curentPage -1}"> <i class="ti-angle-left"></i> </a></li>
-                                                </c:if>
-                                                <c:forEach begin="0" end="${totalPages - 1}" varStatus="loop">
-                                                    <li><a class="${(loop.index + 1) eq curentPage ? 'active':''}" href="/list-job-like?page=${loop.index + 1}"><span>${loop.index + 1}</span></a></li>
-                                                </c:forEach>
-                                                <c:if test="${curentPage != totalPages}">
-                                                    <li><a href="/list-job-like?page=${curentPage + 1}"> <i class="ti-angle-right"></i> </a></li>
-                                                </c:if>
-                                            </ul>
+                                <c:if test="${!empty listjob }">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="pagination_wrap">
+                                                <ul>
+                                                    <c:if test="${curentPage != 1}">
+                                                        <li><a href="/list-job-like?page=${curentPage -1}"> <i class="ti-angle-left"></i> </a></li>
+                                                    </c:if>
+                                                    <c:forEach begin="0" end="${totalPages - 1}" varStatus="loop">
+                                                        <li><a class="${(loop.index + 1) eq curentPage ? 'active':''}" href="/list-job-like?page=${loop.index + 1}"><span>${loop.index + 1}</span></a></li>
+                                                    </c:forEach>
+                                                    <c:if test="${curentPage != totalPages}">
+                                                        <li><a href="/list-job-like?page=${curentPage + 1}"> <i class="ti-angle-right"></i> </a></li>
+                                                    </c:if>
+                                                </ul>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
+                                </c:if>
                             </div>
                         </div>
                     </div>
