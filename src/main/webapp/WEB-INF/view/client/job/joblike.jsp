@@ -102,61 +102,61 @@
                                         <a href="/job" class="boxed-btn4">Tìm kiếm thêm việc làm</a>
                                     </div>
                                     <c:if test="${empty listjob }">
-                                        <div class="text-center  border  border-info pt-3 pb-2 mt-3">
-                                            <h4>Chưa có việc làm yêu thích</h4>
+                                        <div class="alert alert-secondary mt-4 ">
+                                            Chưa có việc làm được thêm trong mục việc làm yêu thich!
                                         </div>
                                     </c:if>
                                 </div>
                             </div>
-                            <div class="job_lists">
-                                <div class="row">
-                                    <c:forEach var="joblike" items="${listjob}">
-                                        <div class="col-lg-12 col-md-12">
-                                            <div class="single_jobs white-bg d-flex justify-content-between">
-                                                <div class="jobs_left d-flex align-items-center">
-                                                    <div class="mr-3">
-                                                        <img class="rounded border border-dark" style="width: 75px;" src="/images/company/${joblike.job.user.logoCompany}" alt="">
-                                                    </div>
-                                                    <div class="jobs_conetent">
-                                                        <a href="/job/detail/${joblike.job.id}">
-                                                            <h4>${joblike.job.title}</h4>
-                                                        </a>
-                                                        <div class="links_locat d-flex align-items-center">
-                    
-                                                            <div class="location">
-                                                                <p> <i class="fa fa-map-marker"></i>Khu vực ${joblike.job.area}</p>
-                                                            </div>
-                                                            <div class="location">
-                                                                <p> <i class="fa fa-clock-o"></i> ${joblike.job.workingForm}</p>
-                                                            </div>
-                                                            <div class="location">
-                                                                <p> <i class="fa-solid fa-money-bill-1"></i>${joblike.job.salary}</p>
-                                                            </div>
-                    
+                            <c:if test="${!empty listjob }">
+                                <div class="job_lists">
+                                    <div class="row">
+                                        <c:forEach var="joblike" items="${listjob}">
+                                            <div class="col-lg-12 col-md-12">
+                                                <div class="single_jobs white-bg d-flex justify-content-between">
+                                                    <div class="jobs_left d-flex align-items-center">
+                                                        <div class="mr-3">
+                                                            <img class="rounded border border-dark" style="width: 75px;" src="/images/company/${joblike.job.user.logoCompany}" alt="">
                                                         </div>
-                                                        <div class="links_locat d-flex align-items-center">
-                                                            <p> <i class="fa-solid fa-business-time"></i> ${joblike.job.user.company}</p>
+                                                        <div class="jobs_conetent">
+                                                            <a href="/job/detail/${joblike.job.id}">
+                                                                <h4>${joblike.job.title}</h4>
+                                                            </a>
+                                                            <div class="links_locat d-flex align-items-center">
+                        
+                                                                <div class="location">
+                                                                    <p> <i class="fa fa-map-marker"></i>Khu vực ${joblike.job.area}</p>
+                                                                </div>
+                                                                <div class="location">
+                                                                    <p> <i class="fa fa-clock-o"></i> ${joblike.job.workingForm}</p>
+                                                                </div>
+                                                                <div class="location">
+                                                                    <p> <i class="fa-solid fa-money-bill-1"></i>${joblike.job.salary}</p>
+                                                                </div>
+                        
+                                                            </div>
+                                                            <div class="links_locat d-flex align-items-center">
+                                                                <p> <i class="fa-solid fa-business-time"></i> ${joblike.job.user.company}</p>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="jobs_right">
-                                                    <div class="apply_now row d-flex align-items-center justify-content-center">
-                                                        <!-- <form action="/remove-joblike/${joblike.id}" method="post">
-                                                            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-                                                            <button style="height: 40px;" class="boxed-btndelete mr-2" ><i class="fa-solid fa-trash-can"></i></button>
-                                                        </form> -->
-                                                        <a href="/job/detail/${joblike.job.id}" class="boxed-btn3">Ứng Tuyển</a>
-                                                        <a class="" href="/remove-joblike/${joblike.id}"> <button style="height: 40px;" class="boxed-btndelete ml-2" ><i class="fa-solid fa-trash-can"></i></button> </a>
-                                                    </div>
-                                                    <div class="date">
-                                                        <p>Date line: <strong>31/10/2024</strong></p>
+                                                    <div class="jobs_right">
+                                                        <div class="apply_now row d-flex align-items-center justify-content-center">
+                                                            <!-- <form action="/remove-joblike/${joblike.id}" method="post">
+                                                                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+                                                                <button style="height: 40px;" class="boxed-btndelete mr-2" ><i class="fa-solid fa-trash-can"></i></button>
+                                                            </form> -->
+                                                            <a href="/job/detail/${joblike.job.id}" class="boxed-btn3">Ứng Tuyển</a>
+                                                            <a class="" href="/remove-joblike/${joblike.id}"> <button style="height: 40px;" class="boxed-btndelete ml-2" ><i class="fa-solid fa-trash-can"></i></button> </a>
+                                                        </div>
+                                                        <div class="date">
+                                                            <p>Date line: <strong>31/10/2024</strong></p>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </c:forEach>
-                                </div>
-                                <c:if test="${!empty listjob }">
+                                        </c:forEach>
+                                    </div>   
                                     <div class="row">
                                         <div class="col-lg-12">
                                             <div class="pagination_wrap">
@@ -174,8 +174,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                </c:if>
-                            </div>
+                                </div>
+                            </c:if>
                         </div>
                     </div>
                 </div>

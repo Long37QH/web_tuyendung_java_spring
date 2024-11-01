@@ -42,6 +42,7 @@ public class User {
     private String company;
     private String descCompany;
     private String logoCompany;
+    private String filecv;
 
     // khai bao khoa ngoai
     @ManyToOne
@@ -173,6 +174,12 @@ public class User {
     public void setJobLikes(List<JobLike> jobLikes) {
         this.jobLikes = jobLikes;
     }
+    public String getFilecv() {
+        return filecv;
+    }
+    public void setFilecv(String filecv) {
+        this.filecv = filecv;
+    }
 
-
+    
 }

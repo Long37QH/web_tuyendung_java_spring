@@ -11,16 +11,21 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
+import vn.com.jobviet.domain.Apply;
 import vn.com.jobviet.domain.Job;
 import vn.com.jobviet.domain.JobLike;
 import vn.com.jobviet.domain.User;
+import vn.com.jobviet.service.ApplyService;
 import vn.com.jobviet.service.JobService;
+import vn.com.jobviet.service.UploadService;
 import vn.com.jobviet.service.UserService;
 
 import org.springframework.web.bind.annotation.PostMapping;
@@ -29,10 +34,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class JobPageController {
     private final JobService jobService;
     private final UserService userService;
+    private final ApplyService applyService;
+    private final UploadService uploadService;
 
-    public JobPageController(JobService jobService, UserService userService) {
+    public JobPageController(JobService jobService, UserService userService,ApplyService applyService,UploadService uploadService) {
         this.jobService = jobService;
         this.userService = userService;
+        this.applyService = applyService;
+        this.uploadService = uploadService;
     }
 
     @GetMapping("/job")
@@ -67,7 +76,47 @@ public class JobPageController {
         long viewup = job.getView() + 1;
         job.setView(viewup);
         model.addAttribute("job", job);
+        model.addAttribute("applyNew", new Apply());
         return "/client/job/detail";
+    }
+
+    // xu ly apply
+    @PostMapping("/applycv/{id}")
+    public String postMethodName(Model model,
+            @PathVariable long id,
+            @ModelAttribute("applyNew") Apply applynew,
+            HttpServletRequest request,
+            @RequestParam("fileCV") MultipartFile file,
+            RedirectAttributes redirectAttributes) {
+        
+        HttpSession session = request.getSession(false);
+        long id_user = (long) session.getAttribute("id");
+        User user = this.userService.getUserById(id_user);
+        Job job = this.jobService.getJobById(id);
+        
+        Apply apply = this.applyService.getApplyByUserAndJob(user, job);
+        if (apply == null) {
+            // lay thonhg tin file cv
+            String CV = this.uploadService.handeSaveUploadFileCV(file, "filecv");
+            user.setFilecv(CV);
+            this.userService.handlSaveUser(user);
+
+            LocalDateTime currentTime = LocalDateTime.now();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+            String formattedDate = currentTime.format(formatter);
+
+            applynew.setTimeapply(formattedDate);
+            applynew.setStatus("Chờ duyệt");
+            applynew.setUser(user);
+            applynew.setJob(job);
+
+            this.applyService.handSaveApply(applynew);
+            redirectAttributes.addFlashAttribute("message", "Bạn đã nôp hồ sơ thành công!");
+   
+        }else {
+            redirectAttributes.addFlashAttribute("message", "Bạn đã ứng tuyển cho việc làm này trước đó!");
+        }
+        return "redirect:/job";
     }
 
     @PostMapping("/add-to-joblike/{id}")
@@ -155,12 +204,12 @@ public class JobPageController {
             model.addAttribute("curentPage", page);
             // lấy tông số trang
             model.addAttribute("totalPages", prs.getTotalPages());
-        }else{
+        } else {
             model.addAttribute("listjob", Collections.emptyList());
-            model.addAttribute("curentPage", 1 );
+            model.addAttribute("curentPage", 1);
             model.addAttribute("totalPages", 1);
         }
-        
+
         return "/client/job/joblike";
     }
 

@@ -17,7 +17,6 @@ public class Apply {
     private long id;
     private String receiverName;
     private String receiverEmail;
-    private String receiverAddress;
     private String receiverPhone;
     private String mess;
 
@@ -54,12 +53,6 @@ public class Apply {
     }
     public void setReceiverEmail(String receiverEmail) {
         this.receiverEmail = receiverEmail;
-    }
-    public String getReceiverAddress() {
-        return receiverAddress;
-    }
-    public void setReceiverAddress(String receiverAddress) {
-        this.receiverAddress = receiverAddress;
     }
     public String getReceiverPhone() {
         return receiverPhone;
@@ -101,7 +94,7 @@ public class Apply {
     @Override
     public String toString() {
         return "Apply [id=" + id + ", receiverName=" + receiverName + ", receiverEmail=" + receiverEmail
-                + ", receiverAddress=" + receiverAddress + ", receiverPhone=" + receiverPhone + ", mess=" + mess
+                + ", receiverPhone=" + receiverPhone + ", mess=" + mess
                 + ", feedback=" + feedback + ", timeapply=" + timeapply + ", timefeedback=" + timefeedback + ", status="
                 + status + "]";
     }

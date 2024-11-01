@@ -95,21 +95,21 @@
                     </div>
                     <div class="apply_job_form white-bg">
                         <h4>Ứng tuyển cho vị trí công việc</h4>
-                        <form action="#">
+                        <form:form method="post" enctype="multipart/form-data" action="/applycv/${job.id}" modelAttribute="applyNew">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="input_field">
-                                        <input type="text" placeholder="Họ tên ứng viên">
+                                        <form:input type="text" placeholder="Họ tên ứng viên" path="receiverName"/>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="input_field">
-                                        <input type="text" placeholder="Số điện thoại">
+                                        <form:input type="text" placeholder="Số điện thoại" path="receiverPhone"/>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="input_field">
-                                        <input type="text" placeholder="Địa chỉ email">
+                                        <form:input type="text" placeholder="Địa chỉ email" path="receiverEmail"/>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
@@ -119,7 +119,7 @@
                                           </button>
                                         </div>
                                         <div class="custom-file">
-                                          <input type="file" class="custom-file-input" id="inputGroupFile03" aria-describedby="inputGroupFileAddon03">
+                                          <input type="file" name="fileCV" class="custom-file-input" id="inputGroupFile03" accept=".pdf" aria-describedby="inputGroupFileAddon03">
                                           <p id="fileName" class="custom-file-label" for="inputGroupFile03">Upload CV</p>
                                         </div>
                                       </div>
@@ -127,16 +127,17 @@
                                 
                                 <div class="col-md-12">
                                     <div class="input_field">
-                                        <textarea name="#" id="" cols="30" rows="10" placeholder="Ghi chú thêm"></textarea>
+                                        <form:textarea name="#" id="" cols="30" rows="10" placeholder="Ghi chú thêm" path="mess" ></form:textarea>
                                     </div>
                                 </div>
+                                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
                                 <div class="col-md-12">
                                     <div class="submit_btn">
                                         <button class="boxed-btn3 w-100" type="submit">Nộp hồ sơ ứng tuyển</button>
                                     </div>
                                 </div>
                             </div>
-                        </form>
+                        </form:form>
                         <script>
                             // xử lí input file
                             document.getElementById('inputGroupFile03').addEventListener('change', function () {
