@@ -1,10 +1,13 @@
 package vn.com.jobviet.controller.client;
 
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
@@ -13,17 +16,21 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
+import vn.com.jobviet.domain.Apply;
 import vn.com.jobviet.domain.User;
+import vn.com.jobviet.service.ApplyService;
 import vn.com.jobviet.service.UploadService;
 import vn.com.jobviet.service.UserService;
 
 @Controller
 public class CandidatePageController {
     private final UserService userService;
+    private final ApplyService applyService;
     private final UploadService uploadService;
-    public CandidatePageController(UserService userService, UploadService uploadService) {
+    public CandidatePageController(UserService userService, UploadService uploadService,ApplyService applyService) {
         this.userService = userService;
         this.uploadService = uploadService;
+        this.applyService = applyService;
     }
     @GetMapping("/ungvien/profile")
     public String getPrfileUvPage(Model model, HttpServletRequest request) {
@@ -63,4 +70,25 @@ public class CandidatePageController {
         }
         return "redirect:/ungvien/profile";
     }
+
+    @GetMapping("/ungvien/ds_hosoungtuyen")
+    public String getPageListApply(Model model, HttpServletRequest request) {
+        HttpSession session = request.getSession(false);
+        long idUser = (long) session.getAttribute("id");
+        User user = this.userService.getUserById(idUser);
+
+        List<Apply> listApplys = this.applyService.getListApplyByUserAndStust(user, "Chờ duyệt");
+        model.addAttribute("listApplys", listApplys);
+        return "/client/ungvien/ds_hosochoduyet";
+    }
+
+    //huy ung tuyen
+    @GetMapping("/ungvien/huyungtuyen/{id}")
+    public String getMethodName(Model model, @PathVariable long id, RedirectAttributes redirectAttributes) {
+        this.applyService.deleteApplyById(id);
+        redirectAttributes.addFlashAttribute("message", "Hủy ứng tuyển thành công!");
+        return "redirect:/ungvien/ds_hosoungtuyen";
+    }
+        
+    
 }

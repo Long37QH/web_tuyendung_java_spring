@@ -70,12 +70,12 @@
     <!-- header-end -->
 
     <!-- bradcam_area  -->
-    <div class="bradcam_area bradcam_bg_1">
+    <div class="bradcam_area bradcam_bg_2">
         <div class="container">
             <div class="row">
                 <div class="col-xl-12">
                     <div class="bradcam_text text-white">
-                        <h2 class="text-white">Quản lý bài đăng tuyển dụng</h2>
+                        <h2 class="text-white">Quản lý hồ sơ ứng tuyển</h2>
                     </div>
                 </div>
             </div>
@@ -90,43 +90,43 @@
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
-                        <li class="breadcrumb-item" aria-current="page">Quản lý bài đăng
+                        <li class="breadcrumb-item" aria-current="page">Quản lý hồ sơ ứng tuyển
                         </li>
                     </ol>
                 </nav>
             </div>
             <div class="row">
                 <div class="col-lg-12" >
-                    <h4 class="mb-3">Danh sách bài đăng tuyển dụng</h4>
+                    <h4 class="mb-3">Danh sách các lượt ứng tuyển</h4>
                     <hr>
                     <table id="example" class="table table-striped table-bordered table-hover mt-4">
                         <thead>
                             <tr>
                                 <th>TT</th>
-                                <th>Vị trí tuyển dụng</th>
-                                <th>Số lượng</th>
+                                <th>Vị trí Ứng tuyển</th>
                                 <th>Hình thức</th>
-                                <th>Trạng thái</th>
+                                <th>Hạn tuyển dung</th>
+                                <th>Thời gian apply</th>
                                 <th>Tác vụ</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <c:forEach var="job" items="${listjob}" varStatus="status" >
+                            <c:forEach var="apply" items="${listApplys}" varStatus="status" >
                                 <tr>
                                     <th>${status.index + 1}</th>
-                                    <td style="width: 250px;" >${job.title}</td>
-                                    <td>${job.quantity}</td>
-                                    <td>${job.workingForm}</td>
-                                    <td class="text-success fw-bold" >${job.status}</td>
+                                    <td style="width: 250px;" >${apply.job.title}</td>
+                                    <td>${apply.job.workingForm}</td>
+                                    <td>${apply.job.dateline}</td>
+                                    <td>${apply.timeapply}</td>
                                     <td>
-                                        <a class="btn btn-success"
-                                            href="/job/detail/${job.id}"><i class="fa-regular fa-eye"></i> Xem bài</a>
+                                        <!-- <a class="btn btn-success"
+                                            href="#"><i class="fa-regular fa-eye"></i> Xem</a>
                                         <a class="btn btn-primary"
-                                            href="/Tuyendung/dsungvien/${job.id} "><i class="fa-solid fa-user-tag"></i> Ứng viên</a>
-                                        <!-- <a class="btn btn-warning mx-2 "
-                                            href="/tuyendung/suabai/${job.id}"><i class="fa-solid fa-pen-nib"></i> Sửa bài</a> -->
+                                            href="#"><i class="fa-solid fa-user-tag"></i> Ứng viên</a> -->
+                                        <a class="btn btn-success mx-2 "
+                                            href="/job/detail/${apply.job.id}"><i class="fa-solid fa-pen-nib"></i> Xem chi tiết</a>
                                         <a class="btn btn-danger"
-                                            href="/tuyendung/xoabai/${job.id}"><i class="fa-regular fa-trash-can"></i> Xóa bài</a>
+                                            href="/ungvien/huyungtuyen/${apply.id}"><i class="fa-regular fa-trash-can"></i> Hủy ứng tuyển</a>
                                     </td>
                                 </tr>
                             </c:forEach>

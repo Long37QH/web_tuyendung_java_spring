@@ -3,7 +3,9 @@ package vn.com.jobviet.controller.client;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,8 +21,10 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
+import vn.com.jobviet.domain.Apply;
 import vn.com.jobviet.domain.Job;
 import vn.com.jobviet.domain.User;
+import vn.com.jobviet.service.ApplyService;
 import vn.com.jobviet.service.JobService;
 import vn.com.jobviet.service.UploadService;
 import vn.com.jobviet.service.UserService;
@@ -30,11 +34,14 @@ public class EmployePageController {
     private final UserService userService;
     private final UploadService uploadService;
     private final JobService jobService;
+    private final ApplyService applyService;
 
-    public EmployePageController(UserService userService, UploadService uploadService, JobService jobService) {
+    public EmployePageController(UserService userService, UploadService uploadService, JobService jobService,
+            ApplyService applyService) {
         this.userService = userService;
         this.uploadService = uploadService;
         this.jobService = jobService;
+        this.applyService = applyService;
     }
 
     @GetMapping("/tuyendung/profile")
@@ -200,6 +207,96 @@ public class EmployePageController {
         List<Job> listjob = this.jobService.getlistJobByUserAndStatus(user, "Đăng bài");
         model.addAttribute("listjob", listjob);
         return "/client/tuyendung/ds_baidangtuyendung";
+    }
+
+    @GetMapping("Tuyendung/dsungvien/{id}")
+    public String getApplybyJob(Model model, @PathVariable long id, HttpServletRequest request) {
+        HttpSession session = request.getSession(false);
+        long idUser = (long) session.getAttribute("id");
+        List<Apply> applies = applyService.getAppliesByUserIdAndJobId(idUser, id);
+        model.addAttribute("applies", applies);
+        return "/client/tuyendung/ds_ungvienbyjob";
+    }
+
+    @GetMapping("/tuyendung/danhsachungvien")
+    public String getAllApply(Model model, HttpServletRequest request) {
+        HttpSession session = request.getSession(false);
+        long idUser = (long) session.getAttribute("id");
+        // List<Apply> applies = applyService.getAppliesByUserId(idUser);
+        List<String> statuses = Arrays.asList("Đang duyệt", "Chờ duyệt");
+        List<Apply> applies = applyService.getAppliesByUserIdAndStatuses(idUser, statuses);
+        model.addAttribute("applies", applies);
+        return "/client/tuyendung/ds_hosoungtuyen";
+    }
+
+    @GetMapping("/tuyendung/danhsachdaduyet")
+    public String getAllApplyFeedback(Model model, HttpServletRequest request) {
+        HttpSession session = request.getSession(false);
+        long idUser = (long) session.getAttribute("id");
+        List<Apply> applies = applyService.getAppliesByUserIdAndStatuses(idUser, "Đã duyệt", "Từ chối hồ sơ");
+        model.addAttribute("applies", applies);
+        return "/client/tuyendung/ds_ungviendaduyet";
+    }
+
+    @GetMapping("/tuyendung/ds_hosoungtuyen/cvdetail")
+    public String getMethodName(Model model,
+            @RequestParam("userid") Optional<String> useridOptional,
+            @RequestParam("jobid") Optional<String> jobidOptional) {
+        User userapply = this.userService.getUserById(Long.parseLong(useridOptional.get()));
+        Job jobapply = this.jobService.getJobById(Long.parseLong(jobidOptional.get()));
+        Apply apply = this.applyService.getApplyByUserAndJob(userapply, jobapply);
+        if (apply.getStatus() != "Đã duyệt") {
+            apply.setStatus("Đang duyệt");
+        }
+        this.applyService.handSaveApply(apply);
+
+        model.addAttribute("apply", apply);
+        model.addAttribute("userTD", userapply);
+        return "/client/tuyendung/cvdetail";
+    }
+
+    @GetMapping("/tuyendung/ds_hosoungtuyen/cvdetail2")
+    public String getMethodName2(Model model,
+            @RequestParam("userid") Optional<String> useridOptional,
+            @RequestParam("jobid") Optional<String> jobidOptional) {
+        User userapply = this.userService.getUserById(Long.parseLong(useridOptional.get()));
+        Job jobapply = this.jobService.getJobById(Long.parseLong(jobidOptional.get()));
+        Apply apply = this.applyService.getApplyByUserAndJob(userapply, jobapply);
+        
+        model.addAttribute("apply", apply);
+        model.addAttribute("userTD", userapply);
+        return "/client/tuyendung/cvdetail";
+    }
+
+    @PostMapping("/tuyendung/ds_hosoungtuyen/feedback")
+    public String postFeedback(Model model, @ModelAttribute("apply") Apply applyup,
+            RedirectAttributes redirectAttributes) {
+        long id = applyup.getId();
+        Apply currenApply = this.applyService.getApplyById(id);
+        if (currenApply != null) {
+            LocalDateTime currentTime = LocalDateTime.now();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+            String formattedDate = currentTime.format(formatter);
+            currenApply.setStatus("Đã duyệt");
+            currenApply.setTimefeedback(formattedDate);
+            currenApply.setFeedback(applyup.getFeedback());
+
+            this.applyService.handSaveApply(currenApply);
+            redirectAttributes.addFlashAttribute("message", "Hoàn tất phê duyệt hồ sơ ứng viên!");
+        }
+
+        return "redirect:/tuyendung/danhsachungvien";
+    }
+
+    @GetMapping("/tuyendung/loaiungvien/{id}")
+    public String getMethodName(Model model, @PathVariable long id, RedirectAttributes redirectAttributes) {
+        Apply apply = this.applyService.getApplyById(id);
+        apply.setStatus("Từ chối hồ sơ");
+        apply.setFeedback("Cảm ơn bạn đã quan tâm vị trí công việc bên chúng mình,"
+                + "rất tiếc bạn không đủ điều kiện cho vị trí công việc");
+        this.applyService.handSaveApply(apply);
+        redirectAttributes.addFlashAttribute("message", "Đã từ chối ứng viên");
+        return "redirect:/tuyendung/danhsachungvien";
     }
 
 }

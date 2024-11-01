@@ -71,7 +71,7 @@ public class JobPageController {
     }
 
     @GetMapping("/job/detail/{id}")
-    public String getMethodName(Model model, @PathVariable long id) {
+    public String getMethodName(Model model, @PathVariable long id ) {
         Job job = this.jobService.getJobById(id);
         long viewup = job.getView() + 1;
         job.setView(viewup);
@@ -96,11 +96,13 @@ public class JobPageController {
         
         Apply apply = this.applyService.getApplyByUserAndJob(user, job);
         if (apply == null) {
-            // lay thonhg tin file cv
-            String CV = this.uploadService.handeSaveUploadFileCV(file, "filecv");
-            user.setFilecv(CV);
-            this.userService.handlSaveUser(user);
-
+            if(!file.isEmpty()){
+                // lay thonhg tin file cv
+                String CV = this.uploadService.handeSaveUploadFileCV(file, "filecv");
+                user.setFilecv(CV);
+                this.userService.handlSaveUser(user);
+            }
+            
             LocalDateTime currentTime = LocalDateTime.now();
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
             String formattedDate = currentTime.format(formatter);
