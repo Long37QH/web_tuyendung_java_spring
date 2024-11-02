@@ -41,12 +41,12 @@
                 </a>
                 <ul id="ungvien" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                   <li>
-                    <a href="#">
+                    <a href="/admin/ungvien">
                       <i class="bi bi-circle"></i><span>Danh sách ứng viên</span>
                     </a>
                   </li>
                   <li>
-                    <a href="#">
+                    <a href="/admin/applycv">
                       <i class="bi bi-circle"></i><span>Quản lý cv ứng tuyển</span>
                     </a>
                   </li>
@@ -85,14 +85,6 @@
                   <span>Quản lý dịch vụ</span>
                 </a>
               </li>
-        
-              <li class="nav-item">
-                <a class="nav-link collapsed" href="ds_congty.html">
-                  <i class="bi bi-card-list"></i>
-                  <span>Quản lý công ty</span>
-                </a>
-              </li>
-        
         
               <li class="nav-heading">Pages</li>
         

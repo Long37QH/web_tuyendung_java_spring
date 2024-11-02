@@ -1,7 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
         <%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
-        <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -13,7 +13,7 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="/adminpl/assets/img/logo.png" rel="icon">
+  <link href="assets/img/logo.png" rel="icon">
 
   <!-- Google Fonts -->
   <link href="https://fonts.gstatic.com" rel="preconnect">
@@ -28,8 +28,15 @@
   <link href="/adminpl/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
   <link href="/adminpl/assets/vendor/simple-datatables/style.css" rel="stylesheet">
 
+
   <!-- jequery image Preview -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+  <!-- DataTables CSS -->
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap5.min.css">
+
+  <!-- cdn icon -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 
   <!-- Template Main CSS File -->
   <link href="/adminpl/assets/css/style.css" rel="stylesheet">
@@ -59,7 +66,7 @@
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="/admin">Home</a></li>
-          <li class="breadcrumb-item active">Dashboard</li>
+          <li class="breadcrumb-item active">Quản lý ứng viên</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
@@ -70,86 +77,43 @@
         <!-- Left side columns -->
         <div class="col-lg-12">
           <div class="row">
-
-            <!-- job Card -->
-            <div class="col-xxl-3 col-md-6">
-              <div class="card info-card revenue-card">
-                <div class="card-body">
-                  <h5 class="card-title"><a href="/admin/tuyendung/ds_baidang">Việc làm tuyển dụng </a></h5>
-
-                  <div class="d-flex align-items-center">
-                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                      <i class="bi bi-door-open-fill"></i>
-                    </div>
-                    <div class="ps-3">
-                      <h6>${job_number}</h6>
-                      <span class="text-muted small pt-2 ps-1">Việc làm</span>
-                    </div>
-                  </div>
+            <!-- Băt dâp phân main-->
+            <div class="col-lg-12" >
+                <div class="d-flex justify-content-between mb-2 mt-2">
+                    <h5 class="mb-3">Danh sách tài khoản ứng viên</h5>
+                    <!-- <a class="btn btn-primary" href="/admin/post/creat">Thêm mới</a>  -->
                 </div>
-              </div>
-            </div><!-- End job Card-->
-
-            <!-- ung vien Card -->
-            <div class="col-xxl-3 col-md-6">
-              <div class="card info-card sales-card">
-                <div class="card-body">
-                  <h5 class="card-title"><a href="/admin/ungvien">Tài khoản ứng viên</a> </h5>
-
-                  <div class="d-flex align-items-center">
-                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                      <i class="bi bi-people"></i>
-                    </div>
-                    <div class="ps-3">
-                      <h6>${user_ungvien}</h6>
-                      <span class="text-muted small pt-2 ps-1">Tài khoản</span>
-                    </div>
-                  </div>
-                </div>
-
-              </div>
-            </div><!-- ung vien Card -->
-
-            <!-- tuyen dung Card -->
-            <div class="col-xxl-3 col-xl-12">
-              <div class="card info-card customers-card">
-                <div class="card-body">
-                  <h5 class="card-title"><a href="/admin/tuyendung">Nhà tuyển dụng</a></h5>
-
-                  <div class="d-flex align-items-center">
-                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                      <i class="bi bi-people"></i>
-                    </div>
-                    <div class="ps-3">
-                      <h6>${user_tuyendung}</h6>
-                      <span class="text-muted small pt-2 ps-1">Tài khoản</span>
-
-                    </div>
-                  </div>
-
-                </div>
-              </div>
-
-            </div><!-- end tuyển dung Card -->
-           <!-- ung vien Card -->
-           <div class="col-xxl-3 col-md-6">
-            <div class="card info-card sales-card">
-              <div class="card-body">
-                <h5 class="card-title"><a href="/admin/post">Bài viết mổi bật</a> </h5>
-
-                <div class="d-flex align-items-center">
-                  <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                    <i class="bi bi-people"></i>
-                  </div>
-                  <div class="ps-3">
-                    <h6>${post_number}</h6>
-                    <span class="text-muted small pt-2 ps-1">Bài</span>
-                  </div>
-                </div>
-              </div>
-
+                <hr>
+                <table id="example" class="table table-striped table-bordered table-hover mt-4">
+                    <thead>
+                        <tr>
+                            <th>TT</th>
+                            <th>Tên ứng viên</th>
+                            <th>Vị trí Ứng tuyển</th>      
+                            <th>Thời gian apply</th>
+                            <th>Trạng thái hồ sơ</th>
+                            <th>Tác vụ</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <c:forEach var="apply" items="${listApplies}" varStatus="status" >
+                            <tr>
+                                <th>${status.index + 1}</th>
+                                <td>${apply.user.fullName}</td>
+                                <td style="width: 250px;" >${apply.job.title}</td>
+                                <td>${apply.timeapply}</td>
+                                <td>${apply.status}</td>
+                                <td>
+                                    <a class="btn btn-success mx-2 "
+                                        href="/tuyendung/ds_hosoungtuyen/cvdetail2?userid=${apply.user.id}&jobid=${apply.job.id}"><i class="fa-solid fa-pen-nib"></i> Xem thông tin</a>
+                                    <a class="btn btn-danger"
+                                        href="/admin/xoaapply/${apply.id}"><i class="fa-regular fa-trash-can"></i> Xóa ứng viên</a>
+                                </td>
+                            </tr>
+                        </c:forEach>
+                    </tbody>
+                </table>
             </div>
-          </div><!-- ung vien Card -->
 
           </div>
         </div><!-- End Left side columns -->
@@ -171,11 +135,22 @@
   <script src="/adminpl/assets/vendor/echarts/echarts.min.js"></script>
   <script src="/adminpl/assets/vendor/quill/quill.min.js"></script>
   <script src="/adminpl/assets/vendor/simple-datatables/simple-datatables.js"></script>
-  <!-- <script src="assets/vendor/tinymce/tinymce.min.js"></script> -->
+  
   <script src="/adminpl/assets/vendor/php-email-form/validate.js"></script>
 
   <!-- Template Main JS File -->
   <script src="/adminpl/assets/js/main.js"></script>
+
+  <!-- DataTables JS -->
+  <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js"></script>
+
+  <!-- DataTable Initialization -->
+  <script>
+      $(document).ready(function() {
+          $('#example').DataTable();
+      });
+  </script>
 
 </body>
 

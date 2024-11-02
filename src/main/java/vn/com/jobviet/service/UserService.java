@@ -88,4 +88,8 @@ public class UserService {
     public List<User> getListUserByRole(Role role){
         return this.userRepository.findByRole(role);
     }
+
+    public long countUsersWithRole(String roleName){
+        return this.userRepository.countByRole_Name(roleName);
+    }
 }

@@ -39,6 +39,14 @@ public class ApplyService {
         this.applyRepository.deleteById(id);
     }
 
+    public List<Apply> getAllApply(){
+        return this.applyRepository.findAll();
+    }
+
+    public List<Apply> getAllByUserId(long id){
+        return this.applyRepository.findByUser_Id(id);
+    }
+
     public List<Apply> getAppliesByUserId(Long userId) {
         return applyRepository.findByJob_User_Id(userId);
     }

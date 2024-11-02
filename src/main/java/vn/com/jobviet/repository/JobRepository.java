@@ -27,4 +27,6 @@ public interface JobRepository extends JpaRepository<Job, Long>{
     @Query("SELECT j FROM Job j WHERE j.status = :status ORDER BY j.view DESC")
     Page<Job> findByStatusOrderByViewDesc(@Param("status") String status, Pageable pageable);
 
+    long countByStatus(String status);
+
 } 

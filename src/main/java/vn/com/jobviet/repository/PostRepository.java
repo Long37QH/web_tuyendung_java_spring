@@ -32,4 +32,6 @@ public interface PostRepository extends JpaRepository<Post, Long> {
     
     // lấy ra 6 bài noi bật
     List<Post> findTop6ByOrderByViewDesc();
+
+    long countByStatus(String status);
 }

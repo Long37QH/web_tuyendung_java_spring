@@ -65,4 +65,8 @@ public class JobService {
     public void deleteJoblikeById(long id){
         this.jobLikeRepository.deleteById(id);
     }
+
+    public long countJobsWithStatus(String status) {
+        return jobRepository.countByStatus(status);
+    }
 }

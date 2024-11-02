@@ -81,4 +81,8 @@ public class PostService {
     public List<Post>getPostHot(){
         return this.postRepository.findTop6ByOrderByViewDesc();
     }
+
+    public long countPostsWithStatus(String status){
+        return this.postRepository.countByStatus(status);
+    }
 }

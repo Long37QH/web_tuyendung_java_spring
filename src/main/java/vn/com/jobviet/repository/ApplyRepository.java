@@ -16,10 +16,15 @@ import vn.com.jobviet.domain.User;
 public interface ApplyRepository extends JpaRepository<Apply, Long> {
 
     Apply findByUserAndJob(User user,Job job);
+
+    @SuppressWarnings("null")
+    List<Apply> findAll();
     
     List<Apply> findByUser_IdAndStatusOrStatus(Long userId, String status1, String status2);
 
     Apply findById(long id);
+
+    List<Apply> findByUser_Id(long id);
 
     // Lấy danh sách các Apply mà job.user.id = userId
     List<Apply> findByJob_User_Id(Long userId);

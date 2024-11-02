@@ -266,7 +266,7 @@ public class EmployePageController {
         
         model.addAttribute("apply", apply);
         model.addAttribute("userTD", userapply);
-        return "/client/tuyendung/cvdetail";
+        return "/client/tuyendung/cvdetail2";
     }
 
     @PostMapping("/tuyendung/ds_hosoungtuyen/feedback")
