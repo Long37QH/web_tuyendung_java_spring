@@ -4,6 +4,8 @@ package vn.com.jobviet.repository;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import vn.com.jobviet.domain.Apply;
@@ -15,7 +17,7 @@ public interface ApplyRepository extends JpaRepository<Apply, Long> {
 
     Apply findByUserAndJob(User user,Job job);
     
-    List<Apply> findByUserAndStatus(User user, String status);
+    List<Apply> findByUser_IdAndStatusOrStatus(Long userId, String status1, String status2);
 
     Apply findById(long id);
 
@@ -32,6 +34,9 @@ public interface ApplyRepository extends JpaRepository<Apply, Long> {
     List<Apply> findByJob_User_IdAndJob_Id(Long userId, Long jobId);
 
     // Tìm các Apply theo Job_User_Id và các Status
-    List<Apply> findByJob_User_IdAndStatusOrStatus(Long userId, String status1, String status2);
+    @Query("SELECT a FROM Apply a WHERE a.user.id = :userId AND (a.status = :status1 OR a.status = :status2)")
+    List<Apply> findByUserIdAndStatuses(@Param("userId") Long userId, 
+                                        @Param("status1") String status1, 
+                                        @Param("status2") String status2);
 
 }

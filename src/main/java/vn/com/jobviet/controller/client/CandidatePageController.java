@@ -75,11 +75,27 @@ public class CandidatePageController {
     public String getPageListApply(Model model, HttpServletRequest request) {
         HttpSession session = request.getSession(false);
         long idUser = (long) session.getAttribute("id");
-        User user = this.userService.getUserById(idUser);
-
-        List<Apply> listApplys = this.applyService.getListApplyByUserAndStust(user, "Chờ duyệt");
+        
+        List<Apply> listApplys = this.applyService.getAppliesByUserIdAndStatuses(idUser, "Đang duyệt", "Chờ duyệt");
         model.addAttribute("listApplys", listApplys);
         return "/client/ungvien/ds_hosochoduyet";
+    }
+
+    @GetMapping("/ungvien/kequaungtuyen")
+    public String getPageketqua(Model model, HttpServletRequest request) {
+        HttpSession session = request.getSession(false);
+        long idUser = (long) session.getAttribute("id");
+       
+        List<Apply> listApplys = this.applyService.getAppliesByUserIdAndStatuses(idUser, "Đã duyệt", "Từ chối hồ sơ");
+        model.addAttribute("listApplys", listApplys);
+        return "/client/ungvien/ketquaungtuyen";
+    }
+    
+    @GetMapping("/ungvien/ketqua/{id}")
+    public String getketqua(Model model, @PathVariable long id) {
+        Apply apply = this.applyService.getApplyById(id);
+        model.addAttribute("apply", apply);
+        return "/client/ungvien/ketquadetail";
     }
 
     //huy ung tuyen

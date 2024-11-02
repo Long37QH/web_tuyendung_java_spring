@@ -75,7 +75,7 @@
             <div class="row">
                 <div class="col-xl-12">
                     <div class="bradcam_text text-white">
-                        <h2 class="text-white">Quản lý hồ sơ ứng tuyển</h2>
+                        <h2 class="text-white">Quản lý kết quả hồ sơ ứng tuyển</h2>
                     </div>
                 </div>
             </div>
@@ -89,8 +89,8 @@
             <div>
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
-                        <li class="breadcrumb-item" aria-current="page">Quản lý hồ sơ ứng tuyển
+                        <li class="breadcrumb-item"><a href="/">Trang chủ</a></li>
+                        <li class="breadcrumb-item" aria-current="page">Kết quả hồ sơ ứng tuyển
                         </li>
                     </ol>
                 </nav>
@@ -117,14 +117,14 @@
                                     <td style="width: 250px;" >${apply.job.title}</td>
                                     <td>${apply.job.workingForm}</td>
                                     <td>${apply.timeapply}</td>
-                                    <td class="${apply.status == 'Chờ duyệt' ? 'text-warning' : 'text-info'}" ><strong>${apply.status}</strong></td>
+                                    <td class="${apply.status == 'Đã duyệt' ? 'text-success' : 'text-danger'}"><strong>${apply.status}</strong></td>
                                     <td>
                                         <!-- <a class="btn btn-success"
                                             href="#"><i class="fa-regular fa-eye"></i> Xem</a>
                                         <a class="btn btn-primary"
                                             href="#"><i class="fa-solid fa-user-tag"></i> Ứng viên</a> -->
                                         <a class="btn btn-success mx-2 "
-                                            href="/job/detail/${apply.job.id}"><i class="fa-solid fa-pen-nib"></i> Xem chi tiết</a>
+                                            href="/ungvien/ketqua/${apply.id}"><i class="fa-solid fa-pen-nib"></i> Kết quả phản hồi</a>
                                         <a class="btn btn-danger"
                                             href="/ungvien/huyungtuyen/${apply.id}"><i class="fa-regular fa-trash-can"></i> Hủy ứng tuyển</a>
                                     </td>

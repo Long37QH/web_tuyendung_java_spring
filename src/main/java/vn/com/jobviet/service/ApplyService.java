@@ -31,8 +31,8 @@ public class ApplyService {
         return applyNew;
     }
 
-    public List<Apply> getListApplyByUserAndStust(User user,String status){
-        return this.applyRepository.findByUserAndStatus(user, status);
+    public List<Apply> getListApplyByUserAndStust(long userId,String status1, String status2){
+        return applyRepository.findByUser_IdAndStatusOrStatus(userId, status1, status2);
     }
 
     public void deleteApplyById(long id){
@@ -43,7 +43,7 @@ public class ApplyService {
         return applyRepository.findByJob_User_Id(userId);
     }
 
-    public List<Apply> getAppliesByUserIdAndStatuses(Long userId, List<String> statuses) {
+    public List<Apply> getAppliesByUserIdAndStatuses2(Long userId, List<String> statuses) {
         return applyRepository.findByJob_User_IdAndStatusIn(userId, statuses);
     }
 
@@ -56,6 +56,6 @@ public class ApplyService {
     }
 
     public List<Apply> getAppliesByUserIdAndStatuses(Long userId, String status1, String status2) {
-        return applyRepository.findByJob_User_IdAndStatusOrStatus(userId, status1, status2);
+        return applyRepository.findByUserIdAndStatuses(userId, status1, status2);
     }
 }

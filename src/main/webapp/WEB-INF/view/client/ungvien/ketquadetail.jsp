@@ -38,15 +38,14 @@
     <!-- cdn icon -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 
-    <!-- jequery toastr -->
+    <!-- jequery image Preview -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
     <!-- Toastr CSS -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet" />
     <!-- Toastr JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <!-- DataTables CSS -->
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap5.min.css">
 
     <style>
         .toast-custom-top-right {
@@ -56,15 +55,11 @@
             z-index: 9999;
         }
     </style>
-    
 
 </head>
 
 <body>
-    <!--[if lte IE 9]>
-            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
-        <![endif]-->
-
+    
     <!-- header-start -->
     <jsp:include page="../layout/header.jsp" />
     <!-- header-end -->
@@ -74,8 +69,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-xl-12">
-                    <div class="bradcam_text text-white">
-                        <h2 class="text-white">Quản lý hồ sơ ứng tuyển</h2>
+                    <div class="bradcam_text">
+                        <h3>Cùng Jobviet tìm kiếm những ứng viên tiềm năng</h3>
                     </div>
                 </div>
             </div>
@@ -84,61 +79,76 @@
     <!--/ bradcam_area  -->
 
     <!-- job_listing_area_start  -->
-    <div class="job_listing_area py-4">
+    <div class="job_listing_area plus_padding">
         <div class="container">
-            <div>
+            <div class="col-lg-8 mx-auto p-2">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
-                        <li class="breadcrumb-item" aria-current="page">Quản lý hồ sơ ứng tuyển
-                        </li>
+                        <li class="breadcrumb-item"><a href="/">Trang chủ</a></li>
+                        <li class="breadcrumb-item"><a href="/tuyendung/danhsachungvien">Quản lý hồ sơ ứng tuyển</a></li>
+                        <li class="breadcrumb-item" aria-current="page">Thông tin ứng viên</li>
                     </ol>
                 </nav>
             </div>
             <div class="row">
-                <div class="col-lg-12" >
-                    <h4 class="mb-3">Danh sách các lượt ứng tuyển</h4>
-                    <hr>
-                    <table id="example" class="table table-striped table-bordered table-hover mt-4">
-                        <thead>
-                            <tr>
-                                <th>TT</th>
-                                <th>Vị trí Ứng tuyển</th>
-                                <th>Hình thức</th>
-                                <th>Thời gian apply</th>
-                                <th>Trạng thái</th>
-                                <th>Tác vụ</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <c:forEach var="apply" items="${listApplys}" varStatus="status" >
-                                <tr>
-                                    <th>${status.index + 1}</th>
-                                    <td style="width: 250px;" >${apply.job.title}</td>
-                                    <td>${apply.job.workingForm}</td>
-                                    <td>${apply.timeapply}</td>
-                                    <td class="${apply.status == 'Chờ duyệt' ? 'text-warning' : 'text-info'}" ><strong>${apply.status}</strong></td>
-                                    <td>
-                                        <!-- <a class="btn btn-success"
-                                            href="#"><i class="fa-regular fa-eye"></i> Xem</a>
-                                        <a class="btn btn-primary"
-                                            href="#"><i class="fa-solid fa-user-tag"></i> Ứng viên</a> -->
-                                        <a class="btn btn-success mx-2 "
-                                            href="/job/detail/${apply.job.id}"><i class="fa-solid fa-pen-nib"></i> Xem chi tiết</a>
-                                        <a class="btn btn-danger"
-                                            href="/ungvien/huyungtuyen/${apply.id}"><i class="fa-regular fa-trash-can"></i> Hủy ứng tuyển</a>
-                                    </td>
-                                </tr>
-                            </c:forEach>
-                        </tbody>
-                    </table>
+                <div class="col-lg-8 mx-auto" >
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="mb-3">Kết quả Hồ sơ ứng tuyển</h4>
+                            <hr>
+                            <form:form class="row g-3" method="post"
+                                enctype="multipart/form-data" action=""
+                                modelAttribute="apply">
+                                <div class="col-md-12 mb-3 d-none">
+                                    <label for="id" class="form-label">ID: </label>
+                                    <form:input type="text" class="form-control " id="id" path="id" />  
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="status" class="form-label">Trạng thái hồ sơ: </label>
+                                    <form:input type="text" class="form-control" id="status" path="status" />
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="timefeedback" class="form-label">Thời gian phê duyệt: </label>
+                                    <form:input type="text" class="form-control" id="timefeedback" path="timefeedback" />
+                                </div>
+                                <div class="col-md-12 mb-3">
+                                    <label class="form-label">Nội dung phản hồi:</label>
+                                    <form:textarea class="form-control" name="content" id="editor" path="feedback" ></form:textarea>
+                                    ${errorContentjob}
+                                </div>
+                                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+                                
+                                <div class="col-md-12 mt-3 text-center ">
+                                    <a class="btn btn-primary" href="/ungvien/kequaungtuyen">Quay lại</a>
+                                </div>
+                            </form:form>
+                        </div>    
+                    </div>
                 </div>
+                <!-- <div class="col-lg-4">
+                    <div class="blog_right_sidebar">
+                        <aside class="single_sidebar_widget search_widget">
+                            <h4 class="mb-3">Thay đổi mật khẩu</h4>
+                            <hr>
+                                <form class="" action="">
+                                    <div class="form-group">
+                                        <input type="password" class="form-control"  placeholder='password old' required>
+                                     </div>
+                                     <div class="form-group">
+                                        <input type="password" class="form-control"  placeholder='password new' required>
+                                     </div>
+                                     <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn"
+                                        type="submit">Lưu lại</button>
+                                </form>
+                        </aside>
+                    </div>         
+                </div> -->
             </div>
         </div>
     </div>
     <!-- job_listing_area_end  -->
 
-    <!-- footer start -->
+   <!-- footer start -->
    <jsp:include page="../layout/footer.jsp" />
    <!--/ footer end  -->
 
@@ -176,24 +186,6 @@
 
     <script src="/client/js/main.js"></script>
 
-    <!-- Bootstrap 5 JS and dependencies -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-
-    <!-- jQuery (DataTables cần jQuery) -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-    <!-- DataTables JS -->
-    <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js"></script>
-
-    <!-- DataTable Initialization -->
-    <script>
-        $(document).ready(function() {
-            $('#example').DataTable();
-        });
-    </script>
-    
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 
 	<script>
         $( function() {
@@ -210,30 +202,31 @@
                 " - $" + $( "#slider-range" ).slider( "values", 1 ) + "/ Year");
         } );
         </script>
-        <script type="text/javascript">
-            $(document).ready(function () {
-                toastr.options = {
-                    "closeButton": true,
-                    "debug": false,
-                    "newestOnTop": true,
-                    "progressBar": true,
-                    "positionClass": "toast-custom-top-right", // Thay đổi vị trí hiển thị
-                    "preventDuplicates": true,
-                    "showDuration": "300",
-                    "hideDuration": "1000",
-                    "timeOut": "3000", // Thời gian tồn tại của thông báo
-                    "extendedTimeOut": "1000",
-                    "showEasing": "swing",
-                    "hideEasing": "linear",
-                    "showMethod": "fadeIn",
-                    "hideMethod": "fadeOut"
-                };
-                // Check if there's a flash attribute 'message'
-                <c:if test="${not empty message}">
-                    toastr.success("${message}");
-                </c:if>    
-            });
-        </script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            toastr.options = {
+                "closeButton": true,
+                "debug": false,
+                "newestOnTop": true,
+                "progressBar": true,
+                "positionClass": "toast-custom-top-right", // Thay đổi vị trí hiển thị
+                "preventDuplicates": true,
+                "showDuration": "300",
+                "hideDuration": "1000",
+                "timeOut": "3000", // Thời gian tồn tại của thông báo
+                "extendedTimeOut": "1000",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "fadeIn",
+                "hideMethod": "fadeOut"
+            };
+            // Check if there's a flash attribute 'message'
+            <c:if test="${not empty message}">
+                toastr.success("${message}");
+            </c:if>
+        });
+    </script>
 </body>
 
 </html>

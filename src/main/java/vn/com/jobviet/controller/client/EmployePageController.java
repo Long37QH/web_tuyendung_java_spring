@@ -224,7 +224,7 @@ public class EmployePageController {
         long idUser = (long) session.getAttribute("id");
         // List<Apply> applies = applyService.getAppliesByUserId(idUser);
         List<String> statuses = Arrays.asList("Đang duyệt", "Chờ duyệt");
-        List<Apply> applies = applyService.getAppliesByUserIdAndStatuses(idUser, statuses);
+        List<Apply> applies = applyService.getAppliesByUserIdAndStatuses2(idUser, statuses);
         model.addAttribute("applies", applies);
         return "/client/tuyendung/ds_hosoungtuyen";
     }
@@ -233,7 +233,8 @@ public class EmployePageController {
     public String getAllApplyFeedback(Model model, HttpServletRequest request) {
         HttpSession session = request.getSession(false);
         long idUser = (long) session.getAttribute("id");
-        List<Apply> applies = applyService.getAppliesByUserIdAndStatuses(idUser, "Đã duyệt", "Từ chối hồ sơ");
+        List<String> statuses = Arrays.asList("Đã duyệt", "Từ chối hồ sơ");
+        List<Apply> applies = applyService.getAppliesByUserIdAndStatuses2(idUser, statuses);
         model.addAttribute("applies", applies);
         return "/client/tuyendung/ds_ungviendaduyet";
     }
@@ -291,6 +292,11 @@ public class EmployePageController {
     @GetMapping("/tuyendung/loaiungvien/{id}")
     public String getMethodName(Model model, @PathVariable long id, RedirectAttributes redirectAttributes) {
         Apply apply = this.applyService.getApplyById(id);
+
+        LocalDateTime currentTime = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        String formattedDate = currentTime.format(formatter);
+        apply.setTimefeedback(formattedDate);
         apply.setStatus("Từ chối hồ sơ");
         apply.setFeedback("Cảm ơn bạn đã quan tâm vị trí công việc bên chúng mình,"
                 + "rất tiếc bạn không đủ điều kiện cho vị trí công việc");
