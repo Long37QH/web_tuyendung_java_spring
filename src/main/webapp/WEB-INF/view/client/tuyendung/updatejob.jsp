@@ -140,12 +140,12 @@
                                     <label class="form-label">Ngành :</label>
                                     <form:select class="form-select" path="inductry">
                                         <!-- <option selected></option> -->
-                                        <form:option value="CNTT / IT Phần mềm">CNTT / IT Phần mềm</form:option>
-                                        <form:option value="Kinh doanh / Bán hàng">Kinh doanh / Bán hàng</form:option>
-                                        <form:option value="Hành chính / Văn phòng">Hành chính / Văn phòng</form:option>
-                                        <form:option value="Giáo dục / Đào tạo">Giáo dục / Đào tạo</form:option>
-                                        <form:option value="Tư vấn">Tư vấn</form:option>
-                                        <form:option value="Marketing / Truyền thông">Marketing / Truyền thông</form:option>
+                                        <form:option value="CNTT-IT-PHAN-MEM">CNTT / IT Phần mềm</form:option>
+                                        <form:option value="KINH-DOANH-BAN-HANG">Kinh doanh / Bán hàng</form:option>
+                                        <form:option value="HANH-CHINH-VAN-PHONG">Hành chính / Văn phòng</form:option>
+                                        <form:option value="GIAO-DUC-DAO-TAO">Giáo dục / Đào tạo</form:option>
+                                        <form:option value="TU-VAN">Tư vấn</form:option>
+                                        <form:option value="MARKETING-TRUYEN-THONG">Marketing / Truyền thông</form:option>
                                     </form:select>
                                 </div> 
                                 <div class="col-md-3 mb-3">
@@ -158,7 +158,7 @@
                                     <form:select class="form-select" path="workingForm">
                                         <!-- <option selected></option> -->
                                         <form:option value="Fulltime">Fulltime</form:option>
-                                        <form:option value="Part time">Part time</form:option>
+                                        <form:option value="Parttime">Parttime</form:option>
                                         <form:option value="Remote">Remote</form:option>
                                     </form:select>
                                 </div> 
@@ -170,9 +170,9 @@
                                         <form:option value="10-15 triệu">10-15 triệu</form:option>
                                         <form:option value="15-20 triệu">15-20 triệu</form:option>
                                         <form:option value="20-25 triệu">20-25 triệu</form:option>
-                                        <form:option value="20-25 triệu">25-30 triệu</form:option>
-                                        <form:option value="20-25 triệu">30-40 triệu</form:option>
-                                        <form:option value="20-25 triệu">Trên 40 triệu</form:option>
+                                        <form:option value="25-30 triệu">25-30 triệu</form:option>
+                                        <form:option value="30-35 triệu">30-40 triệu</form:option>
+                                        <form:option value="Trên 40 triệu">Trên 40 triệu</form:option>
                                         <form:option value="Thỏa thuận">Thỏa thuận</form:option>
                                     </form:select>
                                 </div> 

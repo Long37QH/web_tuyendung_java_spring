@@ -2,6 +2,7 @@ package vn.com.jobviet.controller.client;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
@@ -23,6 +24,7 @@ import vn.com.jobviet.domain.Apply;
 import vn.com.jobviet.domain.Job;
 import vn.com.jobviet.domain.JobLike;
 import vn.com.jobviet.domain.User;
+import vn.com.jobviet.domain.dto.JobCriteriaDTO;
 import vn.com.jobviet.service.ApplyService;
 import vn.com.jobviet.service.JobService;
 import vn.com.jobviet.service.UploadService;
@@ -45,11 +47,11 @@ public class JobPageController {
     }
 
     @GetMapping("/job")
-    public String getPageJob(Model model, @RequestParam("page") Optional<String> pageOptional) {
+    public String getPageJob(Model model, JobCriteriaDTO jobCriteriaDTO,HttpServletRequest request) {
         int page = 1;
         try {
-            if (pageOptional.isPresent()) {
-                page = Integer.parseInt(pageOptional.get());
+            if (jobCriteriaDTO.getPage().isPresent()) {
+                page = Integer.parseInt(jobCriteriaDTO.getPage().get());
             } else {
                 // page = 1
             }
@@ -59,14 +61,22 @@ public class JobPageController {
         PageRequest pageable = PageRequest.of(page - 1, 10);
         String status = "Đăng bài";
 
-        Page<Job> prs = this.jobService.GetAllJobByStatusOderbyView(status, pageable);
-        List<Job> listjob = prs.getContent();
+        Page<Job> prs = this.jobService.fetchJobWithSpec(pageable, jobCriteriaDTO,status);
+        List<Job> listjob = prs.getContent().size() > 0 ? prs.getContent():new ArrayList<Job>();
+
+        String qs = request.getQueryString();
+        if (qs != null && !qs.isBlank()) {
+            // remove page
+            qs = qs.replace("page=" + page, "");
+        }
 
         model.addAttribute("listjob", listjob);
         // lây so trong hiện tại truyên sang view
         model.addAttribute("curentPage", page);
         // lấy tông số trang
         model.addAttribute("totalPages", prs.getTotalPages());
+
+        model.addAttribute("queryString", qs);
         return "/client/job/show";
     }
 

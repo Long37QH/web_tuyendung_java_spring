@@ -2,14 +2,19 @@ package vn.com.jobviet.service;
 import java.util.List;
 
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import vn.com.jobviet.domain.Job;
 import vn.com.jobviet.domain.JobLike;
 import vn.com.jobviet.domain.User;
+import vn.com.jobviet.domain.dto.JobCriteriaDTO;
 import vn.com.jobviet.repository.JobLikeRepository;
 import vn.com.jobviet.repository.JobRepository;
+import vn.com.jobviet.service.specification.JobSpecs;
 
 @Service
 public class JobService {
@@ -41,6 +46,40 @@ public class JobService {
 
     public List<Job> getListJobByStatus(String status){
         return this.jobRepository.findByStatus(status);
+    }
+
+    public Page<Job> fetchJobWithSpec(Pageable pageable,JobCriteriaDTO jobCriteriaDTO,String status){
+        if(jobCriteriaDTO.getArea() == null
+            && jobCriteriaDTO.getWorkingForm() == null
+            && jobCriteriaDTO.getSalary() == null
+            && jobCriteriaDTO.getExperience() == null
+            && jobCriteriaDTO.getInductry() == null){
+                return this.jobRepository.findByStatusOrderByViewDesc(status, pageable);
+            }
+        // Thiết lập `Specification` với điều kiện `status = "Đăng bài"`
+        Specification<Job> combinedSpec = Specification.where((root, query, criteriaBuilder) ->
+            criteriaBuilder.equal(root.get("status"), "Đăng bài")
+        );
+
+        // Áp dụng các tiêu chí từ `JobCriteriaDTO`
+        if (jobCriteriaDTO.getInductry() != null && jobCriteriaDTO.getInductry().isPresent()) {
+            combinedSpec = combinedSpec.and(JobSpecs.matchListInductry(jobCriteriaDTO.getInductry().get()));
+        }
+        if (jobCriteriaDTO.getArea() != null && jobCriteriaDTO.getArea().isPresent()) {
+            combinedSpec = combinedSpec.and(JobSpecs.matchListArea(jobCriteriaDTO.getArea().get()));
+        }
+        if (jobCriteriaDTO.getWorkingForm() != null && jobCriteriaDTO.getWorkingForm().isPresent()) {
+            combinedSpec = combinedSpec.and(JobSpecs.matchListWorkingForm(jobCriteriaDTO.getWorkingForm().get()));
+        }
+        if (jobCriteriaDTO.getSalary() != null && jobCriteriaDTO.getSalary().isPresent()) {
+            combinedSpec = combinedSpec.and(JobSpecs.matchListSalary(jobCriteriaDTO.getSalary().get()));
+        }
+        if (jobCriteriaDTO.getExperience() != null && jobCriteriaDTO.getExperience().isPresent()) {
+            combinedSpec = combinedSpec.and(JobSpecs.matchListexperience(jobCriteriaDTO.getExperience().get()));
+        }
+
+        // Sử dụng phương thức findAll với Specification và sắp xếp theo `view` giảm dần
+        return jobRepository.findAll(combinedSpec, PageRequest.of(pageable.getPageNumber(), pageable.getPageSize(), Sort.by(Sort.Direction.DESC, "view")));
     }
 
     //lay listjob trang home
