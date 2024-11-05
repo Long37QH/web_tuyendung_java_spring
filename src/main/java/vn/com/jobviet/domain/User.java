@@ -2,6 +2,7 @@ package vn.com.jobviet.domain;
 
 import java.util.List;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -40,9 +41,14 @@ public class User {
     private String dateOfBirth;
     private long numPost;
     private String company;
+
     private String descCompany;
+    
+    @Column(columnDefinition = "MEDIUMTEXT") 
+    private String descLongCompany;
     private String logoCompany;
     private String filecv;
+    private long sumjob ;
 
     // khai bao khoa ngoai
     @ManyToOne
@@ -111,14 +117,14 @@ public class User {
         this.dateOfBirth = dateOfBirth;
     }
     
-   
     @Override
     public String toString() {
         return "User [id=" + id + ", email=" + email + ", password=" + password + ", fullName=" + fullName
                 + ", addRess=" + addRess + ", phone=" + phone + ", avatar=" + avatar + ", dateOfBirth=" + dateOfBirth
-                + ", numPost=" + numPost + "]";
+                + ", numPost=" + numPost + ", company=" + company + ", descCompany=" + descCompany
+                + ", descLongCompany=" + descLongCompany + ", logoCompany=" + logoCompany + ", filecv=" + filecv
+                + ", sumjob=" + sumjob + "]";
     }
-
     public Role getRole() {
         return role;
     }
@@ -179,6 +185,18 @@ public class User {
     }
     public void setFilecv(String filecv) {
         this.filecv = filecv;
+    }
+    public long getSumjob() {
+        return sumjob;
+    }
+    public void setSumjob(long sumjob) {
+        this.sumjob = sumjob;
+    }
+    public String getDescLongCompany() {
+        return descLongCompany;
+    }
+    public void setDescLongCompany(String descLongCompany) {
+        this.descLongCompany = descLongCompany;
     }
 
     

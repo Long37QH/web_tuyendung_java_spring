@@ -280,14 +280,14 @@
                     <div class="recent_joblist_wrap">
                         <div class="recent_joblist white-bg ">
                             <div class="row align-items-center">
-                                <div class="col-md-6">
+                                <div class="col-md-4">
                                     <h4>Danh sách việc làm</h4>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-8">
                                     <div class="serch_cat d-flex justify-content-end">
                                         <select>
                                             <option value="">Ngành Nghề</option>
-                                            <option value="1">Công Nghệ Thông Tin</option>
+                                            <option value="1">CNTT-IT phần mền</option>
                                             <option value="2">Công Nghệ Ô Tô </option>
                                             <option value="4">Tài Chính Ngân Hàng</option>
                                         </select>
@@ -300,7 +300,9 @@
                     <div class="job_lists m-0">
                         <div class="row">
                             <c:if test="${totalPages ==  0}">
-                                <div>Không tìm thấy việc làm</div>
+                                <div class="col-lg-12 col-md-12">
+                                    <div class="text-center" >Không tìm thấy việc làm</div>
+                                </div>
                             </c:if>
                             <c:forEach var="job" items="${listjob}">
                                 <div class="col-lg-12 col-md-12">

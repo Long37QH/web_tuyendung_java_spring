@@ -141,7 +141,7 @@
             <div class="row">
                 <!-- Kinh doanh/Bán hàng -->
                 <div class="col-lg-3 col-md-6 mb-4">
-                    <a href="#">
+                    <a href="/job?page=1&inductry=KINH-DOANH-BAN-HANG">
                         <div class="card job-category-card p-4 text-center">
                             <i class="fas fa-shopping-cart category-icon"></i>
                             <h3 class="category-title">Kinh doanh / Bán hàng</h3>
@@ -152,7 +152,7 @@
                 </div>
                 <!-- IT Phần mềm -->
                 <div class="col-lg-3 col-md-6 mb-4">
-                    <a href="#">
+                    <a href="/job?page=1&inductry=CNTT-IT-PHAN-MEM">
                         <div class="card job-category-card p-4 text-center">
                             <i class="fas fa-laptop-code category-icon"></i>
                             <h3 class="category-title">IT Phần mềm</h3>
@@ -162,7 +162,7 @@
                 </div>
                 <!-- Hành chính / Văn phòng -->
                 <div class="col-lg-3 col-md-6 mb-4">
-                    <a href="#">
+                    <a href="/job?page=1&inductry=HANH-CHINH-VAN-PHONG">
                         <div class="card job-category-card p-4 text-center">
                             <i class="fas fa-building category-icon"></i>
                             <h3 class="category-title">Hành chính / Văn phòng</h3>
@@ -172,7 +172,7 @@
                 </div>
                 <!-- Giáo dục / Đào tạo -->
                 <div class="col-lg-3 col-md-6 mb-4">
-                    <a href="#">
+                    <a href="/job?page=1&inductry=GIAO-DUC-DAO-TAO">
                         <div class="card job-category-card p-4 text-center">
                             <i class="fas fa-chalkboard-teacher category-icon"></i>
                             <h3 class="category-title">Giáo dục / Đào tạo</h3>
@@ -182,7 +182,7 @@
                 </div>
                 <!-- Tư vấn -->
                 <div class="col-lg-3 col-md-6 mb-4">
-                    <a href="#">
+                    <a href="/job?page=1&inductry=TU-VAN">
                         <div class="card job-category-card p-4 text-center">
                             <i class="fas fa-user-tie category-icon"></i>
                             <h3 class="category-title">Tư vấn</h3>
@@ -192,7 +192,7 @@
                 </div>
                 <!-- Marketing / Truyền thông -->
                 <div class="col-lg-3 col-md-6 mb-4">
-                    <a href="#">
+                    <a href="/job?page=1&inductry=MARKETING-TRUYEN-THONG">
                         <div class="card job-category-card p-4 text-center">
                             <i class="fas fa-bullhorn category-icon"></i>
                             <h3 class="category-title">Marketing / Truyền thông</h3>
@@ -213,7 +213,7 @@
                 </div>
                 <!-- Kế toán / Kiểm toán -->
                 <div class="col-lg-3 col-md-6 mb-4">
-                    <a href="#">
+                    <a href="/job?page=1&inductry=HANH-CHINH-VAN-PHONG">
                         <div class="card job-category-card p-4 text-center">
                             <i class="fas fa-calculator category-icon"></i>
                             <h3 class="category-title">Kế toán / Kiểm toán</h3>

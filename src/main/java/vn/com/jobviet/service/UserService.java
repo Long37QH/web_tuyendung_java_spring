@@ -2,6 +2,8 @@ package vn.com.jobviet.service;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import vn.com.jobviet.domain.Plan;
@@ -87,6 +89,10 @@ public class UserService {
 
     public List<User> getListUserByRole(Role role){
         return this.userRepository.findByRole(role);
+    }
+
+    public Page<User> getUserByRole(Role role ,Pageable pageable ){
+        return this.userRepository.findByRole(role, pageable);
     }
 
     public long countUsersWithRole(String roleName){

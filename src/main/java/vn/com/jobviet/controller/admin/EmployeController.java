@@ -56,6 +56,13 @@ public class EmployeController {
     @GetMapping("/admin/tuyendung/dangbai/{id}")
     public String getMethodName(Model model,@PathVariable long id,RedirectAttributes redirectAttributes) {
         Job currenJob = this.jobService.getJobById(id);
+        
+        long idTD = currenJob.getUser().getId();
+        User TD = this.userService.getUserById(idTD);
+        long sumJobnew = TD.getSumjob() + 1;
+        TD.setSumjob(sumJobnew);
+        this.userService.handlSaveUser(TD);
+
         currenJob.setStatus("Đăng bài");
         this.jobService.handSaveJob(currenJob);
         redirectAttributes.addFlashAttribute("message", "Đăng bài thành công!");

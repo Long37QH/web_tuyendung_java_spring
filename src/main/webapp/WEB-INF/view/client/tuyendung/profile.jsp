@@ -32,8 +32,8 @@
     <link rel="stylesheet" href="/client/css/style.css">
     <!-- <link rel="stylesheet" href="css/responsive.css"> -->
 
-     <!-- CKEditor CDN -->
-     <script src="https://cdn.ckeditor.com/4.18.0/standard/ckeditor.js"></script>
+     <!-- CKEditor 5 CDN -->
+    <script src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script>
 
     <!-- cdn icon -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
@@ -200,7 +200,7 @@
                                 </div>
 
                                 <div class="col-6 mb-3">
-                                    <label for="company" class="form-label">Loai tài khoản :</label>
+                                    <label for="company" class="form-label">Tên Công ty :</label>
                                     <form:input type="text" class="form-control"
                                         id="company" path="company"/>
                                 </div>
@@ -211,14 +211,25 @@
                                 </div>
                                 <div class="col-md-12 mb-3">
                                     <label for="descCompany" class="form-label">Hoạt động của công ty: </label>
-                                    <form:textarea type="text" class="form-control" id="descCompany"  rows="3" path="descCompany" /> 
+                                    <form:input type="text" class="form-control" id="descCompany"  rows="3" path="descCompany" /> 
+                                </div>
+                                <div class="col-md-12 mb-3">
+                                    <label for="desclongCompany" class="form-label">Giới thiệu công ty: </label>
+                                    <form:textarea type="text" id="editor" class="form-control"  rows="3" path="descLongCompany" /> 
                                 </div>
                                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
                                 <div class="text-center col-md-12 mt-4">
                                     <button type="submit" class="btn btn-primary mx-auto mb-4">Câp nhât thông tin</button>
                                 </div>
                             </form:form><!-- End Multi Columns Form -->
-
+                            <!-- CKEditor 5 Script -->
+                            <script>
+                                ClassicEditor
+                                    .create(document.querySelector('#editor'))
+                                    .catch(error => {
+                                        console.error(error);
+                                    });
+                            </script>
                         </div>    
                     </div>
                 </div>

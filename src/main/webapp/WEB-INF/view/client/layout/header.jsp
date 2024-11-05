@@ -21,7 +21,7 @@
                                                 <ul id="navigation">
                                                     <li><a href="/">Trang Chủ</a></li>
                                                     <li><a href="/job">Việc làm</a></li>
-                                                    <li><a href="#">Công ty</a></li>
+                                                    <li><a href="/company">Công ty</a></li>
                                                     <li><a href="#">Cẩm nang nghề nghiệp <i class="ti-angle-down"></i></a>
                                                         <ul class="submenu">
                                                             <li><a href="/post?category=Định-hướng-nghề-nghiệp">Định hướng nghề nghiệp</a></li>
@@ -102,7 +102,7 @@
                                                             <li><a class="dropdown-item" href="/tuyendung/profile"><i style="color: #21a212;"  class="fa-solid fa-user-tie mr-2"></i> Thông tin tài khoản</a></li>
                                                             <li><a class="dropdown-item" href="/tuyendung/taobaidang"><i style="color: #21a212;" class="fa-solid fa-pen-to-square mr-2"></i> Tạo bài đăng tuyển dụng</a></li>
                                                             <li><a class="dropdown-item" href="/tuyendung/baidangchoduyet"><i style="color: #21a212;" class="fa-solid fa-clipboard-list mr-2"></i>  Bài đăng chờ duyệt</a></li>
-                                                            <li><a class="dropdown-item" href="/tuyendung/baidangtuyendung"><i style="color: #21a212;" class="fa-solid fa-list-check mr-2"></i> Bài đăng tuyển dụng dụng</a></li>
+                                                            <li><a class="dropdown-item" href="/tuyendung/baidangtuyendung"><i style="color: #21a212;" class="fa-solid fa-list-check mr-2"></i> Bài đăng tuyển dụng</a></li>
                                                             <li><a class="dropdown-item" href="/tuyendung/danhsachungvien"><i style="color: #21a212;" class="fa-solid fa-eye mr-2"></i> Xem danh sách ứng viên</a></li>
                                                             <li><a class="dropdown-item" href="/tuyendung/danhsachdaduyet"><i style="color: #21a212;" class="fa-solid fa-book mr-2"></i> Kết quả phê duyệt</a></li>
                                                             <li><hr class="dropdown-divider"></li>

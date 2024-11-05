@@ -84,6 +84,7 @@ public class EmployePageController {
             currenUser.setDateOfBirth(userUp.getDateOfBirth());
             currenUser.setCompany(userUp.getCompany());
             currenUser.setDescCompany(userUp.getDescCompany());
+            currenUser.setDescLongCompany(userUp.getDescLongCompany());
 
             this.userService.handlSaveUser(currenUser);
             redirectAttributes.addFlashAttribute("message", "Cập nhật thành công!");
