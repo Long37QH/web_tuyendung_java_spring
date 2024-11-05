@@ -94,7 +94,14 @@
                 <div class="col-lg-12" >
                     <div class="card shadow-sm">
                         <div class="card-body">
-                            <h4 class="mb-30">Nhập thông tin bài đăng tuyển dụng</h4>
+                            <div class="row d-flex justify-content-between align-items-center mb-3">
+                                <div class="col">
+                                    <h4>Nhập thông tin bài đăng tuyển dụng</h4>
+                                </div>
+                                <div class="col d-grid gap-2 d-md-flex justify-content-md-end">
+                                    <h4 class="btn btn-info" >Số lượt đăng  ${user.numPost}</h4>
+                                </div>
+                            </div>
                             <hr>
                             <form:form class="row g-3 p-4" method="post" enctype="multipart/form-data"
                             action="/tuyendung/taobaidang" modelAttribute="jobnew">

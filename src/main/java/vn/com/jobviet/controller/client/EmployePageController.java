@@ -93,7 +93,11 @@ public class EmployePageController {
     }
 
     @GetMapping("/tuyendung/taobaidang")
-    public String getPageCreatJob(Model model) {
+    public String getPageCreatJob(Model model,HttpServletRequest request) {
+        HttpSession session = request.getSession(false);
+        long idUser = (long) session.getAttribute("id");
+        User user = this.userService.getUserById(idUser);
+        model.addAttribute("user", user);
         model.addAttribute("jobnew", new Job());
         return "/client/tuyendung/createjob";
     }
