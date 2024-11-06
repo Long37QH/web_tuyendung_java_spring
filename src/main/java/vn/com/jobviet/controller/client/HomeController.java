@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
 import vn.com.jobviet.domain.Job;
+import vn.com.jobviet.domain.Role;
 import vn.com.jobviet.domain.User;
 import vn.com.jobviet.domain.dto.RegisterDTO;
 import vn.com.jobviet.service.JobService;
@@ -57,6 +58,11 @@ public class HomeController {
 
         Page<Job> prs = this.jobService.GetAllJobByStatusOderbyView(status,pageable);
         List<Job> listjob = prs.getContent();
+
+        Role role = this.userService.getRoleByName("USER1");
+        List<User> listUsers = this.userService.getListUserByRole(role);
+
+        model.addAttribute("listUsers", listUsers);
 
         model.addAttribute("listjob", listjob);
         //lây so trong hiện tại truyên sang view

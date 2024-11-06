@@ -75,7 +75,7 @@
                             <p class="wow fadeInLeft" data-wow-duration="1s" data-wow-delay=".4s">Cùng Chúng Tôi Tìm
                                 Những Công việc Tuyệt Vời</p>
                             <div class="sldier_btn wow fadeInLeft" data-wow-duration="1s" data-wow-delay=".5s">
-                                <a href="#" class="boxed-btn3">Tìm Kiếm Ngay</a>
+                                <a href="/job" class="boxed-btn3">Tìm Kiếm Ngay</a>
                             </div>
                         </div>
                     </div>
@@ -237,60 +237,17 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="candidate_active owl-carousel">
-                        <div class="single_candidates text-center">
-                            <div class="thumb">
-                                <img src="client/img/svg_icon/1.svg" alt="">
+                        <c:forEach var="user" items="${listUsers}">
+                            <div class="single_candidates text-center" style="min-height: 260px;">
+                                <div class="thumb">
+                                    <img src="/images/company/${user.logoCompany}" alt="">
+                                </div>
+                                <a href="/company/detail?company=${user.company}">
+                                    <h4>${user.company}</h4>
+                                </a>
+                                <!-- <p>Software Engineer</p> -->
                             </div>
-                            <a href="#">
-                                <h4>Markary Jondon</h4>
-                            </a>
-                            <!-- <p>Software Engineer</p> -->
-                        </div>
-                        <div class="single_candidates text-center">
-                            <div class="thumb">
-                                <img src="client/img/svg_icon/2.svg" alt="">
-                            </div>
-                            <a href="#">
-                                <h4>Markary Jondon</h4>
-                            </a>
-                            <!-- <p>Software Engineer</p> -->
-                        </div>
-                        <div class="single_candidates text-center">
-                            <div class="thumb">
-                                <img src="client/img/svg_icon/3.svg" alt="">
-                            </div>
-                            <a href="#">
-                                <h4>Markary Jondon</h4>
-                            </a>
-                            <!-- <p>Software Engineer</p> -->
-                        </div>
-                        <div class="single_candidates text-center">
-                            <div class="thumb">
-                                <img src="client/img/svg_icon/4.svg" alt="">
-                            </div>
-                            <a href="#">
-                                <h4>Markary Jondon</h4>
-                            </a>
-                            <!-- <p>Software Engineer</p> -->
-                        </div>
-                        <div class="single_candidates text-center">
-                            <div class="thumb">
-                                <img src="client/img/svg_icon/5.svg" alt="">
-                            </div>
-                            <a href="#">
-                                <h4>Markary Jondon</h4>
-                            </a>
-                            <!-- <p>Software Engineer</p> -->
-                        </div>
-                        <div class="single_candidates text-center">
-                            <div class="thumb">
-                                <img src="client/img/svg_icon/6.svg" alt="">
-                            </div>
-                            <a href="#">
-                                <h4>Markary Jondon</h4>
-                            </a>
-                            <!-- <p>Software Engineer</p> -->
-                        </div>
+                        </c:forEach>
                     </div>
                 </div>
             </div>
@@ -390,14 +347,14 @@
                     <div class="searching_text">
                         <h3>Bạn đang tìm kiếm việc làm?</h3>
                         <p>Tìm kiếm, ứng tuyển công việc nhanh chóng với nhiều nhà tuyển dụng </p>
-                        <a href="#" class="boxed-btn3">Ứng tuyển ngay </a>
+                        <a href="/job" class="boxed-btn3">Ứng tuyển ngay </a>
                     </div>
                 </div>
                 <div class="col-lg-5 offset-lg-1 col-md-6">
                     <div class="searching_text">
                         <h3>Bạn đang tìm kiếm ứng viên?</h3>
                         <p>Đăng tin nhanh chóng và nhận được nhiều hồ sơ ứng tuyển </p>
-                        <a href="#" class="boxed-btn3">Đăng tuyển ngay</a>
+                        <a href="/tuyendung/taobaidang" class="boxed-btn3">Đăng tuyển ngay</a>
                     </div>
                 </div>
             </div>

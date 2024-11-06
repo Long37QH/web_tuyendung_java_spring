@@ -113,7 +113,7 @@
                               ${errorname}
                             </div>
                             <div class="col-12">
-                                <label for="description" class="form-label">Nội dung gói:</label>
+                                <label for="description" class="form-label">Mô tả danh mục:</label>
                                 <form:textarea type="text" class="form-control" id="description"  rows="5" path="description" />
                             </div>  
                             <div class="text-center">

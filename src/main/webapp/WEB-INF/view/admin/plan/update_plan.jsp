@@ -42,8 +42,8 @@
           <!-- cdn icon -->
           <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 
-          <!-- CKEditor CDN -->
-            <script src="https://cdn.ckeditor.com/4.18.0/standard/ckeditor.js"></script>
+          <!-- CKEditor 5 CDN -->
+          <script src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script>
 
           <script>
             $(document).ready(() => {
@@ -150,9 +150,12 @@
                             </div>
                           </form:form><!-- End Multi Columns Form -->
                           <script>
-                            // Khởi tạo CKEditor cho textarea
-                            CKEDITOR.replace('editor');
-                        </script>
+                            ClassicEditor
+                                .create(document.querySelector('#editor'))
+                                .catch(error => {
+                                    console.error(error);
+                                });
+                          </script>
                         </div>
                       </div>
                     </div>
