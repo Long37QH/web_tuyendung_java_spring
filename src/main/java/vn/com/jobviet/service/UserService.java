@@ -98,4 +98,8 @@ public class UserService {
     public long countUsersWithRole(String roleName){
         return this.userRepository.countByRole_Name(roleName);
     }
+
+    public User getUserByCompany(String company){
+        return this.userRepository.findByCompany(company);
+    }
 }

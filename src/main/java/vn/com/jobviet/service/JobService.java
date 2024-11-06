@@ -87,6 +87,11 @@ public class JobService {
         return this.jobRepository.findByStatusOrderByViewDesc(status, pageable);
     }
 
+    // lay listjob theo company
+    public Page<Job>getlistJobByCompany(String company, String status,Pageable pageable){
+        return this.jobRepository.findByUserCompanyAndStatus(company, status, pageable);
+    }
+
     public Page<JobLike> getJobLikeByUser(User user,Pageable pageable){
         return this.jobLikeRepository.findByUser(user, pageable);
     }

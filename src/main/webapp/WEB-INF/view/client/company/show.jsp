@@ -101,9 +101,9 @@
                                 <img style="width: 100%;" src="/images/company/${user.logoCompany}" alt="Everland" class="img-fluid">
                             </div>
                             <div class="col-8">
-                                <h6>${user.company}</h6>
+                                <a href="/company/detail?company=${user.company}"><h6>${user.company}</h6></a>
                                 <p>Bất động sản</p>
-                                <span class="job-count">${user.sumjob} việc làm</span>
+                                <a href="/company/detail?company=${user.company}"><span class="job-count">${user.sumjob} việc làm</span></a>
                             </div>
                             </div>
                         </div>
