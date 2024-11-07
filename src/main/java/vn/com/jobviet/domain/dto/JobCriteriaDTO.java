@@ -3,6 +3,7 @@ import java.util.List;
 import java.util.Optional;
 
 public class JobCriteriaDTO {
+    private Optional<String> name;
     private Optional<String> page;
     private Optional<List<String>> inductry;
     private Optional<List<String>> area;
@@ -45,6 +46,12 @@ public class JobCriteriaDTO {
     }
     public void setSalary(Optional<List<String>> salary) {
         this.salary = salary;
+    }
+    public Optional<String> getName() {
+        return name;
+    }
+    public void setName(Optional<String> name) {
+        this.name = name;
     }
 
     

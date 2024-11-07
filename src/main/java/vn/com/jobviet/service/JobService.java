@@ -49,7 +49,8 @@ public class JobService {
     }
 
     public Page<Job> fetchJobWithSpec(Pageable pageable,JobCriteriaDTO jobCriteriaDTO,String status){
-        if(jobCriteriaDTO.getArea() == null
+        if( jobCriteriaDTO.getName() == null
+            && jobCriteriaDTO.getArea() == null
             && jobCriteriaDTO.getWorkingForm() == null
             && jobCriteriaDTO.getSalary() == null
             && jobCriteriaDTO.getExperience() == null
@@ -62,6 +63,9 @@ public class JobService {
         );
 
         // Áp dụng các tiêu chí từ `JobCriteriaDTO`
+        if (jobCriteriaDTO.getName() != null && jobCriteriaDTO.getName().isPresent()) {
+            combinedSpec = combinedSpec.and(JobSpecs.TitleLike(jobCriteriaDTO.getName().get()));
+        }
         if (jobCriteriaDTO.getInductry() != null && jobCriteriaDTO.getInductry().isPresent()) {
             combinedSpec = combinedSpec.and(JobSpecs.matchListInductry(jobCriteriaDTO.getInductry().get()));
         }

@@ -92,38 +92,50 @@
     <!-- catagory_area -->
     <div class="catagory_area">
         <div class="container">
-            <div class="row cat_search">
-                <div class="col-lg-3 col-md-4">
+            <form action="/job" method="get" class="row cat_search">
+                <div class="col-lg-3 col-md-4 d-none">
                     <div class="single_input">
-                        <input type="text" placeholder="Vị trí tuyển dụng">
+                        <input name="page" type="text" value="1">
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-4">
                     <div class="single_input">
-                        <select class="wide">
-                            <option data-display="Địa Điểm">Địa Điểm</option>
-                            <option value="1">Hà Nội</option>
-                            <option value="2">Nghệ An</option>
-                            <option value="4">Đà Nẵng</option>
+                        <input name="name" type="text" placeholder="Vị trí tuyển dụng">
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4">
+                    <div class="single_input">
+                        <select class="wide" name="area" >
+                            <option value="Hà Nội">Hà Nội</option>
+                            <option value="Nghệ An">Nghệ An</option>
+                            <option value="Đà Nẵng">Đà Nẵng</option>
+                            <option value="TP Hồ Chí Minh">TP Hồ Chí Minh</option>
+                            <option value="Bắc Ninh">Bắc Ninh</option>
+                            <option value="Miền Bắc">Miền Bắc</option>
+                            <option value="Miền Trung">Miền Trung</option>
+                            <option value="Miền Nam">Miền Nam</option>
                         </select>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-4">
                     <div class="single_input">
-                        <select class="wide">
-                            <option data-display="Ngành nghề">Ngành Nghề</option>
-                            <option value="1">Công Nghệ Thông Tin</option>
-                            <option value="2">Điện Tử Viễn Thông</option>
-                            <option value="4">Công Nghệ Ô Tô</option>
+                        <select class="wide" name="inductry" >
+                            <!-- <option selected></option> -->
+                            <option value="CNTT-IT-PHAN-MEM">CNTT / IT Phần mềm</option>
+                            <option value="KINH-DOANH-BAN-HANG">Kinh doanh / Bán hàng</option>
+                            <option value="HANH-CHINH-VAN-PHONG">Hành chính / Văn phòng</option>
+                            <option value="GIAO-DUC-DAO-TAO">Giáo dục / Đào tạo</option>
+                            <option value="TU-VAN">Tư vấn</option>
+                            <option value="MARKETING-TRUYEN-THONG">Marketing / Truyền thông</option>
                         </select>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-12">
                     <div class="job_btn">
-                        <a href="#" class="boxed-btn3">Tìm Kiếm</a>
+                        <button type="submit" class="boxed-btn3">Tìm Kiếm</button>
                     </div>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
     <!--/ catagory_area -->
