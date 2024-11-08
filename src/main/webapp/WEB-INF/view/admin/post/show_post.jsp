@@ -97,9 +97,9 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <c:forEach var="post" items="${listposts}">
+                        <c:forEach var="post" items="${listposts}" varStatus="status">
                             <tr>
-                                <th>${post.id}</th>
+                                <th>${status.index + 1}</th>
                                 <td style="width: 150px;" >${post.title}</td>
                                 <td>
                                     <img src="/images/post/${post.image}" alt="" style="width: 150px;">
