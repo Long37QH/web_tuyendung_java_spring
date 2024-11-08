@@ -79,27 +79,8 @@ public class PlanPageController {
     }
 
     @GetMapping("/vnpay-payment")
-    public String GetMapping(HttpServletRequest request, Model model){
-        HttpSession session = request.getSession(false);
-        Plan plan = this.planService.getPlanByName(request.getParameter("vnp_OrderInfo"));
-
-        long numPost = 1;
-        if(plan.getLevel() == 1){
-            numPost = 5;
-        }
-        if(plan.getLevel() == 2){
-            numPost = 10;
-        }
-        if(plan.getLevel() == 3){
-            numPost = 20;
-        }
-
-        long idUser = (long) session.getAttribute("id");
-        User user = this.userService.getUserById(idUser);
-        user.setPlan(plan);
-        user.setNumPost(numPost);
-        this.userService.handlSaveUser(user);
-
+    public String GetMapping(HttpServletRequest request, Model model,RedirectAttributes redirectAttributes){
+        String namePlan = request.getParameter("vnp_OrderInfo");
         int paymentStatus =vnPayService.orderReturn(request);
 
         String orderInfo = request.getParameter("vnp_OrderInfo");
@@ -107,22 +88,56 @@ public class PlanPageController {
         String transactionId = request.getParameter("vnp_TransactionNo");
         String totalPrice = request.getParameter("vnp_Amount");
 
+        model.addAttribute("orderId", orderInfo);
+        model.addAttribute("totalPrice", totalPrice);
+        model.addAttribute("paymentTime", paymentTime);
+        model.addAttribute("transactionId", transactionId);
+
+        redirectAttributes.addAttribute("namePlan", namePlan);
+        redirectAttributes.addAttribute("transactionId", transactionId);
+
+        return paymentStatus == 1 ? "redirect:/plan/ordersuccess" : "/client/plan/orderfail";
+    }
+
+    @GetMapping("/plan/ordersuccess")
+    public String getMethodName(Model model,@RequestParam("namePlan") String namePlan,@RequestParam("transactionId") String transactionId ,HttpServletRequest request) {
+        HttpSession session = request.getSession(false);
+        Plan plan = this.planService.getPlanByName(namePlan);
+        
+        long idUser = (long) session.getAttribute("id");
+        User user = this.userService.getUserById(idUser);
+
+        long numPost = user.getNumPost();
+        if(plan.getLevel() == 1){
+            numPost = numPost + 5;
+        }
+        if(plan.getLevel() == 2){
+            numPost = numPost + 10;
+        }
+        if(plan.getLevel() == 3){
+            numPost = numPost + 20;
+        }
+        user.setPlan(plan);
+        user.setNumPost(numPost);
+        this.userService.handlSaveUser(user);
+
         OderPlan oderPlan = new OderPlan();
 
         LocalDateTime currentTime = LocalDateTime.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         String formattedDate = currentTime.format(formatter);
 
-        oderPlan.setTotalPrice( Double.parseDouble(totalPrice) / 100);
+        oderPlan.setTotalPrice(plan.getPrice());
         oderPlan.setTimeOrder(formattedDate);
         oderPlan.setUser(user);
         this.planService.handSaveOderPlan(oderPlan);
 
-        model.addAttribute("orderId", orderInfo);
-        model.addAttribute("totalPrice", totalPrice);
-        model.addAttribute("paymentTime", paymentTime);
+        model.addAttribute("orderId", namePlan);
+        model.addAttribute("totalPrice", plan.getPrice()*100);
+        model.addAttribute("paymentTime", formattedDate);
         model.addAttribute("transactionId", transactionId);
 
-        return paymentStatus == 1 ? "/client/plan/ordersuccess" : "/client/plan/orderfail";
+        return "/client/plan/ordersuccess";
     }
+    
 }

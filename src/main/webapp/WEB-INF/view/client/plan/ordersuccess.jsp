@@ -17,22 +17,22 @@
     <!-- Place favicon.ico in the root directory -->
     
     <!-- CSS here -->
-    <link rel="stylesheet" href="client/css/bootstrap.min.css">
-    <link rel="stylesheet" href="client/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="client/css/magnific-popup.css">
-    <link rel="stylesheet" href="client/css/font-awesome.min.css">
-    <link rel="stylesheet" href="client/css/themify-icons.css">
-    <link rel="stylesheet" href="client/css/nice-select.css">
-    <link rel="stylesheet" href="client/css/flaticon.css">
-    <link rel="stylesheet" href="client/css/gijgo.css">
-    <link rel="stylesheet" href="client/css/animate.css">
-    <link rel="stylesheet" href="client/css/slicknav.css">
-    <link rel="stylesheet" href="client/css/style.css">
-    <link rel="stylesheet" href="client/css/responsive.css">
+    <link rel="stylesheet" href="/client/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/client/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="/client/css/magnific-popup.css">
+    <link rel="stylesheet" href="/client/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/client/css/themify-icons.css">
+    <link rel="stylesheet" href="/client/css/nice-select.css">
+    <link rel="stylesheet" href="/client/css/flaticon.css">
+    <link rel="stylesheet" href="/client/css/gijgo.css">
+    <link rel="stylesheet" href="/client/css/animate.css">
+    <link rel="stylesheet" href="/client/css/slicknav.css">
+    <link rel="stylesheet" href="/client/css/style.css">
+    <link rel="stylesheet" href="/client/css/responsive.css">
     
     <!-- cdn icon -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-    <link rel="stylesheet" href="client/css/plan.css">
+    <link rel="stylesheet" href="/client/css/plan.css">
 
     <!-- jequery toastr -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
@@ -111,31 +111,31 @@
     
     
     <!-- JS here -->
-    <script src="client/js/vendor/modernizr-3.5.0.min.js"></script>
-    <script src="client/js/vendor/jquery-1.12.4.min.js"></script>
-    <script src="client/js/popper.min.js"></script>
-    <script src="client/js/bootstrap.min.js"></script>
-    <script src="client/js/owl.carousel.min.js"></script>
-    <script src="client/js/isotope.pkgd.min.js"></script>
-    <script src="client/js/ajax-form.js"></script>
-    <script src="client/js/waypoints.min.js"></script>
-    <script src="client/js/jquery.counterup.min.js"></script>
-    <script src="client/js/imagesloaded.pkgd.min.js"></script>
-    <script src="client/js/scrollIt.js"></script>
-    <script src="client/js/jquery.scrollUp.min.js"></script>
-    <script src="client/js/wow.min.js"></script>
-    <script src="client/js/nice-select.min.js"></script>
-    <script src="client/js/jquery.slicknav.min.js"></script>
-    <script src="client/js/jquery.magnific-popup.min.js"></script>
-    <script src="client/js/plugins.js"></script>
-    <script src="client/js/gijgo.min.js"></script>
+    <script src="/client/js/vendor/modernizr-3.5.0.min.js"></script>
+    <script src="/client/js/vendor/jquery-1.12.4.min.js"></script>
+    <script src="/client/js/popper.min.js"></script>
+    <script src="/client/js/bootstrap.min.js"></script>
+    <script src="/client/js/owl.carousel.min.js"></script>
+    <script src="/client/js/isotope.pkgd.min.js"></script>
+    <script src="/client/js/ajax-form.js"></script>
+    <script src="/client/js/waypoints.min.js"></script>
+    <script src="/client/js/jquery.counterup.min.js"></script>
+    <script src="/client/js/imagesloaded.pkgd.min.js"></script>
+    <script src="/client/js/scrollIt.js"></script>
+    <script src="/client/js/jquery.scrollUp.min.js"></script>
+    <script src="/client/js/wow.min.js"></script>
+    <script src="/client/js/nice-select.min.js"></script>
+    <script src="/client/js/jquery.slicknav.min.js"></script>
+    <script src="/client/js/jquery.magnific-popup.min.js"></script>
+    <script src="/client/js/plugins.js"></script>
+    <script src="/client/js/gijgo.min.js"></script>
     
     <!--contact js-->
-    <script src="client/js/contact.js"></script>
-    <script src="client/js/jquery.ajaxchimp.min.js"></script>
-    <script src="client/js/jquery.form.js"></script>
-    <script src="client/js/jquery.validate.min.js"></script>
-    <script src="client/js/mail-script.js"></script>
+    <script src="/client/js/contact.js"></script>
+    <script src="/client/js/jquery.ajaxchimp.min.js"></script>
+    <script src="/client/js/jquery.form.js"></script>
+    <script src="/client/js/jquery.validate.min.js"></script>
+    <script src="/client/js/mail-script.js"></script>
     
     <script src="js/main.js"></script>
     <script>

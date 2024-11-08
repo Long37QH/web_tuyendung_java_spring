@@ -81,7 +81,7 @@
             <!-- Băt dâp phân main-->
             <div class="col-lg-12" >
                 <div class="d-flex justify-content-between mb-2 mt-2">
-                    <h5 class="mb-3">Danh sách gói dịch vụ</h5>
+                    <h5 class="mb-3">Danh sách tài khoản đăng ký gói dịch vụ</h5>
                     <a class="btn btn-primary" href="/admin/plan/creat">Thêm mới</a> 
                 </div>
                 <hr>
