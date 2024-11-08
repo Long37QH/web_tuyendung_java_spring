@@ -67,6 +67,9 @@ public class User {
 
     @OneToMany(mappedBy = "user")
     private List<JobLike> jobLikes;
+    
+    @OneToMany(mappedBy = "user")
+    private List<OderPlan> oderPlans;
 
     public long getId() {
         return id;

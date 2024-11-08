@@ -79,11 +79,23 @@
               </li>
         
         
+
               <li class="nav-item">
-                <a class="nav-link collapsed" href="/admin/plan">
-                  <i class="bi bi-hourglass-bottom"></i>
-                  <span>Quản lý dịch vụ</span>
+                <a class="nav-link collapsed" data-bs-target="#plan" data-bs-toggle="collapse" href="#">
+                  <i class="bi bi-hourglass-bottom"></i><span>Quản lý dịch vụ</span><i class="bi bi-chevron-down ms-auto"></i>
                 </a>
+                <ul id="plan" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                  <li>
+                    <a href="/admin/plan">
+                      <i class="bi bi-circle"></i><span>Quản lý gói dịch vụ</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/admin/planOrder">
+                      <i class="bi bi-circle"></i><span>Danh sách tài khoản mua gói</span>
+                    </a>
+                  </li>
+                </ul>
               </li>
         
               <li class="nav-heading">Pages</li>

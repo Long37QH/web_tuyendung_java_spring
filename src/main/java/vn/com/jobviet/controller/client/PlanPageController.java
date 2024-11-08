@@ -1,4 +1,6 @@
 package vn.com.jobviet.controller.client;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,6 +13,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import vn.com.jobviet.config.VNPayService;
+import vn.com.jobviet.domain.OderPlan;
 import vn.com.jobviet.domain.Plan;
 import vn.com.jobviet.domain.User;
 import vn.com.jobviet.service.PlanService;
@@ -92,11 +95,9 @@ public class PlanPageController {
         }
 
         long idUser = (long) session.getAttribute("id");
-
         User user = this.userService.getUserById(idUser);
         user.setPlan(plan);
         user.setNumPost(numPost);
-
         this.userService.handlSaveUser(user);
 
         int paymentStatus =vnPayService.orderReturn(request);
@@ -105,6 +106,17 @@ public class PlanPageController {
         String paymentTime = request.getParameter("vnp_PayDate");
         String transactionId = request.getParameter("vnp_TransactionNo");
         String totalPrice = request.getParameter("vnp_Amount");
+
+        OderPlan oderPlan = new OderPlan();
+
+        LocalDateTime currentTime = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        String formattedDate = currentTime.format(formatter);
+
+        oderPlan.setTotalPrice( Double.parseDouble(totalPrice) / 100);
+        oderPlan.setTimeOrder(formattedDate);
+        oderPlan.setUser(user);
+        this.planService.handSaveOderPlan(oderPlan);
 
         model.addAttribute("orderId", orderInfo);
         model.addAttribute("totalPrice", totalPrice);

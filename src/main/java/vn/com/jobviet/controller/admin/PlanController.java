@@ -5,7 +5,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 
+import vn.com.jobviet.domain.OderPlan;
 import vn.com.jobviet.domain.Plan;
+import vn.com.jobviet.service.PlanService;
 import vn.com.jobviet.service.UserService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -22,9 +24,11 @@ import jakarta.validation.Valid;
 @Controller
 public class PlanController {
     private final UserService userService;
+    private final PlanService planService;
 
-    public PlanController(UserService userService) {
+    public PlanController(UserService userService, PlanService planService) {
         this.userService = userService;
+        this.planService = planService;
     }
 
     @GetMapping("/admin/plan")
@@ -84,6 +88,13 @@ public class PlanController {
     public String deletePlan(Model model, @PathVariable long id) {
         this.userService.deletePlan(id);
         return "redirect:/admin/plan";
+    }
+
+    @GetMapping("/admin/planOrder")
+    public String getPlanOrderAdmin(Model model) {
+        List<OderPlan> oderPlans = this.planService.getOrderPhan();
+        model.addAttribute("listOrder", oderPlans);
+        return "/admin/plan/showOrder";
     }
     
 }
