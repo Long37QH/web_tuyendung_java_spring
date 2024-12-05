@@ -67,10 +67,6 @@ public class CustomSuccessHandler implements AuthenticationSuccessHandler{
             session.setAttribute("id", user.getId());
             session.setAttribute("email", user.getEmail());
             session.setAttribute("roleUser", user.getRole().getName());
-
-        //     // lay so luong san pham gans cho session
-        //     int sumsp = user.getCart() == null ? 0 : user.getCart().getSum();
-        //     session.setAttribute("sumsp", sumsp);
         }
     }
 

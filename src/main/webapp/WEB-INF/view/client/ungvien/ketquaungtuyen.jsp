@@ -97,7 +97,7 @@
             </div>
             <div class="row">
                 <div class="col-lg-12" >
-                    <h4 class="mb-3">Danh sách các lượt ứng tuyển</h4>
+                    <h4 class="mb-3">Kết quả hồ sơ ứng tuyển</h4>
                     <hr>
                     <table id="example" class="table table-striped table-bordered table-hover mt-4">
                         <thead>
@@ -119,14 +119,10 @@
                                     <td>${apply.timeapply}</td>
                                     <td class="${apply.status == 'Đã duyệt' ? 'text-success' : 'text-danger'}"><strong>${apply.status}</strong></td>
                                     <td>
-                                        <!-- <a class="btn btn-success"
-                                            href="#"><i class="fa-regular fa-eye"></i> Xem</a>
-                                        <a class="btn btn-primary"
-                                            href="#"><i class="fa-solid fa-user-tag"></i> Ứng viên</a> -->
                                         <a class="btn btn-success mx-2 "
                                             href="/ungvien/ketqua/${apply.id}"><i class="fa-solid fa-pen-nib"></i> Kết quả phản hồi</a>
                                         <a class="btn btn-danger"
-                                            href="/ungvien/huyungtuyen/${apply.id}"><i class="fa-regular fa-trash-can"></i> Hủy ứng tuyển</a>
+                                            href="/ungvien/huyungtuyen/${apply.id}"><i class="fa-regular fa-trash-can"></i> Xóa hồ sơ  </a>
                                     </td>
                                 </tr>
                             </c:forEach>

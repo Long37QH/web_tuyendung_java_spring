@@ -124,10 +124,44 @@
                                             </div>
                                             <div class="d-none d-lg-block">
                                                 <a class="boxed-btn3" href="/login">Ứng tuyển</a>
-                                            </div>
-                                            
-                                            <!-- chư đăng nhập -->
+                                            </div>   
                                             </c:if>
+                                            <!-- phân khi đang nhap tk admin -->
+                                            <c:if test="${sessionScope.roleUser == 'ADMIN'}">
+                                                <div class="navbar-brand"  id="navbarNav">
+                                                    <ul class="navbar-nav">
+                                                        <li class="nav-item dropdown">
+                                                            <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button"
+                                                                data-bs-toggle="dropdown" aria-expanded="false">
+                                                                <i class="fas fa-user"></i> <c:out value="${sessionScope.fullname}" />
+                                                            </a>
+                                                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                                                <li class="d-flex align-items-center flex-column" style="min-width: 265px;">
+                                                                    <img class="border border-dark mt-3" style="width: 80px; height: 80px; border-radius: 50%; overflow: hidden;"
+                                                                        src="/images/avatar/${sessionScope.avatar}" />
+                                                                    <div class="text-center my-3">
+                                                                        <h5 style="color: #21a212;" ><c:out value="${sessionScope.fullname}" /></h5>
+                                                                        <p class="fs-6"><c:out value="${sessionScope.email}" /></p>
+                                                                    </div>
+                                                                </li>
+                                                                <li><hr class="dropdown-divider"></li>
+                                                                <li><a class="dropdown-item" href="/admin"> <i style="color: #21a212;"  class="fa-solid fa-user-tie mr-2"></i> Trang quản trị</a></li>
+                                                                <!-- <li><a class="dropdown-item" href="#"> <i style="color: #21a212;" class="fa-solid fa-lock mr-2"></i> Đổi mật khẩu</a></li> -->
+                                                                <li><hr class="dropdown-divider"></li>
+                                                                <li>
+                                                                    <form action="/logout" method="post" >
+                                                                        <input type="hidden" name="${_csrf.parameterName}"
+                                                                                value="${_csrf.token}" />
+                                                                        <button class="dropdown-item" ><i style="color: #21a212;"  class="fa-solid fa-right-from-bracket mr-2"></i> Đăng xuất</button>
+                                                                    </form>
+                                                                </li>
+                                                            </ul>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </c:if>
+
+                                            <!-- chưa đăng nhập -->
                                             <c:if test="${empty pageContext.request.userPrincipal}">
                                                 <div class="phone_num d-none d-xl-block">
                                                     <a href="/login" class="nav-link fs-2 "><i class="fas fa-user"></i> Đăng nhập</a>

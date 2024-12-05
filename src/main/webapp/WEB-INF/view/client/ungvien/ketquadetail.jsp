@@ -32,8 +32,8 @@
     <link rel="stylesheet" href="/client/css/style.css">
     <!-- <link rel="stylesheet" href="css/responsive.css"> -->
 
-     <!-- CKEditor CDN -->
-     <script src="https://cdn.ckeditor.com/4.18.0/standard/ckeditor.js"></script>
+     <!-- CKEditor 5 CDN -->
+    <script src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script>
 
     <!-- cdn icon -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
@@ -122,27 +122,18 @@
                                     <a class="btn btn-primary" href="/ungvien/kequaungtuyen">Quay lại</a>
                                 </div>
                             </form:form>
+                            <!-- CKEditor 5 Script -->
+                            <script>
+                                ClassicEditor
+                                    .create(document.querySelector('#editor'))
+                                    .catch(error => {
+                                        console.error(error);
+                                    });
+                            </script>
                         </div>    
                     </div>
                 </div>
-                <!-- <div class="col-lg-4">
-                    <div class="blog_right_sidebar">
-                        <aside class="single_sidebar_widget search_widget">
-                            <h4 class="mb-3">Thay đổi mật khẩu</h4>
-                            <hr>
-                                <form class="" action="">
-                                    <div class="form-group">
-                                        <input type="password" class="form-control"  placeholder='password old' required>
-                                     </div>
-                                     <div class="form-group">
-                                        <input type="password" class="form-control"  placeholder='password new' required>
-                                     </div>
-                                     <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn"
-                                        type="submit">Lưu lại</button>
-                                </form>
-                        </aside>
-                    </div>         
-                </div> -->
+                
             </div>
         </div>
     </div>

@@ -44,8 +44,8 @@
 
     <style>
         .toast-custom-top-right {
-            top: 100px !important; /* Cách top 300px */
-            right: 12px !important; /* Khoảng cách bên phải */
+            top: 100px !important; 
+            right: 12px !important; 
             position: fixed;
             z-index: 9999;
         }
@@ -99,41 +99,6 @@
                     </div>
                 </div>
             </c:forEach>
-            <!-- Standard Plan -->
-            <!-- <div class="col mb-4">
-                <div class="card">
-                    <div class="card-header bg-success text-white">
-                        <h4 class="my-0 fw-normal">Standard</h4>
-                    </div>
-                    <div class="card-body">
-                        <h1 class="price">$49<small class="text-muted fw-light">/mo</small></h1>
-                        <ul class="list-unstyled mt-3 mb-4">
-                            <li>5 job posts</li>
-                            <li>Priority email support</li>
-                            <li>Advanced analytics</li>
-                        </ul>
-                        <button type="button" class="btn btn-custom">Sign up</button>
-                    </div>
-                </div>
-            </div> -->
-
-            <!-- Premium Plan -->
-            <!-- <div class="col mb-4">
-                <div class="card">
-                    <div class="card-header bg-warning text-white">
-                        <h4 class="my-0 fw-normal">Premium</h4>
-                    </div>
-                    <div class="card-body">
-                        <h1 class="price">$99<small class="text-muted fw-light">/mo</small></h1>
-                        <ul class="list-unstyled mt-3 mb-4">
-                            <li>Unlimited job posts</li>
-                            <li>24/7 support</li>
-                            <li>Detailed analytics</li>
-                        </ul>
-                        <button type="button" class="btn btn-custom">Sign up</button>
-                    </div>
-                </div>
-            </div> -->
         </div>
     </div>
 

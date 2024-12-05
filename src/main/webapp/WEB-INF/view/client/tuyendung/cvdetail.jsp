@@ -32,8 +32,8 @@
     <link rel="stylesheet" href="/client/css/style.css">
     <!-- <link rel="stylesheet" href="css/responsive.css"> -->
 
-     <!-- CKEditor CDN -->
-     <script src="https://cdn.ckeditor.com/4.18.0/standard/ckeditor.js"></script>
+     <!-- CKEditor 5 CDN -->
+    <script src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script>
 
     <!-- cdn icon -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
@@ -186,20 +186,6 @@
                                     <form:input type="text" class="form-control"
                                         id="inputAddress2" placeholder="+84" path="phone" />
                                 </div>
-                                <!-- <div class="col-6 mb-3">
-                                    <label for="plan" class="form-label">Loai tài khoản :</label>
-                                    <form:input type="text" class="form-control"
-                                        id="plan" path="plan.name" readonly="true"  />
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="avatarFile" class="form-label">Avatar:</label>
-                                    <input class="form-control" type="file" id="avatarFile"
-                                        accept=".png, .jpg, .jpeg, .svg, .webp" name="fileImage">
-                                </div> -->
-                                <!-- <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-                                <div class="text-center col-md-12 mt-4">
-                                    <button type="submit" class="btn btn-primary mx-auto mb-4">Câp nhât thông tin</button>
-                                </div> -->
                             </form:form><!-- End Multi Columns Form -->
                             <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-2" >
                                 <a class="btn btn-success" href="/filecv/${userTD.filecv}" target="_blank">Xem Cv</a>
@@ -224,27 +210,18 @@
                                     <button type="submit" class="btn btn-primary">Gửi phản hồi</button>
                                 </div>
                             </form:form>
+                            <!-- CKEditor 5 Script -->
+                            <script>
+                                ClassicEditor
+                                    .create(document.querySelector('#editor'))
+                                    .catch(error => {
+                                        console.error(error);
+                                    });
+                            </script>
                         </div>    
                     </div>
                 </div>
-                <!-- <div class="col-lg-4">
-                    <div class="blog_right_sidebar">
-                        <aside class="single_sidebar_widget search_widget">
-                            <h4 class="mb-3">Thay đổi mật khẩu</h4>
-                            <hr>
-                                <form class="" action="">
-                                    <div class="form-group">
-                                        <input type="password" class="form-control"  placeholder='password old' required>
-                                     </div>
-                                     <div class="form-group">
-                                        <input type="password" class="form-control"  placeholder='password new' required>
-                                     </div>
-                                     <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn"
-                                        type="submit">Lưu lại</button>
-                                </form>
-                        </aside>
-                    </div>         
-                </div> -->
+                
             </div>
         </div>
     </div>
