@@ -159,6 +159,9 @@
                                                         </li>
                                                     </ul>
                                                 </div>
+                                                <div class="d-none d-lg-block">
+                                                    <a class="boxed-btn3" href="/admin">Trang quản trị</a>
+                                                </div> 
                                             </c:if>
 
                                             <!-- chưa đăng nhập -->

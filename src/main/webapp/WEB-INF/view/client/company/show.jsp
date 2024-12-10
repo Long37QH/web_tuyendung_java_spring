@@ -102,7 +102,7 @@
                             </div>
                             <div class="col-8">
                                 <a href="/company/detail?company=${user.company}"><h6>${user.company}</h6></a>
-                                <p>Bất động sản</p>
+                                <p>${user.descCompany}</p>
                                 <a href="/company/detail?company=${user.company}"><span class="job-count">${user.sumjob} việc làm</span></a>
                             </div>
                             </div>

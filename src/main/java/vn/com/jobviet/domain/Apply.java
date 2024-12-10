@@ -19,6 +19,9 @@ public class Apply {
     private String receiverEmail;
     private String receiverPhone;
     private String mess;
+    
+    @Column(columnDefinition = "MEDIUMTEXT") 
+    private String mess2;
 
     @Column(columnDefinition = "MEDIUMTEXT") 
     private String feedback;
@@ -69,6 +72,12 @@ public class Apply {
     public String getFeedback() {
         return feedback;
     }
+    public String getMess2() {
+        return mess2;
+    }
+    public void setMess2(String mess2) {
+        this.mess2 = mess2;
+    }
     public void setFeedback(String feedback) {
         this.feedback = feedback;
     }
@@ -94,7 +103,7 @@ public class Apply {
     @Override
     public String toString() {
         return "Apply [id=" + id + ", receiverName=" + receiverName + ", receiverEmail=" + receiverEmail
-                + ", receiverPhone=" + receiverPhone + ", mess=" + mess
+                + ", receiverPhone=" + receiverPhone + ", mess=" + mess + ", mess2=" + mess2
                 + ", feedback=" + feedback + ", timeapply=" + timeapply + ", timefeedback=" + timefeedback + ", status="
                 + status + "]";
     }

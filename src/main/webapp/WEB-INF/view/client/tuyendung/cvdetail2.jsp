@@ -176,7 +176,7 @@
                             <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-2" >
                                 <a class="btn btn-success" href="/filecv/${userTD.filecv}" target="_blank">Xem Cv</a>
                             </div>  
-                            <h4 class="mb-3">Gửi phản hồi</h4>
+                            <h4 class="mb-3">Kết quả phản hồi</h4>
                             <hr>
                             <form:form class="row g-3" method="post"
                                 enctype="multipart/form-data" action="/tuyendung/ds_hosoungtuyen/feedback"

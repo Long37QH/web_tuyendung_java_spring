@@ -231,19 +231,6 @@
                                     ${errorAddress}
                                 </div>
 
-                                <!-- <div class="col-md-6 mb-3">
-                                    <label for="image" class="form-label">Hình ảnh:</label>
-                                    <input class="form-control" type="file" id="image" accept=".png, .jpg, .jpeg" name="imageJob">
-                                </div>
-                                <div class=" col-md-12 mb-3">
-                                    <img style="max-height: 250px; display: none;" alt="avatar Preview"
-                                        id="avatarPreview">
-                                </div> 
-                                 <div class="col-md-12 mb-3">
-                                    <label for="" class="form-label">Mô tả nhanh</label>
-                                    <textarea class="form-control" id="" rows="3"></textarea>
-                                </div> -->
-
                                 <div class="col-md-12 mb-3">
                                     <label class="form-label">Mô tả công việc:</label>
                                     <form:textarea class="form-control ${not empty errorContentjob ? 'is-invalid' : ''}" name="content" id="editor" path="contentjob" ></form:textarea>

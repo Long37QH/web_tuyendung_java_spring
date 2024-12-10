@@ -320,6 +320,10 @@
                                                     <div class="location">
                                                         <p> <i class="fa-solid fa-money-bill-1"></i> ${job.salary}</p>
                                                     </div>
+                                                    <div class="location">
+                                                        <p> <i class="fa-solid fa-user"></i> SL: ${job.quantity}</p>
+                                                    </div>
+                    
                     
                                                 </div>
                                                 <div class="links_locat d-flex align-items-center">

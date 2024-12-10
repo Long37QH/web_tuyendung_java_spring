@@ -295,16 +295,30 @@ public class EmployePageController {
     }
 
     @GetMapping("/tuyendung/loaiungvien/{id}")
-    public String getMethodName(Model model, @PathVariable long id, RedirectAttributes redirectAttributes) {
+    public String getMethodName(Model model,HttpServletRequest request, @PathVariable long id, RedirectAttributes redirectAttributes) {
+
         Apply apply = this.applyService.getApplyById(id);
 
+        HttpSession session = request.getSession(false);
+        long idUser = (long) session.getAttribute("id");
+
+        User usertd = this.userService.getUserById(idUser);
         LocalDateTime currentTime = LocalDateTime.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         String formattedDate = currentTime.format(formatter);
         apply.setTimefeedback(formattedDate);
         apply.setStatus("Từ chối hồ sơ");
-        apply.setFeedback("Cảm ơn bạn đã quan tâm vị trí công việc bên chúng mình,"
-                + "rất tiếc bạn không đủ điều kiện cho vị trí công việc");
+        apply.setFeedback("<h3>Thông Báo Kết Quả Tuyển Dụng Vị Trí "+ apply.getJob().getJobPosition() +"</h3>\r\n" + //
+                        " <p><strong>Kính gửi anh/chị "+apply.getReceiverName()+",</strong></p> \r\n" + //
+                        "<p> Cảm ơn anh/chị đã quan tâm và ứng tuyển vào vị trí <strong>"+ apply.getJob().getJobPosition() +"</strong> tại <strong>"+usertd.getCompany()+"</strong>. Chúng tôi đã rất ấn tượng với hồ sơ và những kinh nghiệm mà anh/chị đã chia sẻ trong quá trình tuyển dụng. </p> \r\n" + //
+                        "<p> Tuy nhiên, sau khi xem xét kỹ lưỡng tất cả các ứng viên, chúng tôi rất tiếc phải thông báo rằng hiện tại chúng tôi đã quyết định lựa chọn một ứng viên khác phù hợp hơn với yêu cầu của vị trí này. </p>\r\n" + //
+                        "<p> Quyết định này không hề dễ dàng, bởi anh/chị đã thể hiện rất nhiều tiềm năng và kỹ năng đáng quý. Chúng tôi thực sự đánh giá cao thời gian, nỗ lực và sự quan tâm của anh/chị dành cho <strong>"+usertd.getCompany()+"</strong>. </p> \r\n" + //
+                        "<p> Mặc dù lần này kết quả không như mong đợi, chúng tôi hy vọng vẫn có cơ hội hợp tác với anh/chị trong tương lai. Chúng tôi sẽ lưu giữ hồ sơ của anh/chị trong hệ thống và liên hệ nếu có vị trí phù hợp hơn với kỹ năng và định hướng của anh/chị. </p> \r\n" + //
+                        "<p> Một lần nữa, xin cảm ơn anh/chị và chúc anh/chị thành công trên con đường sự nghiệp. </p> \r\n" + //
+                        "<p>Trân trọng!</p> \r\n" + //
+                        "<p>"+usertd.getCompany()+"</p> \r\n" + //
+                        "<p>Thông tin liên hệ: email "+usertd.getEmail()+", số điện thoại: "+usertd.getPhone()+"</p>\r\n" + //
+                        "");
         this.applyService.handSaveApply(apply);
         redirectAttributes.addFlashAttribute("message", "Đã từ chối ứng viên");
         return "redirect:/tuyendung/danhsachungvien";

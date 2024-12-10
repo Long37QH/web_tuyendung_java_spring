@@ -197,8 +197,8 @@
                     <a href="/job?page=1&inductry=TU-VAN">
                         <div class="card job-category-card p-4 text-center">
                             <i class="fas fa-user-tie category-icon"></i>
-                            <h3 class="category-title">Tư vấn</h3>
-                            <p class="category-description">Khám phá cơ hội trong lĩnh vực tư vấn chuyên nghiệp.</p>
+                            <h3 class="category-title">Tài chính / Ngân hàng</h3>
+                            <p class="category-description">Khám phá cơ hội trong lĩnh vực tài chính chuyên nghiệp.</p>
                         </div>
                     </a>
                 </div>
@@ -304,6 +304,9 @@
                                             </div>
                                             <div class="location">
                                                 <p> <i class="fa-solid fa-money-bill-1"></i> ${job.salary}</p>
+                                            </div>
+                                            <div class="location">
+                                                <p> <i class="fa-solid fa-user"></i> SL: ${job.quantity}</p>
                                             </div>
 
                                         </div>

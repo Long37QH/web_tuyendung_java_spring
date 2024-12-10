@@ -31,6 +31,9 @@
     <link rel="stylesheet" href="/client/css/style.css">
     <!-- <link rel="stylesheet" href="css/responsive.css"> -->
 
+    <!-- CKEditor 5 CDN -->
+    <script src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script>
+
     <!-- cdn icon -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 </head>
@@ -127,17 +130,25 @@
                                 
                                 <div class="col-md-12">
                                     <div class="input_field">
-                                        <form:textarea name="#" id="" cols="30" rows="10" placeholder="Ghi chú thêm" path="mess" ></form:textarea>
+                                        <form:textarea name="#" id="editor" cols="30" rows="10" placeholder="Ghi chú thêm" path="mess2" ></form:textarea>
                                     </div>
                                 </div>
                                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-                                <div class="col-md-12">
+                                <div class="col-md-12 mt-4">
                                     <div class="submit_btn">
                                         <button class="boxed-btn3 w-100" type="submit">Nộp hồ sơ ứng tuyển</button>
                                     </div>
                                 </div>
                             </div>
                         </form:form>
+                        <!-- CKEditor 5 Script -->
+                        <script>
+                            ClassicEditor
+                                .create(document.querySelector('#editor'))
+                                .catch(error => {
+                                    console.error(error);
+                                });
+                        </script>
                         <script>
                             // xử lí input file
                             document.getElementById('inputGroupFile03').addEventListener('change', function () {

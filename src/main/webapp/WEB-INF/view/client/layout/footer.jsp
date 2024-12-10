@@ -14,7 +14,7 @@
                                         </a>
                                     </div>
                                     <p>
-                                        JobListing@support.com <br>
+                                        Jobviet@support.com <br>
                                         +84 0399876725 <br>
                                         Chung cư Vinh Trung, phường Trung Đô, Thành phố Vinh, Nghệ An.
                                     </p>
@@ -65,17 +65,18 @@
                                         Khám Phá
                                     </h3>
                                     <ul>
-                                        <li><a href="#">Việc làm</a></li>
-                                        <li><a href="#">Bài viết nổi bật</a></li>
-                                        <li><a href="#">Cẩm nang Nghề Nghiệp</a></li>
-                                        <li><a href="#"></a></li>
+                                        <li><a href="/post?category=Định-hướng-nghề-nghiệp">Định hướng nghề nghiệp</a></li>
+                                        <li><a href="/post?category=Kiến-thức-chuyên-ngành">Kiến thức chuyên ngành</a></li>
+                                        <li><a href="/post?category=Bí-kíp-tìm-việc">Bí kíp tìm việc</a></li>
+                                        <li><a href="/post?category=Hành-trang-nghề-nghiệp">Hành trang nghề nghiệp</a></li>
+                                        <li><a href="/post?category=Thị-trường-và-xu-hướng-tuyển-dụng">Thị trường và xu hướng tuyển dụng</a></li>
                                     </ul>
                                 </div>
                             </div>
                             <div class="col-xl-4 col-md-6 col-lg-4">
                                 <div class="footer_widget wow fadeInUp" data-wow-duration="1.3s" data-wow-delay=".6s">
                                     <h3 class="footer_title">
-                                        Subscribe
+                                        Gửi ý kiến đóng góp
                                     </h3>
                                     <form action="#" class="newsletter_form">
                                         <input type="text" placeholder="Enter your mail">

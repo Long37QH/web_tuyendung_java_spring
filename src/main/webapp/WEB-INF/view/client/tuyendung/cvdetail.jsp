@@ -125,7 +125,14 @@
                 <div class="col-lg-8 mx-auto" >
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="mb-3">Thông tin ứng viên</h4>
+                            <div class="row d-flex justify-content-between align-items-center mb-3">
+                                <div class="col">
+                                    <h4>Thông tin ứng viên</h4>
+                                </div>
+                                <div class="col d-grid gap-2 d-md-flex justify-content-md-end">
+                                    <a href="/filecv/${userTD.filecv}" target="_blank" class="btn btn-success" >Xem CV</a>
+                                </div>
+                            </div>
                             <hr>
 
                             <div class=" col-12 mt-5">
@@ -186,10 +193,20 @@
                                     <form:input type="text" class="form-control"
                                         id="inputAddress2" placeholder="+84" path="phone" />
                                 </div>
+                                <div class="col-md-12 mb-3">
+                                    <label class="form-label">Phần giới thiệu:</label>
+                                    <textarea class="form-control" name="content" id="editor1">${apply.mess2}</textarea>
+                                </div>
+                                <!-- CKEditor 5 Script -->
+                                <script>
+                                    ClassicEditor
+                                        .create(document.querySelector('#editor1'))
+                                        .catch(error => {
+                                            console.error(error);
+                                        });
+                                </script>
                             </form:form><!-- End Multi Columns Form -->
-                            <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-2" >
-                                <a class="btn btn-success" href="/filecv/${userTD.filecv}" target="_blank">Xem Cv</a>
-                            </div>  
+                            
                             <h4 class="mb-3">Gửi phản hồi</h4>
                             <hr>
                             <form:form class="row g-3" method="post"
