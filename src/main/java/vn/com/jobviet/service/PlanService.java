@@ -36,4 +36,17 @@ public class PlanService {
     public List<OderPlan> getOrderPhan(){
         return this.oderPlanRepository.findAll();
     }
+
+    public Double getTotalPrice() {
+        return oderPlanRepository.TotalPrice();
+    }
+
+    public List<OderPlan> getOrdersWithinDateRange(String startDate, String endDate) {
+        return oderPlanRepository.findOrdersWithinDateRange(startDate, endDate);
+    }
+
+    public Double getTotalPrice(String startDate, String endDate) {
+        return oderPlanRepository.TotalPriceBetweenDates(startDate, endDate);
+    }
+
 }

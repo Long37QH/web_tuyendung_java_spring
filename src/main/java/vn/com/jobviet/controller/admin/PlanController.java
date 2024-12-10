@@ -1,6 +1,8 @@
 package vn.com.jobviet.controller.admin;
 
 import java.util.List;
+import java.util.Optional;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -13,12 +15,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-
+import org.springframework.web.bind.annotation.RequestParam;
 
 import jakarta.validation.Valid;
-
-
-
 
 
 @Controller
@@ -91,9 +90,25 @@ public class PlanController {
     }
 
     @GetMapping("/admin/planOrder")
-    public String getPlanOrderAdmin(Model model) {
-        List<OderPlan> oderPlans = this.planService.getOrderPhan();
-        model.addAttribute("listOrder", oderPlans);
+    public String getPlanOrderAdmin(Model model,@RequestParam("startDate") Optional<String> startDateOptional,
+            @RequestParam("endDate") Optional<String> endDateOptional) {
+        if(startDateOptional.isPresent() && endDateOptional.isPresent()){
+            String startDate = startDateOptional.get();
+            String endDate = endDateOptional.get();
+
+            List<OderPlan> oderPlans = this.planService.getOrdersWithinDateRange(startDate, endDate);
+            Double tongtien = this.planService.getTotalPrice(startDate, endDate);
+            String time = "Từ "+startDate+" đến ngày "+endDate;
+                    
+            model.addAttribute("time",time);    
+            model.addAttribute("listOrder", oderPlans);
+            model.addAttribute("tongtien", tongtien);
+        }else{
+            List<OderPlan> oderPlans = this.planService.getOrderPhan();
+            Double tongtien = this.planService.getTotalPrice();
+            model.addAttribute("listOrder", oderPlans);
+            model.addAttribute("tongtien", tongtien);
+        }
         return "/admin/plan/showOrder";
     }
     
