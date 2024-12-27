@@ -88,16 +88,16 @@
                 <table id="example" class="table table-striped table-bordered table-hover mt-4">
                     <thead>
                         <tr>
-                            <th>ID</th>
+                            <th>TT</th>
                             <th>Tên danh mục</th>
                             <th>Mô tả nội dung</th>
                             <th>Tác vụ</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <c:forEach var="cate" items="${listCate}">
+                        <c:forEach var="cate" items="${listCate}" varStatus="status">
                             <tr>
-                                <th>${cate.id}</th>
+                                <th>${status.index + 1}</th>
                                 <td style="width: 250px;" >${cate.name}</td>
                                 <td style="width: 500px;" >${cate.description}</td>
                                 <td>

@@ -95,6 +95,7 @@
                         <tr>
                             <th>TT</th>
                             <th>Vị trí tuyển dụng</th>
+                            <th>Nhà tuyển dụng</th>
                             <th>Số lượng</th>
                             <th>Hình thức</th>
                             <th>Trạng thái</th>
@@ -105,15 +106,16 @@
                         <c:forEach var="job" items="${listjob}" varStatus="status" >
                             <tr>
                                 <th>${status.index + 1}</th>
-                                <td style="width: 250px;" >${job.title}</td>
+                                <td style="width: 150px;" >${job.title}</td>
+                                <td style="width: 150px;" >${job.user.company}</td>
                                 <td>${job.quantity}</td>
                                 <td>${job.workingForm}</td>
                                 <td class="text-success fw-bold" >${job.status}</td>
                                 <td>
                                     <a class="btn btn-success"
                                         href="/admin/tuyendung/detail/${job.id}"><i class="fa-regular fa-eye"></i> Chi tiết</a>
-                                    <!-- <a class="btn btn-primary"
-                                        href="#"><i class="fa-solid fa-user-tag"></i> Ứng viên</a> -->
+                                    <a class="btn btn-primary"
+                                        href="/admin/tuyendung/anbaidang/${job.id}"><i class="fa-sharp fa-regular fa-eye-slash"></i></i> Ẩn bài</a>
                                     <a class="btn btn-danger"
                                         href="/admin/tuyendung/delete/${job.id}"><i class="fa-regular fa-trash-can"></i> Xóa bài</a>
                                 </td>

@@ -32,11 +32,15 @@ public interface ApplyRepository extends JpaRepository<Apply, Long> {
     // Tìm các Apply theo userId của Job và trạng thái
     List<Apply> findByJob_User_IdAndStatusIn(Long userId, List<String> statuses);
 
+    List<Apply> findByJob_User_IdAndStatusInOrderByExperienceDesc(Long userId, List<String> statuses);
+
     // Tìm các Apply theo userId của Job và status
     List<Apply> findByJob_User_IdAndStatus(Long userId, String status);
 
     // Tìm các Apply theo userId của Job và jobId
     List<Apply> findByJob_User_IdAndJob_Id(Long userId, Long jobId);
+    
+    List<Apply> findByJob_User_IdAndJob_IdOrderByExperienceDesc(Long userId, Long jobId);
 
     // Tìm các Apply theo Job_User_Id và các Status
     @Query("SELECT a FROM Apply a WHERE a.user.id = :userId AND (a.status = :status1 OR a.status = :status2)")

@@ -51,8 +51,10 @@ public class ApplyService {
         return applyRepository.findByJob_User_Id(userId);
     }
 
+    // xu lý lay ds ung vien
     public List<Apply> getAppliesByUserIdAndStatuses2(Long userId, List<String> statuses) {
-        return applyRepository.findByJob_User_IdAndStatusIn(userId, statuses);
+        // return applyRepository.findByJob_User_IdAndStatusIn(userId, statuses);
+        return applyRepository.findByJob_User_IdAndStatusInOrderByExperienceDesc(userId, statuses);
     }
 
     public List<Apply> getAppliesByUserIdAndStatus(Long userId, String status) {
@@ -60,7 +62,7 @@ public class ApplyService {
     }
 
     public List<Apply> getAppliesByUserIdAndJobId(Long userId, Long jobId) {
-        return applyRepository.findByJob_User_IdAndJob_Id(userId, jobId);
+        return applyRepository.findByJob_User_IdAndJob_IdOrderByExperienceDesc(userId, jobId);
     }
 
     public List<Apply> getAppliesByUserIdAndStatuses(Long userId, String status1, String status2) {

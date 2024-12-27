@@ -88,8 +88,8 @@ public class SecurityConfiguration {
                 // cấu hình sửu dụng trang login của project thay phần security mạc định
 
                 .formLogin(formLogin -> formLogin
-                        .loginPage("/login")
-                        .failureUrl("/login?error")
+                        .loginPage("/dangnhap")
+                        .failureUrl("/dangnhap?error")
                         .successHandler(CustomSuccessHandler())
                         .permitAll())
                         .exceptionHandling(ex -> ex.accessDeniedPage("/error-page"));

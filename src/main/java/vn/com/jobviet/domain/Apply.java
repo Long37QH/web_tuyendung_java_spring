@@ -23,6 +23,11 @@ public class Apply {
     @Column(columnDefinition = "MEDIUMTEXT") 
     private String mess2;
 
+    private long experience;
+
+    @Column(columnDefinition = "MEDIUMTEXT")
+    private String skill;
+
     @Column(columnDefinition = "MEDIUMTEXT") 
     private String feedback;
 
@@ -98,8 +103,19 @@ public class Apply {
     }
     public void setStatus(String status) {
         this.status = status;
+    } 
+    public long getExperience() {
+        return experience;
     }
-    
+    public void setExperience(long experience) {
+        this.experience = experience;
+    }
+    public String getSkill() {
+        return skill;
+    }
+    public void setSkill(String skill) {
+        this.skill = skill;
+    }
     @Override
     public String toString() {
         return "Apply [id=" + id + ", receiverName=" + receiverName + ", receiverEmail=" + receiverEmail

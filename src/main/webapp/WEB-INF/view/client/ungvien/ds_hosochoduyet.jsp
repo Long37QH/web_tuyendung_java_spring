@@ -104,6 +104,7 @@
                             <tr>
                                 <th>TT</th>
                                 <th>Vị trí Ứng tuyển</th>
+                                <th>Công ty</th>
                                 <th>Hình thức</th>
                                 <th>Thời gian apply</th>
                                 <th>Trạng thái</th>
@@ -114,15 +115,12 @@
                             <c:forEach var="apply" items="${listApplys}" varStatus="status" >
                                 <tr>
                                     <th>${status.index + 1}</th>
-                                    <td style="width: 250px;" >${apply.job.title}</td>
+                                    <td style="width: 150px;" >${apply.job.title}</td>
+                                    <td>${apply.job.user.company}</td>
                                     <td>${apply.job.workingForm}</td>
                                     <td>${apply.timeapply}</td>
-                                    <td class="${apply.status == 'Chờ duyệt' ? 'text-warning' : 'text-info'}" ><strong>${apply.status}</strong></td>
+                                    <td class="${apply.status == 'Chờ duyệt' ? 'text-danger' : 'text-info'}" ><strong>${apply.status}</strong></td>
                                     <td>
-                                        <!-- <a class="btn btn-success"
-                                            href="#"><i class="fa-regular fa-eye"></i> Xem</a>
-                                        <a class="btn btn-primary"
-                                            href="#"><i class="fa-solid fa-user-tag"></i> Ứng viên</a> -->
                                         <a class="btn btn-success mx-2 "
                                             href="/job/detail/${apply.job.id}"><i class="fa-solid fa-pen-nib"></i> Xem chi tiết</a>
                                         <a class="btn btn-danger"

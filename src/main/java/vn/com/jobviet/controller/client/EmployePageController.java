@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import jakarta.mail.MessagingException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
@@ -25,6 +26,7 @@ import vn.com.jobviet.domain.Apply;
 import vn.com.jobviet.domain.Job;
 import vn.com.jobviet.domain.User;
 import vn.com.jobviet.service.ApplyService;
+import vn.com.jobviet.service.EmailService;
 import vn.com.jobviet.service.JobService;
 import vn.com.jobviet.service.UploadService;
 import vn.com.jobviet.service.UserService;
@@ -35,13 +37,15 @@ public class EmployePageController {
     private final UploadService uploadService;
     private final JobService jobService;
     private final ApplyService applyService;
+    private final EmailService emailService;
 
     public EmployePageController(UserService userService, UploadService uploadService, JobService jobService,
-            ApplyService applyService) {
+            ApplyService applyService,EmailService emailService) {
         this.userService = userService;
         this.uploadService = uploadService;
         this.jobService = jobService;
         this.applyService = applyService;
+        this.emailService = emailService;
     }
 
     @GetMapping("/tuyendung/profile")
@@ -147,6 +151,8 @@ public class EmployePageController {
         return "redirect:/tuyendung/taobaidang";
     }
 
+    // danh sách bài đăng cho duyet
+
     @GetMapping("/tuyendung/baidangchoduyet")
     public String getMethodName(Model model, HttpServletRequest request) {
         HttpSession session = request.getSession(false);
@@ -203,6 +209,8 @@ public class EmployePageController {
         return "redirect:/tuyendung/baidangchoduyet";
     }
 
+    // danh sách bài đăng 
+
     @GetMapping("/tuyendung/baidangtuyendung")
     public String getPageDsBaiDang(Model model, HttpServletRequest request) {
         HttpSession session = request.getSession(false);
@@ -213,7 +221,8 @@ public class EmployePageController {
         model.addAttribute("listjob", listjob);
         return "/client/tuyendung/ds_baidangtuyendung";
     }
-
+    
+    // thong ke ung vien theo job
     @GetMapping("Tuyendung/dsungvien/{id}")
     public String getApplybyJob(Model model, @PathVariable long id, HttpServletRequest request) {
         HttpSession session = request.getSession(false);
@@ -288,6 +297,14 @@ public class EmployePageController {
             currenApply.setFeedback(applyup.getFeedback());
 
             this.applyService.handSaveApply(currenApply);
+
+            // xu ly gui mail
+            try {
+            this.emailService.sendEmail(currenApply.getReceiverEmail(), "Thông báo kết quả hồ sơ ứng tuyển", currenApply.getFeedback());
+            } catch (MessagingException e) {
+                redirectAttributes.addFlashAttribute("message", "gủi mail that bại !");
+            }
+            
             redirectAttributes.addFlashAttribute("message", "Hoàn tất phê duyệt hồ sơ ứng viên!");
         }
 
@@ -309,7 +326,7 @@ public class EmployePageController {
         apply.setTimefeedback(formattedDate);
         apply.setStatus("Từ chối hồ sơ");
         apply.setFeedback("<h3>Thông Báo Kết Quả Tuyển Dụng Vị Trí "+ apply.getJob().getJobPosition() +"</h3>\r\n" + //
-                        " <p><strong>Kính gửi anh/chị "+apply.getReceiverName()+",</strong></p> \r\n" + //
+                        "<p><strong>Kính gửi anh/chị "+apply.getReceiverName()+",</strong></p> \r\n" + //
                         "<p> Cảm ơn anh/chị đã quan tâm và ứng tuyển vào vị trí <strong>"+ apply.getJob().getJobPosition() +"</strong> tại <strong>"+usertd.getCompany()+"</strong>. Chúng tôi đã rất ấn tượng với hồ sơ và những kinh nghiệm mà anh/chị đã chia sẻ trong quá trình tuyển dụng. </p> \r\n" + //
                         "<p> Tuy nhiên, sau khi xem xét kỹ lưỡng tất cả các ứng viên, chúng tôi rất tiếc phải thông báo rằng hiện tại chúng tôi đã quyết định lựa chọn một ứng viên khác phù hợp hơn với yêu cầu của vị trí này. </p>\r\n" + //
                         "<p> Quyết định này không hề dễ dàng, bởi anh/chị đã thể hiện rất nhiều tiềm năng và kỹ năng đáng quý. Chúng tôi thực sự đánh giá cao thời gian, nỗ lực và sự quan tâm của anh/chị dành cho <strong>"+usertd.getCompany()+"</strong>. </p> \r\n" + //
@@ -320,6 +337,12 @@ public class EmployePageController {
                         "<p>Thông tin liên hệ: email "+usertd.getEmail()+", số điện thoại: "+usertd.getPhone()+"</p>\r\n" + //
                         "");
         this.applyService.handSaveApply(apply);
+
+        try {
+            this.emailService.sendEmail(apply.getReceiverEmail(), "Thông báo kết quả hồ sơ ứng tuyển", apply.getFeedback());
+            } catch (MessagingException e) {
+                redirectAttributes.addFlashAttribute("message", "gủi mail that bại !");
+            }
         redirectAttributes.addFlashAttribute("message", "Đã từ chối ứng viên");
         return "redirect:/tuyendung/danhsachungvien";
     }

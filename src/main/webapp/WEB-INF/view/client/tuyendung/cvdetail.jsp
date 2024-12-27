@@ -129,9 +129,7 @@
                                 <div class="col">
                                     <h4>Thông tin ứng viên</h4>
                                 </div>
-                                <div class="col d-grid gap-2 d-md-flex justify-content-md-end">
-                                    <a href="/filecv/${userTD.filecv}" target="_blank" class="btn btn-success" >Xem CV</a>
-                                </div>
+                               
                             </div>
                             <hr>
 
@@ -140,7 +138,7 @@
                                     style="width: 150px; height: 150px; display: none;" alt="avatar Preview" id="avatarPreview">
                                 <div class="text-center my-3">
                                     ${userTD.fullName}
-                                    <p>${userTD.plan.name}</p>
+                                    <p>Ứng tuyển vị trí <strong>${apply.job.jobPosition}</strong></p>
                                 </div>
                             </div>
 
@@ -180,18 +178,27 @@
                                         id="inputAddress2" placeholder="dd/mm/yyyy"
                                         path="dateOfBirth" />
                                 </div>
-                                <div class="col-6 mb-3">
+                                <div class="col-md-6 mb-3">
+                                    <label for="experience" class="form-label">Kinh nghiệm: </label>
+                                    <input type="text" class="form-control" id="experience" value=" ${apply.experience == 0 ? 'Dưới 1 ' : apply.experience} năm kinh nghiệm"/>
+                                </div>
+
+                                <div class="col-6">
+                                    <label for="inputAddress2" class="form-label">Số điện thoại
+                                        : </label>
+                                    <form:input type="text" class="form-control"
+                                        id="inputAddress2" placeholder="+84" path="phone" />
+                                </div>
+                                <div class="col-12 mb-3">
                                     <label for="inputAddress5" class="form-label">Địa chỉ :
                                     </label>
                                     <form:input type="text" class="form-control"
                                         id="inputAddres5s" placeholder="Thành phố Vinh..."
                                         path="addRess" />
                                 </div>
-                                <div class="col-6">
-                                    <label for="inputAddress2" class="form-label">Số điện thoại
-                                        : </label>
-                                    <form:input type="text" class="form-control"
-                                        id="inputAddress2" placeholder="+84" path="phone" />
+                                <div class="col-md-12 mb-3">
+                                    <label for="skill" class="form-label">Kinh nghiệm: </label>
+                                    <textarea type="text" class="form-control" id="skill">${apply.skill}</textarea>
                                 </div>
                                 <div class="col-md-12 mb-3">
                                     <label class="form-label">Phần giới thiệu:</label>
@@ -207,7 +214,15 @@
                                 </script>
                             </form:form><!-- End Multi Columns Form -->
                             
-                            <h4 class="mb-3">Gửi phản hồi</h4>
+                            <!-- <h4 class="mb-3"></h4> -->
+                            <div class="col d-grid gap-2 d-md-flex justify-content-md-end">
+                                <a href="/filecv/${userTD.filecv}" target="_blank" class="btn btn-success" >Xem CV</a>
+                            </div>
+                            <div class="row d-flex justify-content-between align-items-center mb-3">
+                                <div class="col">
+                                    <h4>Gửi phản hồi</h4>
+                                </div>
+                            </div>
                             <hr>
                             <form:form class="row g-3" method="post"
                                 enctype="multipart/form-data" action="/tuyendung/ds_hosoungtuyen/feedback"

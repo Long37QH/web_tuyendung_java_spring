@@ -143,7 +143,7 @@
                   </div>
                   <div class="ps-3">
                     <h6>${post_number}</h6>
-                    <span class="text-muted small pt-2 ps-1">Bài</span>
+                    <span class="text-muted small pt-2 ps-1">Bài viết</span>
                   </div>
                 </div>
               </div>

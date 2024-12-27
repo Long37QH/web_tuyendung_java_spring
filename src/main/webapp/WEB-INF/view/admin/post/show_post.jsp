@@ -87,7 +87,7 @@
                 <table id="example" class="table table-striped table-bordered table-hover mt-4">
                     <thead>
                         <tr>
-                            <th>id</th>
+                            <th>TT</th>
                             <th>Tiêu đề</th>
                             <th>Hình ảnh</th>
                             <th>Danh muc</th>
@@ -104,7 +104,7 @@
                                 <td>
                                     <img src="/images/post/${post.image}" alt="" style="width: 150px;">
                                 </td>
-                                <td>${post.category.name}</td>
+                                <td style="width: 150px;">${post.category.name}</td>
                                 <td>${post.author}</td>
                                 <td>${post.status}</td>
                                 <td>

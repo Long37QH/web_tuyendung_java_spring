@@ -99,7 +99,7 @@
                             <div class="recent_joblist white-bg ">
                                 <div class="row align-items-center">
                                     <div class="col-md-6">
-                                        <h4>Vị tri công ty tuyển dụng</h4>
+                                        <h4>Các vị trí công ty đang tuyển dụng</h4>
                                     </div>
                                     
                                 </div>

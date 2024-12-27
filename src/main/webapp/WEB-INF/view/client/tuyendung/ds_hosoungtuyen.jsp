@@ -105,7 +105,8 @@
                                 <th>TT</th>
                                 <th>Tên ứng viên</th>
                                 <th>Vị trí Ứng tuyển</th>      
-                                <th>Thời gian apply</th>
+                                <th>Apply time</th>
+                                <th>Kinh nghiệm</th>
                                 <th>Trạng thái hồ sơ</th>
                                 <th>Tác vụ</th>
                             </tr>
@@ -115,8 +116,9 @@
                                 <tr>
                                     <th>${status.index + 1}</th>
                                     <td>${apply.user.fullName}</td>
-                                    <td style="width: 250px;" >${apply.job.title}</td>
-                                    <td>${apply.timeapply}</td>
+                                    <td style="width: 150px;" >${apply.job.title}</td>
+                                    <td style="width: 100px;" >${apply.timeapply}</td>
+                                    <td>${apply.experience == 0 ? 'Dưới 1 ' : apply.experience} năm</td>
                                     <td>${apply.status}</td>
                                     <td>
                                         <!-- <a class="btn btn-success"

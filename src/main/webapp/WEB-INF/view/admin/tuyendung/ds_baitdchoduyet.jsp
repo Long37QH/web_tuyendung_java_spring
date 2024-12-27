@@ -46,6 +46,7 @@
  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
+
   <!-- =======================================================
   * Template Name: NiceAdmin - v2.4.0
   * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
@@ -85,7 +86,7 @@
             <!-- Băt dâp phân main-->
             <div class="col-lg-12" >
                 <div class="d-flex justify-content-between mb-2 mt-2">
-                    <h5 class="mb-3">Danh bài đăng tuyển dung chờ duyệt</h5>
+                    <h5 class="mb-3">Danh sách bài đăng tuyển dung chờ duyệt</h5>
                     <!-- <a class="btn btn-primary" href="/admin/post/creat">Thêm mới</a>  -->
                 </div>
                 <hr>
@@ -94,6 +95,7 @@
                         <tr>
                             <th>TT</th>
                             <th>Vị trí tuyển dụng</th>
+                            <th>Nhà tuyển dụng</th>
                             <th>Số lượng</th>
                             <th>Hình thức</th>
                             <th>Trạng thái</th>
@@ -104,15 +106,14 @@
                         <c:forEach var="job" items="${listjob}" varStatus="status" >
                             <tr>
                                 <th>${status.index + 1}</th>
-                                <td style="width: 250px;" >${job.title}</td>
+                                <td style="width: 150px;" >${job.title}</td>
+                                <td style="width: 150px;" >${job.user.company}</td>
                                 <td>${job.quantity}</td>
                                 <td>${job.workingForm}</td>
                                 <td class="text-danger fw-bold" >${job.status}</td>
                                 <td>
                                     <a class="btn btn-success"
                                         href="/admin/tuyendung/detail/${job.id}"><i class="fa-regular fa-eye"></i> Chi tiết</a>
-                                    <!-- <a class="btn btn-primary"
-                                        href="#"><i class="fa-solid fa-user-tag"></i> Ứng viên</a> -->
                                     <a class="btn btn-warning mx-2 "
                                         href="/admin/tuyendung/dangbai/${job.id}"><i class="fa-solid fa-pen-nib"></i> Đăng bài</a>
                                     <a class="btn btn-danger"
@@ -155,35 +156,32 @@
   <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js"></script>
 
   <!-- DataTable Initialization -->
-  <script>
-      $(document).ready(function() {
-          $('#example').DataTable();
+  
+  <script type="text/javascript">
+      $(document).ready(function () {
+        $('#example').DataTable();
+          toastr.options = {
+              "closeButton": true,
+              "debug": false,
+              "newestOnTop": true,
+              "progressBar": true,
+              "positionClass": "toast-custom-top-right", // Thay đổi vị trí hiển thị
+              "preventDuplicates": true,
+              "showDuration": "300",
+              "hideDuration": "1000",
+              "timeOut": "3000", // Thời gian tồn tại của thông báo
+              "extendedTimeOut": "1000",
+              "showEasing": "swing",
+              "hideEasing": "linear",
+              "showMethod": "fadeIn",
+              "hideMethod": "fadeOut"
+          };
+          // Check if there's a flash attribute 'message'
+          <c:if test="${not empty message}">
+              toastr.success("${message}");
+          </c:if>
       });
   </script>
-   <script type="text/javascript">
-    $(document).ready(function () {
-        toastr.options = {
-            "closeButton": true,
-            "debug": false,
-            "newestOnTop": true,
-            "progressBar": true,
-            "positionClass": "toast-custom-top-right", // Thay đổi vị trí hiển thị
-            "preventDuplicates": true,
-            "showDuration": "300",
-            "hideDuration": "1000",
-            "timeOut": "3000", // Thời gian tồn tại của thông báo
-            "extendedTimeOut": "1000",
-            "showEasing": "swing",
-            "hideEasing": "linear",
-            "showMethod": "fadeIn",
-            "hideMethod": "fadeOut"
-        };
-        // Check if there's a flash attribute 'message'
-        <c:if test="${not empty message}">
-            toastr.success("${message}");
-        </c:if>
-    });
-</script>
 </body>
 
 </html>

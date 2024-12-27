@@ -41,6 +41,8 @@ public class CandidatePageController {
         model.addAttribute("userpr", user);
         return "/client/ungvien/profile";
     }
+
+
     @PostMapping("/update_profileuv")
     public String postUpProfileuv(Model model,
             @ModelAttribute("userpr") @Valid User userUp,
@@ -70,6 +72,8 @@ public class CandidatePageController {
         }
         return "redirect:/ungvien/profile";
     }
+
+    
 
     @GetMapping("/ungvien/ds_hosoungtuyen")
     public String getPageListApply(Model model, HttpServletRequest request) {

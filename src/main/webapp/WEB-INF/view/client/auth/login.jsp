@@ -58,7 +58,7 @@
                   <div class="user-content">
                     <div class="top">
                       <h2>Đăng Nhập</h2>
-                      <form method="post" action="/login">   
+                      <form method="post" action="/dangnhap">   
                         <div class="form-group">
                           <input type="email" class="form-control" name="username" placeholder="Email">
                         </div>

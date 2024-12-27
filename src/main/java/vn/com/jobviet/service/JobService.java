@@ -48,6 +48,10 @@ public class JobService {
         return this.jobRepository.findByStatus(status);
     }
 
+    public List<Job> getListJobByStatusOrStatus(String status1 , String status2){
+        return this.jobRepository.findByStatusOrStatus(status1, status2);
+    }
+
     public Page<Job> fetchJobWithSpec(Pageable pageable,JobCriteriaDTO jobCriteriaDTO,String status){
         if( jobCriteriaDTO.getName() == null
             && jobCriteriaDTO.getArea() == null
@@ -116,5 +120,9 @@ public class JobService {
 
     public long countJobsWithStatus(String status) {
         return jobRepository.countByStatus(status);
+    }
+
+    public void updateJobStatus(String dateline) {
+        jobRepository.updateJobStatusByDateline(dateline);
     }
 }

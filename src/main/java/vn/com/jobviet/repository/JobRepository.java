@@ -7,9 +7,11 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import vn.com.jobviet.domain.Job;
 import vn.com.jobviet.domain.User;
@@ -25,6 +27,10 @@ public interface JobRepository extends JpaRepository<Job, Long> ,JpaSpecificatio
     List<Job> findByUserAndStatus(User user, String status);
 
     List<Job> findByStatus(String status);
+
+    List<Job> findByStatusOrStatus(String status1, String status2);
+
+    List<Job> findByStatusOrStatusOrderByQuantityDesc(String status1, String status2);
 
     Page<Job> findByUserCompanyAndStatus(String company, String status,Pageable pageable);
 
@@ -43,5 +49,8 @@ public interface JobRepository extends JpaRepository<Job, Long> ,JpaSpecificatio
 
     long countByStatus(String status);
 
-
+    @Modifying
+    @Transactional
+    @Query("UPDATE Job j SET j.status = 'Ẩn bài' WHERE j.dateline = :dateline")
+    int updateJobStatusByDateline(String dateline);
 } 

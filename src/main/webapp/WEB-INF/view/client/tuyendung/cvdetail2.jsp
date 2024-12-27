@@ -119,7 +119,7 @@
                                     style="width: 150px; height: 150px; display: none;" alt="avatar Preview" id="avatarPreview">
                                 <div class="text-center my-3">
                                     ${userTD.fullName}
-                                    <p>${userTD.plan.name}</p>
+                                    <p>Ứng tuyển vị trí <strong>${apply.job.jobPosition}</strong></p>
                                 </div>
                             </div>
 
@@ -159,18 +159,27 @@
                                         id="inputAddress2" placeholder="dd/mm/yyyy"
                                         path="dateOfBirth" />
                                 </div>
-                                <div class="col-6 mb-3">
+                                <div class="col-md-6 mb-3">
+                                    <label for="experience" class="form-label">Kinh nghiệm: </label>
+                                    <input type="text" class="form-control" id="experience" value="${apply.experience} năm kinh nghiệm"/>
+                                </div>
+                                
+                                <div class="col-6">
+                                    <label for="inputAddress2" class="form-label">Số điện thoại
+                                        : </label>
+                                    <form:input type="text" class="form-control"
+                                        id="inputAddress2" placeholder="+84" path="phone" />
+                                </div>
+                                <div class="col-12 mb-3">
                                     <label for="inputAddress5" class="form-label">Địa chỉ :
                                     </label>
                                     <form:input type="text" class="form-control"
                                         id="inputAddres5s" placeholder="Thành phố Vinh..."
                                         path="addRess" />
                                 </div>
-                                <div class="col-6">
-                                    <label for="inputAddress2" class="form-label">Số điện thoại
-                                        : </label>
-                                    <form:input type="text" class="form-control"
-                                        id="inputAddress2" placeholder="+84" path="phone" />
+                                <div class="col-md-12 mb-3">
+                                    <label for="skill" class="form-label">Kinh nghiệm: </label>
+                                    <textarea type="text" class="form-control" id="skill">${apply.skill}</textarea>
                                 </div>
                             </form:form><!-- End Multi Columns Form -->
                             <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-2" >
@@ -184,6 +193,10 @@
                                 <div class="col-md-12 mb-3 d-none">
                                     <label for="id" class="form-label">ID: </label>
                                     <form:input type="text" class="form-control " id="id" path="id" />  
+                                </div>
+                                <div class="col-md-12 mb-3">
+                                    <label for="status" class="form-label">Trạng thái hồ sơ: </label>
+                                    <input type="text" class="form-control" id="status" value="${apply.status} ứng viên"/>
                                 </div>
                                 <div class="col-md-12 mb-3">
                                     <label class="form-label">Nội dung phản hồi:</label>

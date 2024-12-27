@@ -4274,7 +4274,7 @@ h3 {
 }
 
 /* line 164, ../../Arafath/CL/December/235. Job board/HTML/scss/_job_details.scss */
-.job_details_area .apply_job_form .input_field input,
+.job_details_area .apply_job_form .input_field input,select,option
 .job_details_area .apply_job_form .input_field textarea {
   height: 60px;
   border: 1px solid #E8E8E8;

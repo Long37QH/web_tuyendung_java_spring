@@ -76,7 +76,7 @@
                                                     </ul>
                                                 </div>
                                                 <div class="d-none d-lg-block">
-                                                    <a class="boxed-btn3" href="/login">Đăng tin</a>
+                                                    <a class="boxed-btn3" href="/dangnhap">Đăng tin</a>
                                                 </div>
                                             </c:if>
                                             
@@ -123,7 +123,7 @@
                                                 </ul>
                                             </div>
                                             <div class="d-none d-lg-block">
-                                                <a class="boxed-btn3" href="/login">Ứng tuyển</a>
+                                                <a class="boxed-btn3" href="/dangnhap">Ứng tuyển</a>
                                             </div>   
                                             </c:if>
                                             <!-- phân khi đang nhap tk admin -->
@@ -167,10 +167,10 @@
                                             <!-- chưa đăng nhập -->
                                             <c:if test="${empty pageContext.request.userPrincipal}">
                                                 <div class="phone_num d-none d-xl-block">
-                                                    <a href="/login" class="nav-link fs-2 "><i class="fas fa-user"></i> Đăng nhập</a>
+                                                    <a href="/dangnhap" class="nav-link fs-2 "><i class="fas fa-user"></i> Đăng nhập</a>
                                                 </div> 
                                                 <div class="d-none d-lg-block">
-                                                    <a class="boxed-btn3" href="/login">Ứng tuyển</a>
+                                                    <a class="boxed-btn3" href="/dangnhap">Ứng tuyển</a>
                                                 </div>
                                             </c:if>
                                         </div>

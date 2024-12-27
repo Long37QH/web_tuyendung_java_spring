@@ -48,7 +48,7 @@ public class EmployeController {
     
     @GetMapping("/admin/tuyendung/ds_chodang")
     public String getPageAdminDsChoDangTD(Model model) {
-        List<Job> listjob = this.jobService.getListJobByStatus("Chờ duyệt");
+        List<Job> listjob = this.jobService.getListJobByStatusOrStatus("Chờ duyệt","Ẩn bài");
         model.addAttribute("listjob", listjob);
         return "/admin/tuyendung/ds_baitdchoduyet";
     }
@@ -74,6 +74,22 @@ public class EmployeController {
         List<Job> listjob = this.jobService.getListJobByStatus("Đăng bài");
         model.addAttribute("listjob", listjob);
         return "/admin/tuyendung/ds_baidang";
+    }
+
+    @GetMapping("/admin/tuyendung/anbaidang/{id}")
+    public String updateHidenJob(Model model,@PathVariable long id,RedirectAttributes redirectAttributes) {
+
+        Job currenJob = this.jobService.getJobById(id);  
+        long idTD = currenJob.getUser().getId();
+        User TD = this.userService.getUserById(idTD);
+        long sumJobnew = TD.getSumjob() - 1;
+        TD.setSumjob(sumJobnew);
+        this.userService.handlSaveUser(TD);
+
+        currenJob.setStatus("Ẩn bài");
+        this.jobService.handSaveJob(currenJob);
+        redirectAttributes.addFlashAttribute("message", "Đã ẩn bài đăng!");
+        return "redirect:/admin/tuyendung/ds_chodang";
     }
 
     @GetMapping("/admin/tuyendung/detail/{id}")

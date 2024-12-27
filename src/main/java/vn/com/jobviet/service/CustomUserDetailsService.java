@@ -23,7 +23,7 @@ public class CustomUserDetailsService implements  UserDetailsService{
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         vn.com.jobviet.domain.User userlogin = this.userService.getUserByEmail(username);
         if (userlogin == null) {
-            throw new UsernameNotFoundException("user not found");
+            throw new UsernameNotFoundException("Tài khoản không tồn tại!");
         }
 
         return new User(

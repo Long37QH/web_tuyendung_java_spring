@@ -87,7 +87,7 @@
                 <table id="example" class="table table-striped table-bordered table-hover mt-4">
                     <thead>
                         <tr>
-                            <th>id</th>
+                            <th>TT</th>
                             <th>Full name</th>
                             <th>Email</th>
                             <th>Quyền</th>
@@ -95,9 +95,9 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <c:forEach var="user" items="${listUser1}">
+                        <c:forEach var="user" items="${listUser1}" varStatus="status" >
                             <tr>
-                                <th>${user.id}</th>
+                                <th>${status.index + 1}</th>
                                 <td>${user.fullName}</td>
                                 <td>${user.email}</td>
                                 <td>${user.role.name}</td>

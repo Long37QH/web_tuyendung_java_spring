@@ -1,6 +1,8 @@
 package vn.com.jobviet.controller.client;
 
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Optional;
 
@@ -43,6 +45,12 @@ public class HomeController {
 
     @GetMapping("/")
     public String getHomePage(Model model,@RequestParam("page") Optional<String> pageOptional) {
+        // thưc hiện tư đọng ân các bài đến hạn dateline
+        LocalDateTime currentTime = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        String formattedDate = currentTime.format(formatter);
+        this.jobService.updateJobStatus(formattedDate);
+
         int page = 1;
         try {
             if (pageOptional.isPresent()) {
@@ -105,7 +113,7 @@ public class HomeController {
 
     }
 
-    @GetMapping("/login")
+    @GetMapping("/dangnhap")
     public String getLoginPage(Model model) {
         return "/client/auth/login";
     }

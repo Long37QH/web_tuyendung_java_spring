@@ -115,6 +115,23 @@
                                         <form:input type="text" placeholder="Địa chỉ email" path="receiverEmail"/>
                                     </div>
                                 </div>
+                                <div class="col-md-12 mb-3">
+                                        <form:select class="form-select" path="experience" >
+                                            <form:option  value="0">Kinh nghiệm </form:option>
+                                            <form:option  value="0">Dưới 1 năm </form:option>
+                                            <form:option  value="1">1 năm </form:option>
+                                            <form:option  value="2">2 năm </form:option>
+                                            <form:option  value="3">3 năm </form:option>
+                                            <form:option  value="4">4 năm </form:option>
+                                            <form:option  value="4">5 năm </form:option>
+                                            <form:option  value="4">Trên 5 năm </form:option>
+                                        </form:select>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="input_field">
+                                        <form:input type="text" placeholder="Kỹ năng nghề nghiệp" path="skill"/>
+                                    </div>
+                                </div>
                                 <div class="col-md-12">
                                     <div class="input-group">
                                         <div class="input-group-prepend">
